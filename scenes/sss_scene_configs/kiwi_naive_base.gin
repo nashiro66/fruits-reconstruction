@@ -1,0 +1,78 @@
+deng_clearcoat_lr = 0.0
+deng_normalmap_lr = 0.0
+
+SceneConfig:
+    deng_comparison = True
+    deng_dual_sensor_batch_size = 2
+    deng_displacement_scale = 0.0
+    deng_displacement_learning_rate = 0.0
+    deng_displacement_res = 32
+
+    scene_setup = %Setup.FULL_ON
+    scene_name = 'kiwi_naive'
+    scene_folder = 'third_party/kiwi_naive/'
+    result_folder = 'results/kiwi_naive/results/'
+
+    random_sensors = True
+    sss_optimization = True
+    sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
+    sss_volume_albedo_remapping = True
+    sss_extinction_resolution = 1
+    sss_hg_resolution = 512
+    sss_uniform_extinction = False
+    sss_uniform_hg = False
+
+    optimized_sensors_indices = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
+
+    optimized_shapes = ['mesh-kiwi']
+    base_learning_rate = 0.001
+    loss = @losses.l1_norm
+
+    n_iter = 1024
+    mip_bias = 0.0
+
+    reference_scaling = 1.0 
+    reference_spp = 1024 
+    rerender_spp = 8192
+
+    optimized_path_depth = 10
+    samples_per_pixel_primal = 128
+    samples_per_pixel_gradient = 16
+    
+    output_iterations = [32,128,512,1024,2048]
+    
+    use_mitsuba_reference = True
+
+    per_material_learning_rates = {
+        'mat-kiwi': {
+            'base_color': 0.0,
+            'metallic': 0.0,
+            'roughness': 1.0,
+            'specular': 0.0,
+            'clearcoat': 0.0,
+            'clearcoat_gloss': %deng_clearcoat_lr,
+            'normalmap': %deng_normalmap_lr,
+            'single_scattering_albedo': 1.0,
+            'extinction_coefficient': 1000.0,
+            'hg_coefficient': 1.0,
+        }
+    }
+    
+    per_material_sss_albedo_scaling = {
+        'mat-kiwi': 1.0,
+    }
+    
+    per_material_initial_values = {
+        'mat-kiwi': {
+            'base_color' : [0.5,0.5,0.5],
+            'single_scattering_albedo' : [0.5,0.5,0.5],
+            'extinction_coefficient' : [10,10,10],
+            'hg_coefficient' : [0.0, 0.0, 0.0],
+            'roughness' : 0.5,
+            'clearcoat': 0.5,
+            'clearcoat_gloss': 0.5,
+        }
+    }
+    
+
+losses.huber.delta = 4.0

@@ -1,0 +1,39 @@
+_per_param_learning_rates = {
+    'base_color': 0.0,
+    'single_scattering_albedo': 0.1,
+    'extinction_coefficient': 0.0,
+    'hg_coefficient': 0.0,
+}
+
+SceneConfig:
+    scene_setup = %Setup.FULL_ON
+    scene_name = 'dragon'
+    scene_folder = 'third_party/dragon/'
+    result_folder = 'results/dragon/results/'
+
+    sss_optimization = True
+    sss_diffuse_switch = %DiffuseSwitch.ENTRY_FORCED_EXIT
+
+    optimized_sensors_indices = [0]
+    optimized_shapes = ['mesh-xyzrgb_dragon']
+    base_learning_rate = 0.05
+    loss = @losses.l2_norm
+
+    n_iter = 128
+    mip_bias = -1.0
+
+    reference_scaling = 1.0
+    reference_spp = 1024
+    rerender_spp = 32
+
+    optimized_path_depth = 5
+    samples_per_pixel_primal = 32
+    samples_per_pixel_gradient = 4
+
+    use_mitsuba_reference = True
+
+    per_material_learning_rates = {
+        'mat-Material.001': %_per_param_learning_rates,
+    }
+
+losses.huber.delta = 4.0

@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/wicker_basket_base.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP
+  result_folder = 'results/wicker_basket/mipmap/'
+  base_learning_rate = 100.0

@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/painting_base.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP_PYRAMID
+  result_folder = 'results/painting/mipmap_pyramid/'
+  base_learning_rate = 0.1

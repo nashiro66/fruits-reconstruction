@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/leather_bag_base.gin'
+
+SceneConfig:
+  approach = %Approach.NAIVE
+  result_folder = 'results/leather_bag/naive/'
+  base_learning_rate = 1.0

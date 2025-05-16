@@ -1,0 +1,7 @@
+include 'scenes/scene_configs/leather_bag_base.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP 
+  result_folder = 'results/leather_bag/mipmap_scales/'
+  base_learning_rate = 1.0
+  n_texture_scales = 6

@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/leather_bag_base.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP
+  result_folder = 'results/leather_bag/mipmap/'
+  base_learning_rate = 100.0

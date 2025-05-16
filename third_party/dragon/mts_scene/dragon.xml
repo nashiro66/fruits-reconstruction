@@ -1,0 +1,112 @@
+<scene version="2.1.0">
+
+<!-- Defaults, these can be set via the command line: -Darg=value -->
+
+	<default name="spp" value="128"/>
+	<default name="resx" value="400"/>
+	<default name="resy" value="240"/>
+
+<!-- Camera and Rendering Parameters -->
+
+	<integrator type="path" id="elm__0" name="elm__0">
+		<integer name="max_depth" value="12"/>
+	</integrator>
+	<sensor type="perspective" id="Camera" name="Camera">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="100.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="17.199037877306576"/>
+			<rotate y="1" angle="67.03450228830745"/>
+			<rotate z="1" angle="-5.054463782988142"/>
+			<translate value="-1.439542 1.813112 -2.213938"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+
+<!-- Materials -->
+
+	<bsdf type="diffuse_switch" id="mat-Material.001" name="mat-Material.001">
+		<string name="diffuse_mode" value="entry_forced_exit" />
+		<bsdf type="sss_bsdf" name="sss_bsdf">
+			<bsdf type="principled" name="nested_bsdf">
+				<rgb value="1.0 1.0 1.0" name="base_color"/>
+				<rgb value="0.000000 0.000000 0.000000" name="spec_tint"/>
+				<float name="spec_trans" value="1.000000"/>
+				<float name="metallic" value="0.000000"/>
+				<float name="anisotropic" value="0.000000"/>
+				<float name="roughness" value="0.440000"/>
+				<float name="sheen" value="0.000000"/>
+				<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
+				<float name="clearcoat" value="0.000000"/>
+				<float name="clearcoat_gloss" value="0.000900"/>
+				<float name="specular" value="1.000000"/>
+			</bsdf>
+			<rgb value="0.125611 0.608826 0.989205" name="single_scattering_albedo"/>
+			<spectrum type="srgb" name="extinction_coefficient">
+				<rgb name="color" value="15, 7.0, 5.0" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum>
+			<spectrum type="srgb" name="hg_coefficient">
+				<rgb name="color" value="-0.5, -0.2, 0.1" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum>
+		</bsdf>
+	</bsdf>
+
+	<bsdf type="twosided" id="default-bsdf" name="default-bsdf">
+		<bsdf type="diffuse" name="bsdf"/>
+	</bsdf>
+	<bsdf type="diffuse" id="empty-emitter-bsdf" name="empty-emitter-bsdf">
+		<rgb value="0.000000" name="reflectance"/>
+	</bsdf>
+
+<!-- Emitters -->
+
+	<emitter type="envmap" id="World" name="World">
+		<string name="filename" value="textures/studio_small_03_2k.001.hdr"/>
+		<float name="scale" value="0.100000"/>
+		<transform name="to_world">
+			<matrix value="0.000000 0.000000 1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+	</emitter>
+	<shape type="ply" id="mesh-Plane_001" name="mesh-Plane_001">
+		<string name="filename" value="meshes/Plane_001.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="empty-emitter-bsdf" name="bsdf"/>
+		<emitter type="area" name="emitter">
+			<rgb value="5.000000 3.281570 1.378706" name="radiance"/>
+		</emitter>
+	</shape>
+	<shape type="ply" id="mesh-Plane_002" name="mesh-Plane_002">
+		<string name="filename" value="meshes/Plane_002.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="empty-emitter-bsdf" name="bsdf"/>
+		<emitter type="area" name="emitter">
+			<rgb value="7.818766 13.270021 19.900000" name="radiance"/>
+		</emitter>
+	</shape>
+
+<!-- Shapes -->
+
+	<shape type="ply" id="mesh-xyzrgb_dragon" name="mesh-xyzrgb_dragon">
+		<string name="filename" value="meshes/xyzrgb_dragon.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="mesh-Plane" name="mesh-Plane">
+		<string name="filename" value="meshes/Plane.ply"/>
+		<ref id="default-bsdf" name="bsdf"/>
+	</shape>
+
+<!-- Volumes -->
+
+</scene>

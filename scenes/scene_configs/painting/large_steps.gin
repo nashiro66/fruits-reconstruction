@@ -1,0 +1,8 @@
+include 'scenes/scene_configs/painting_base.gin'
+
+SceneConfig:
+  approach = %Approach.LARGE_STEPS
+  result_folder = 'results/painting/large_steps/'
+  base_learning_rate = 0.1
+  use_conjugate_gradient_large_steps = True
+  large_steps_lambda = 10.0

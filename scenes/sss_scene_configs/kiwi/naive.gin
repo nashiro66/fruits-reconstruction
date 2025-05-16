@@ -1,0 +1,6 @@
+include 'scenes/sss_scene_configs/kiwi_base.gin'
+
+SceneConfig:
+  approach = %Approach.NAIVE
+  result_folder = 'results/kiwi/mipmap_pyramid/'
+  base_learning_rate = 0.1

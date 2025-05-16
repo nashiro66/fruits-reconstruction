@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/painting/mipmap.gin'
+
+SceneConfig:
+  result_folder = 'results/painting/mipmap_scales/'
+  base_learning_rate = 1.0
+  n_texture_scales = 6

@@ -1,0 +1,14 @@
+__pycache__/
+.ipynb_checkpoints/
+
+tmp/
+flip/
+inverse_env/
+results/
+third_party/wicker_basket/
+third_party/statue/
+figures/pdfs/
+!scenes/scene_configs/
+!scenes/scene_configs/**
+!scenes/sss_scene_configs/
+!scenes/sss_scene_configs/**

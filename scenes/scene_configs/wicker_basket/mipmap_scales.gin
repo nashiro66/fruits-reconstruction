@@ -1,0 +1,7 @@
+include 'scenes/scene_configs/wicker_basket/mipmap.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP
+  result_folder = 'results/wicker_basket/mipmap_scales/'
+  base_learning_rate = 1.0
+  n_texture_scales = 6

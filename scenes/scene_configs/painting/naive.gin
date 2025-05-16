@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/painting_base.gin'
+
+SceneConfig:
+  approach = %Approach.NAIVE
+  result_folder = 'results/painting/naive/'
+  base_learning_rate = 1.0

@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/painting_base.gin'
+
+SceneConfig:
+  approach = %Approach.MIPMAP
+  result_folder = 'results/painting/mipmap/'
+  base_learning_rate = 100.0

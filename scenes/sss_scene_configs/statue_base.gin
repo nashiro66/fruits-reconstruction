@@ -1,0 +1,62 @@
+_per_param_learning_rates = {
+    'base_color': 0.0,
+    'metallic': 0.0,
+    'roughness': 0.0,
+    'normalmap': 0.0,
+    'single_scattering_albedo': 1.0,
+    'extinction_coefficient': 1000.0,
+    'hg_coefficient': 1.0,
+}
+
+SceneConfig:
+    scene_setup = %Setup.FULL_ON
+    scene_name = 'statue'
+    scene_folder = 'third_party/statue/'
+    result_folder = 'results/statue/results/'
+
+    sss_optimization = True
+    sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
+    sss_hg_coefficient = [0.0, 0.0, 0.0]
+    sss_extinction_coefficient = [400, 800, 800]
+    sss_volume_albedo_remapping = True
+    sss_extinction_resolution = 1
+    sss_hg_resolution = 1
+
+    optimized_sensors_indices = [0]
+    optimized_shapes = ['mesh-horse_statue_01-horse_statue_01']
+    base_learning_rate = 0.05
+    loss = @losses.l2_norm
+
+    n_iter = 128
+    mip_bias = -1.0
+
+    reference_scaling = 1.0
+    reference_spp = 10000 
+    rerender_spp = 2048
+
+    optimized_path_depth = -1
+    samples_per_pixel_primal = 64
+    samples_per_pixel_gradient = 16
+    
+    output_iterations = [0,1, 7, 15, 31, 63, 127, 191, 255, 319, 383, 447, 511]
+
+    use_mitsuba_reference = True
+
+    per_material_learning_rates = {
+        'mat-horse_statue_01': %_per_param_learning_rates,
+    }
+    
+    per_material_sss_albedo_scaling = {
+        'mat-horse_statue_01': 1.0,
+    }
+    
+    per_material_initial_values = {
+        'mat-horse_statue_01': {
+            'single_scattering_albedo' : [0.2,0.2,0.2],
+            'extinction_coefficient' : [100, 100, 100],
+            'hg_coefficient' : [0.0, 0.0, 0.0],
+        }
+    }
+    
+
+losses.huber.delta = 4.0

@@ -1,0 +1,6 @@
+include 'scenes/scene_configs/wicker_basket_base.gin'
+
+SceneConfig:
+  approach = %Approach.NAIVE
+  result_folder = 'results/wicker_basket/naive/'
+  base_learning_rate = 1.0

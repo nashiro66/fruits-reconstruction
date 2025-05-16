@@ -11,7 +11,7 @@ You can find the original paper and supplemental material on the [project webpag
 Our python source code is based on [Mitsuba](https://github.com/mitsuba-renderer/mitsuba3) and [DrJit](https://github.com/mitsuba-renderer/drjit).
 All the python package requirements can be installed into (ideally in a new python environment) with:
 ```bash
-python install -r requirements.txt
+pip install -r requirements.txt
 ```
 You will also need an installation of [ffmpeg](https://ffmpeg.org/) to save optimization videos and [flip](https://github.com/NVlabs/flip) (C++ build) to compute FLIP error metrics. Make sure to set `FLIP_EXECUTABLE` in `python/practical_reconstruction/figutils.py` according to your installation directory.
 

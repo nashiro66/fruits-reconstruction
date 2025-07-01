@@ -21,7 +21,6 @@ from collections import defaultdict
 import drjit as dr  # type: ignore
 import mitsuba as mi  # type: ignore
 
-@dr.syntax
 def a_trous_cross_bilateral_post_filtering(
     dtype,
     mean_texture: mi.Texture2f,

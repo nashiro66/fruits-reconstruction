@@ -63,6 +63,8 @@ def run_config(gin_config_name: str, gin_overrides: list[str], sss_config: bool 
   optimized_keys = scene_preparation.get_scene_keys_for_optimization(
       scene, scene_config
   )
+  
+  print(optimized_keys)
   scene_preparation.initialize_optimized_parameter(
       scene_config, params, optimized_keys
   )
@@ -82,6 +84,7 @@ def run_config(gin_config_name: str, gin_overrides: list[str], sss_config: bool 
     )
 
   print('Starting optimization')
+
   mts_variables, loss_values, opt, frames = optimization.optimize(
       scene_config,
       scene,

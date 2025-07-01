@@ -24,17 +24,16 @@ import mitsuba as mi  # type: ignore
 import numpy as np
 from pathlib import Path
 from core import mitsuba_io
+import shutil
 
 if hasattr(matplotlib, 'style'):
   matplotlib.style.use('default')
 
 if not mi.variant():
-  mi.set_variant('cuda_ad_rgb', 'llvm_ad_rgb')
+  mi.set_variant('cuda_ad_rgb')
 
 # Just follow https://github.com/NVlabs/flip to setup on local machine
-FLIP_EXECUTABLE = (
-    "./flip/src/build/Release/flip.exe"
-)
+FLIP_EXECUTABLE = './flip/src/build/Release/flip.exe'
 
 PAPER_FIG_OUTPUT_DIR = './practical_reconstruction/figures'
 

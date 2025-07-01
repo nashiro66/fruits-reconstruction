@@ -335,7 +335,7 @@ def transform_xml_for_sss(
 
 def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
   # TODO(pweier) only transform into mipmaps if the optimized materials are mipmaps
-
+  print("load")
   modified_xml = tmp_mitsuba_xml
   tree = ElementTree.parse(modified_xml)
   root = tree.getroot()
@@ -372,7 +372,13 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
         mipmap_texture.append(gpu_accel)
   else:
     # Add mip_bias to all mipmap_flat textures
-    for mipmap_texture in root.findall(".//texture[@type='mipmap_flat']"):
+    mipmap_textures = root.findall(".//texture[@type='mipmap_flat']")
+    print(f"mipmap_flat texture num: {len(mipmap_textures)}")
+
+    for i, mipmap_texture in enumerate(root.findall(".//texture[@type='mipmap_flat']")):
+      name = mipmap_texture.get('name', f'[no name {i}]')
+      print(f"{i}: テクスチャ名 = {name}")
+
       bias_exists = any(
           child.tag == 'float' and child.attrib.get('name') == 'mip_bias'
           for child in root

@@ -19,7 +19,6 @@
     <!--surface-->
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
-        
         <texture type="mipmap_flat" name="normalmap">
 			<texture type="bitmap" name="nested_bitmap">
 				<string name="format" value="variant"/>
@@ -53,12 +52,23 @@
                 <texture type="mipmap_flat" name="clearcoat_gloss">
                     <texture type="bitmap" name="nested_bitmap">
                         <string name="format" value="variant" />
-                        <string name="filename" value="textures/clearcoat_deng.png" />
+                        <string name="filename" value="textures/clearcoat_gloss_deng.png" />
                         <boolean name="raw" value="true" />
                     </texture>
                 </texture>
             </bsdf>
-
+            <texture type="mipmap_flat" name="single_scattering_albedo">
+                <texture type="bitmap" name="nested_bitmap">
+                    <string name="format" value="variant" />
+                    <string name="filename" value="textures/albedo_deng.png" />
+                </texture>
+            </texture>
+            <texture type="mipmap_flat" name="hg_coefficient">
+                <texture type="bitmap" name="nested_bitmap">
+                    <string name="format" value="variant" />
+                    <string name="filename" value="textures/hg_deng.png" />
+                </texture>
+            </texture>
         </bsdf>
     </bsdf>
 
@@ -103,7 +113,7 @@
             <string name="int_ior" value="water"/>
             <string name="ext_ior" value="air"/>
         </bsdf> -->
-        <ref name="bsdf" id="mat-kiwi"/>
+        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
         <!-- <bsdf type="null"/> -->
     </shape>
 

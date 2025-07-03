@@ -23,7 +23,7 @@ import numpy as np
 from core.integrators import dwivedi_utils
 
 if not mi.variant():
-  mi.set_variant("llvm_ad_rgb")
+  mi.set_variant("cuda_ad_rgb")
 
 
 def index_spectrum(spec, idx):

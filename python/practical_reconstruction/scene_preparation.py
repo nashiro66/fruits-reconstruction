@@ -714,8 +714,8 @@ def generate_references_and_retrieve_sensors(scene, scene_config, emitter_keys):
   # In case the reference was generated locally, copy it to the remote folder
   # We do this always, even if the reference was already present remotely,
   # that way we can overwrite it if it was generated locally anew.
-  if copy_local_to_remote:
-    io_utils.reference_output_local_to_remote(scene_config)
+  # if copy_local_to_remote:
+  #   io_utils.reference_output_local_to_remote(scene_config)
 
   references = []
   # for emitter_key, per_sensor_output_paths in zip(emitter_keys, output_paths):

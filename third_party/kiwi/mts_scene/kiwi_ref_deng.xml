@@ -1,6 +1,7 @@
 <scene version="2.1.0">
     <integrator type="prb_path_volume" id="elm__0" name="elm__0">
-        <integer name="max_depth" value="1000" />
+        <integer name = "max_depth" value="200"/>
+        <integer name = "rr_depth" value="5"/>
     </integrator>
 
     <emitter type="point" id="emit-Point">
@@ -12,13 +13,11 @@
             <translate x="-2.944557" y="48.8898" z="-41.4402" />
         </transform>
     </emitter>
-    <emitter type="envmap">
-        <string name="filename" value="textures/env.hdr"/>
-    </emitter>
 
     <!--surface-->
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
+        <boolean name="safe_flip" value="False"/>
         <texture type="mipmap_flat" name="normalmap">
 			<texture type="bitmap" name="nested_bitmap">
 				<string name="format" value="variant"/>
@@ -56,6 +55,12 @@
                         <boolean name="raw" value="true" />
                     </texture>
                 </texture>
+                <texture type="mipmap_flat" name="base_color">
+                    <texture type="bitmap" name="nested_bitmap">
+                        <string name="format" value="variant" />
+                        <string name="filename" value="textures/albedo_deng.png" />
+                    </texture>
+                </texture>
             </bsdf>
             <texture type="mipmap_flat" name="single_scattering_albedo">
                 <texture type="bitmap" name="nested_bitmap">
@@ -69,6 +74,7 @@
                     <string name="filename" value="textures/hg_deng.png" />
                 </texture>
             </texture>
+            <rgb value="1, 1, 1" name="extinction_coefficient" />
         </bsdf>
     </bsdf>
 
@@ -113,7 +119,7 @@
             <string name="int_ior" value="water"/>
             <string name="ext_ior" value="air"/>
         </bsdf> -->
-        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
+        <ref name="bsdf" id="mat-kiwi"/>
         <!-- <bsdf type="null"/> -->
     </shape>
 
@@ -126,9 +132,8 @@
     </film>
 
     <sampler type="independent" id="sampler">
-        <integer name="sample_count" value="4"/>
+        <integer name="sample_count" value="256"/>
     </sampler>
-
 
     <sensor type="perspective" id="camera_001">
         <string name="fov_axis" value="x" />

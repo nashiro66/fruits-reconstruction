@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 
 def set_root_path():
     if os.getcwd().endswith('figures'): 
@@ -83,6 +84,7 @@ from practical_reconstruction import optimization_cli
 from core import integrators
 from core import bsdfs
 from core import textures
+from practical_reconstruction import scene_preparation
 
 integrators.register()
 bsdfs.register()
@@ -91,7 +93,7 @@ textures.register()
 import numpy as np
 mi.set_variant("cuda_ad_rgb")
 
-scene_path="third_party/kiwi/mts_scene/kiwi_ref_deng.xml"
+scene_path="third_party/kiwi/mts_scene/kiwi_ref.xml"
 output_dir=Path("third_party/kiwi/references")
 
 scene = mi.load_file(scene_path)
@@ -106,19 +108,10 @@ for i, shape in enumerate(shapes):
 
 integrator = scene.integrator()
 print(scene)
-params = mi.traverse(scene)
-print(params)
-# params["OBJMesh.bsdf.nested_bsdf.extinction_coefficient.value"][0]=4.89041
-# params["OBJMesh.bsdf.nested_bsdf.extinction_coefficient.value"][1]=5.04408
-# params["OBJMesh.bsdf.nested_bsdf.extinction_coefficient.value"][2]=10.9083
-params.update()
-print(integrator) 
-light_positions = _gantry_light_positions()
 
 for i, sensor in enumerate(scene.sensors()):
-    _update_light_position(params, sensor, light_positions)
-    image = mi.render(scene, sensor=sensor, params=params, spp=1024)
-
+    image = mi.render(scene, sensor=sensor, spp=1024)
+    
     exr_path = output_dir / f"render_{i:02d}.exr"
     png_path = output_dir / f"render_{i:02d}.png"
 

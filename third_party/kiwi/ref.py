@@ -68,6 +68,39 @@ def _gantry_light_positions():
   ]
   return [mi.Point3f(light_position) for light_position in light_positions]
 
+ref_spp=128
+def save_images(scene, dir):
+    print("start rendering")
+    for i, sensor in enumerate(scene.sensors()):
+      image = mi.render(scene, sensor=sensor, spp=ref_spp)
+      bitmap = mi.Bitmap(image).convert(
+          pixel_format=mi.Bitmap.PixelFormat.RGB,
+          component_format=mi.Struct.Type.UInt8,
+          srgb_gamma=True
+      )
+
+      png_path = dir / f"view_{i:03d}.png"
+      bitmap.write(str(png_path))
+      print(f"saving: {i}")
+    print(f"Saved: {dir}")
+
+key1="medium1.sigma_t.data"
+key2="medium1.albedo.data"
+def optimize(scene, params, opt, ref_images):
+   for it in range(iteration_count):
+    total_loss = 0.0
+    for i, sensor in enumerate(scene.sensors()):
+        img = mi.render(scene, params, sensor=sensor, spp=spp, seed=it)
+        loss = dr.mean(dr.square(img - ref_images[i]))
+        dr.backward(loss)
+        opt.step()
+        opt[key1] = dr.clip(opt[key1], 1e-6, 100.0)
+        opt[key2] = dr.clip(opt[key2], 1e-6, 100.0)
+        params.update(opt)
+        total_loss += loss
+        print(loss)
+    print(f"Iteration {it:02d}: error={total_loss}", end='\r')
+
 set_root_path()
 sys.path.append('python/')
 sys.path = [p for p in sys.path if "unbiased-inverse-volume-rendering" not in p]
@@ -77,48 +110,89 @@ os.environ.pop("PYTHONPATH")
 
 from pathlib import Path
 import mitsuba as mi
-from practical_reconstruction import scene_configuration
+import drjit as dr
+# from practical_reconstruction import scene_configuration
 mi.set_variant('cuda_ad_rgb')
 
-from practical_reconstruction import optimization_cli
-from core import integrators
-from core import bsdfs
-from core import textures
-from practical_reconstruction import scene_preparation
+# from practical_reconstruction import optimization_cli
+# from core import integrators
+# from core import bsdfs
+# from core import textures
+# from practical_reconstruction import scene_preparation
 
-integrators.register()
-bsdfs.register()
-textures.register()
+# integrators.register()
+# bsdfs.register()
+# textures.register()
 
 import numpy as np
 mi.set_variant("cuda_ad_rgb")
 
-scene_path="third_party/kiwi/mts_scene/kiwi_ref.xml"
-output_dir=Path("third_party/kiwi/references")
+# ref_scene_path="third_party/kiwi/mts_scene/kiwi_ref.xml"
+ref_dir=Path("third_party/kiwi/references")
 
-scene = mi.load_file(scene_path)
-shapes = scene.shapes()
-#print(scene)
-print("=== Shape → BSDF===")
-for i, shape in enumerate(shapes):
-    bsdf = shape.bsdf()
-    shape_name = shape.id()
-    bsdf_name = bsdf.id() if bsdf is not None else "(None)"
-    print(f"Shape[{i}] '{shape_name}' → BSDF: '{bsdf_name}'")
+# ref_scene = mi.load_file(ref_scene_path)
 
-integrator = scene.integrator()
-print(scene)
+# save_images(init_scene, ref_dir)
 
-for i, sensor in enumerate(scene.sensors()):
-    image = mi.render(scene, sensor=sensor, spp=1024)
-    
-    exr_path = output_dir / f"render_{i:02d}.exr"
-    png_path = output_dir / f"render_{i:02d}.png"
+init_scene_path="third_party/kiwi/mts_scene/kiwi_init.xml"
+init_scene = mi.load_file(init_scene_path)
+print(init_scene)
 
-    #mi.Bitmap(image).write(str(exr_path))
+#save_images(init_scene, Path("third_party/kiwi/init"))
 
-    tonemapped = mi.Bitmap(image).convert(pixel_format=mi.Bitmap.PixelFormat.RGB,
-                                          component_format=mi.Struct.Type.UInt8,
-                                          srgb_gamma=True)
-    tonemapped.write(str(png_path))
-    print(f"Saved: {exr_path} and {png_path}")
+ref_images=[]
+for i, sensor in enumerate(init_scene.sensors()):
+    exr_path = ref_dir / f"render_view_{i:03d}.exr"
+    bmp = mi.Bitmap(str(exr_path))
+    tensor = mi.TensorXf(bmp)
+    ref_image = mi.Bitmap(tensor)
+    ref_images.append(tensor)
+
+params = mi.traverse(init_scene)
+print(params)
+
+opt = mi.ad.Adam(lr=0.02)
+opt[key1] = params[key1]
+opt[key2] = params[key2]
+params.update(opt)
+iteration_count = 1
+spp = 128
+
+optimize(init_scene, params, opt, ref_images)
+#save_images(init_scene, Path("third_party/kiwi/intermediate"))
+
+# opt[key1] = dr.upsample(opt[key1], shape=(74, 60, 64))
+# opt[key2] = dr.upsample(opt[key2], shape=(34, 18, 18))
+# params.update(opt)
+# print("updated opt")
+
+# # upscale
+# #save_images(init_scene, Path("third_party/kiwi/upscale"))
+# optimize(init_scene, params, opt, ref_images)
+
+# opt[key1] = dr.upsample(opt[key1], shape=(148, 120, 128))
+# opt[key2] = dr.upsample(opt[key2], shape=(68, 36, 36))
+# params.update(opt)
+# print("updated opt")
+# optimize(init_scene, params, opt, ref_images)
+
+# opt[key1] = dr.upsample(opt[key1], shape=(296, 240, 256))
+# opt[key2] = dr.upsample(opt[key2], shape=(136, 72, 72))
+# params.update(opt)
+# print("updated opt")
+# optimize(init_scene, params, opt, ref_images)
+
+# opt[key1] = dr.upsample(opt[key1], shape=(592, 480, 512))
+# opt[key2] = dr.upsample(opt[key2], shape=(272, 144, 144))
+# params.update(opt)
+# print("updated opt")
+# optimize(init_scene, params, opt, ref_images)
+
+# save_images(init_scene, Path("third_party/kiwi/output"))
+
+sigma_t = opt[key1]
+albedo = opt[key2]
+grid_sigma_t = mi.VolumeGrid(sigma_t)
+grid_sigma_t.write('output/sigma_t.vol')
+grid_albedo = mi.VolumeGrid(albedo)
+grid_albedo.write('output/albedo.vol')

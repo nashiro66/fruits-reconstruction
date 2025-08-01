@@ -12,3 +12,6 @@ figures/pdfs/
 !scenes/scene_configs/**
 !scenes/sss_scene_configs/
 !scenes/sss_scene_configs/**
+*.exr
+*.png
+*.vol

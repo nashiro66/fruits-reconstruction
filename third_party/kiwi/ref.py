@@ -112,7 +112,6 @@ def update_light_position(params, sensor, index):
         ["5.000000 0.000000 0.000000 0.300000 0.000000 3.535533 3.535534 -8.142137 0.000000 -3.535534 3.535533 -14.642134 0.000000 0.000000 0.000000 1.000000"],
         ["5.000000 0.000000 0.000000 0.300000 0.000000 3.535533 -3.535535 20.142136 0.000000 3.535535 3.535533 -14.642134 0.000000 0.000000 0.000000 1.000000"],
     ]
-
     idx = int(sensor.id()[len('elm__') :])
     raw_string = light_positions[int((idx - 1) / 2) * 2 + index][0]
     float_values = list(map(float, raw_string.strip().split()))
@@ -120,11 +119,11 @@ def update_light_position(params, sensor, index):
     params['arealight.to_world'] = mi.Transform4f(matrix_4x4)
     params.update()
 
-def save_images(scene, dir, spp):
+def save_images(scene, params, dir, spp):
     print("start rendering")
     for i, sensor in enumerate(scene.sensors()):
       for j in range(2):
-        update_light_position(ref_params, sensor, j)
+        update_light_position(params, sensor, j)
         image = mi.render(scene, sensor=sensor, spp=spp)
         bitmap = mi.Bitmap(image).convert(
             pixel_format=mi.Bitmap.PixelFormat.RGB,
@@ -152,13 +151,13 @@ def optimize(scene, params, opt, ref_images, spp):
             update_light_position(params, sensor, j)
             img = mi.render(scene, params, sensor=sensor, spp=spp, seed=it)
             loss = dr.mean(dr.sqr(img - ref_images[i*2+j]))
-            print(len(ref_images))
-            # dr.backward(loss)
-            # opt.step()
-            # opt[key1] = dr.clip(opt[key1], 1e-6, 100.0)
-            # opt[key2] = dr.clip(opt[key2], 1e-6, 100.0)
-            # params.update(opt)
-            # total_loss += loss
+            dr.backward(loss)
+            opt.step()
+            opt[key1] = dr.clip(opt[key1], 1e-6, 100.0)
+            opt[key2] = dr.clip(opt[key2], 1e-6, 100.0)
+            params.update(opt)
+            total_loss += loss
+            print(f"Sensor {i:02d} Light {j}: error={dr.mean(loss)}")
     print(f"Iteration {it:02d}: error={dr.mean(total_loss)}")
 
 ref_spp=1024
@@ -189,15 +188,15 @@ mi.set_variant('cuda_ad_rgb')
 
 import numpy as np
 
-ref_scene_path="third_party/kiwi/mts_scene/kiwi_ref_camera50.xml"
+ref_scene_path="third_party/kiwi/mts_scene/kiwi_ref.xml"
 ref_dir=Path("third_party/kiwi/references")
 
 ref_scene = mi.load_file(ref_scene_path)
 ref_params = mi.traverse(ref_scene)
 #print(ref_scene)
-#save_images(ref_scene, ref_dir, ref_spp)
+save_images(ref_scene, ref_params, ref_dir, ref_spp)
 
-init_scene_path="third_party/kiwi/mts_scene/kiwi_init_camera50.xml"
+init_scene_path="third_party/kiwi/mts_scene/kiwi_init.xml"
 init_scene = mi.load_file(init_scene_path)
 
 ref_images=[]
@@ -210,45 +209,40 @@ for i, sensor in enumerate(init_scene.sensors()):
         ref_images.append(tensor)
 
 params = mi.traverse(init_scene)
-#print(params)
 
 opt = mi.ad.Adam(lr=0.02)
 opt[key1] = params[key1]
 opt[key2] = params[key2]
 params.update(opt)
 iteration_count = 1
-#print(opt)
-
 optimize(init_scene, params, opt, ref_images, opt_spp)
 
-# opt[key1] = dr.upsample(opt[key1], shape=(74, 60, 64))
-# opt[key2] = dr.upsample(opt[key2], shape=(34, 18, 18))
-# params.update(opt)
+opt[key1] = dr.upsample(opt[key1], shape=(74, 60, 64))
+opt[key2] = dr.upsample(opt[key2], shape=(34, 18, 18))
+params.update(opt)
+optimize(init_scene, params, opt, ref_images, opt_spp)
 
-# optimize(init_scene, params, opt, ref_images, opt_spp)
+opt[key1] = dr.upsample(opt[key1], shape=(148, 120, 128))
+opt[key2] = dr.upsample(opt[key2], shape=(68, 36, 36))
+params.update(opt)
+optimize(init_scene, params, opt, ref_images, opt_spp)
+save_images(init_scene, params, Path("third_party/kiwi/intermediate"), ref_spp)
 
-# opt[key1] = dr.upsample(opt[key1], shape=(148, 120, 128))
-# opt[key2] = dr.upsample(opt[key2], shape=(68, 36, 36))
-# params.update(opt)
-# optimize(init_scene, params, opt, ref_images, opt_spp)
-# #save_images(init_scene, Path("third_party/kiwi/intermediate"), ref_spp)
+opt[key1] = dr.upsample(opt[key1], shape=(296, 240, 256))
+opt[key2] = dr.upsample(opt[key2], shape=(136, 72, 72))
+params.update(opt)
+optimize(init_scene, params, opt, ref_images, ref_spp)
+save_images(init_scene, params, Path("third_party/kiwi/intermediate2"), ref_spp)
 
-# opt[key1] = dr.upsample(opt[key1], shape=(296, 240, 256))
-# opt[key2] = dr.upsample(opt[key2], shape=(136, 72, 72))
-# params.update(opt)
-# optimize(init_scene, params, opt, ref_images, ref_spp)
-# #save_images(init_scene, Path("third_party/kiwi/intermediate2"), ref_spp)
+opt[key1] = dr.upsample(opt[key1], shape=(592, 480, 512))
+opt[key2] = dr.upsample(opt[key2], shape=(272, 144, 144))
+params.update(opt)
+optimize(init_scene, params, opt, ref_images, ref_spp)
 
-# opt[key1] = dr.upsample(opt[key1], shape=(592, 480, 512))
-# opt[key2] = dr.upsample(opt[key2], shape=(272, 144, 144))
-# params.update(opt)
-# optimize(init_scene, params, opt, ref_images, ref_spp)
-
-# sigma_t = opt[key1]
-# albedo = opt[key2]
-# grid_sigma_t = mi.VolumeGrid(sigma_t)
-# grid_sigma_t.write('third_party/kiwi/output/sigma_t.vol')
-# grid_albedo = mi.VolumeGrid(albedo)
-# grid_albedo.write('third_party/kiwi/output/albedo.vol')
-
-# save_images(init_scene, Path("third_party/kiwi/output"), ref_spp)
+sigma_t = opt[key1]
+albedo = opt[key2]
+grid_sigma_t = mi.VolumeGrid(sigma_t)
+grid_sigma_t.write('third_party/kiwi/output/sigma_t.vol')
+grid_albedo = mi.VolumeGrid(albedo)
+grid_albedo.write('third_party/kiwi/output/albedo.vol')
+save_images(init_scene, params, Path("third_party/kiwi/output"), ref_spp)

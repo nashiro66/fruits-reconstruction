@@ -4,13 +4,13 @@
 		<boolean name="hide_emitters" value="false"/>
     </integrator>
 	
-	<!-- <emitter type="envmap" id="World" name="World">
+	<emitter type="envmap" id="World" name="World">
 		<string name="filename" value="textures/env.exr"/>
 		<transform name="to_world">
 			<matrix value="0.000000 0.000000 1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<float name="scale" value="1"/>
-	</emitter> -->
+	</emitter>
 
     <!--surface-->
     <bsdf id="mat-kiwi" type="normalmap">
@@ -51,8 +51,6 @@
 		</phase>
         <volume name="sigma_t" type="gridvolume">
             <transform name="to_world">
-                <!-- <scale x="2.4" y="2.24" z="2.8"/>
-                <translate x="-1.23" y="-1.12" z="-1.52" /> -->
                 <scale x="5.0" y="5.0" z="5.0"/>
                 <rotate y="1" angle="45" />
                 <translate y="6.0" x="0.3" z="-0.5" />
@@ -76,6 +74,7 @@
     <shape type="obj">
         <ref id="medium1" name="interior"/>
         <transform name="to_world">
+			<scale x="1.0" y="1.0" z="0.5"/>
             <rotate y="1" angle="45" />
             <translate y="6.0" x="0.3" z="-0.5" />
         </transform>
@@ -96,6 +95,7 @@
         <integer name="width" value="436" />
         <integer name="height" value="260" />
         <string name="pixel_format" value="rgb" />
+		<string name="component_format" value="float32" />
         <rfilter type="box" />
     </film>
 

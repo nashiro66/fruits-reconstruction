@@ -214,7 +214,7 @@ opt = mi.ad.Adam(lr=0.02)
 opt[key1] = params[key1]
 opt[key2] = params[key2]
 params.update(opt)
-iteration_count = 1
+iteration_count = 2
 optimize(init_scene, params, opt, ref_images, opt_spp)
 
 opt[key1] = dr.upsample(opt[key1], shape=(74, 60, 64))

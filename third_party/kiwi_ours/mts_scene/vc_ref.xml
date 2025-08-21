@@ -1,0 +1,921 @@
+<scene version="2.1.0">
+    <integrator type="prbvolpath" id="elm__0" name="elm__0">
+        <integer name="max_depth" value="-1" />
+		<boolean name="hide_emitters" value="false"/>
+    </integrator>
+	
+	<!-- <emitter type="envmap" id="World" name="World">
+		<string name="filename" value="textures/env.exr"/>
+		<transform name="to_world">
+			<matrix value="0.000000 0.000000 1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<float name="scale" value="1"/>
+	</emitter> -->
+    
+	<!--surface-->
+    <bsdf id="mat-kiwi" type="normalmap">
+        <texture name="normalmap" type="bitmap">
+            <boolean name="raw" value="true"/>
+            <string name="filename" value="textures/normalmap_init.exr"/>
+        </texture>
+        <!-- <bsdf type="roughdielectric">
+            <string name="distribution" value="beckmann"/>
+            <string name="int_ior" value="bk7"/>
+            <string name="ext_ior" value="air"/>
+            <float name="alpha" value="0.01"/>
+        </bsdf> -->
+        <bsdf type="principled">
+            <float name="specular" value="0.5" />
+            <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
+            <float name="spec_trans" value="1.000000" />
+            <float name="metallic" value="0.000000" />
+            <float name="anisotropic" value="0.000000" />
+            <!-- <texture type="bitmap" name="roughness">
+                <string name="filename" value="textures/roughness.jpg" />
+            </texture> -->
+            <float name="sheen" value="0.000000" />
+            <rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
+            <float name="clearcoat" value="0.5" />
+            <!-- <texture type="bitmap" name="clearcoat_gloss">
+                <string name="filename" value="textures/roughness.jpg" />
+            </texture> -->
+            <rgb value="1.000000 1.000000 1.000000" name="base_color" />
+        </bsdf>
+    </bsdf>
+
+    <!--media-->
+    <medium id="medium1" type="heterogeneous">
+        <float name="scale" value="1"/>
+		<!-- <phase type="hg">
+			<float name="g" value="0.0"/>
+		</phase> -->
+        <!-- <phase type = "tabphase" name = "1.5-1.0">
+            <string name="values" value="285585.0,104269.016,77640.22,67987.44,61717.965,52791.984,53311.97,53432.89,49956.383,50137.44,48975.676,48012.12,47728.547,47513.324,46908.492,44935.73,44983.55,45607.45,43745.863,44190.348,43916.67,44544.984,43829.164,42546.35,43871.15,42892.336,43154.42,43714.535,42698.895,41948.188,42043.145,43003.207,42348.742,43062.168,42226.273,42168.164,41852.69,42307.24,42358.227,42488.105,41664.586,41394.195,41703.434,41879.242,42002.52,41849.15,40752.523,41830.625,41107.285,41886.34,42016.83,41785.633,41898.266,41751.32,41314.375,41417.312,41139.098,41644.04,40785.555,41561.28,41637.863,41177.9,41028.207,41261.203,41548.18,41856.805,40412.824,41551.02,41808.258,40980.395,41361.836,41285.867,41082.21,41863.066,40860.45,41876.95,41515.066,40613.617,41454.016,41600.35,41021.977,41124.27,41592.027,41076.562,40840.637,41351.594,41259.96,41088.61,41562.434,41743.117,41027.836,41438.914,41668.266,41544.254,41246.664,41042.13,41064.543,41189.688,41573.86,41615.56,41741.285,41893.145,41720.633,41809.6,41594.914,41755.008,41588.918,41658.64,41532.434,41471.645,41779.027,41665.984,41981.184,42155.63,41873.625,41749.723,42084.355,42383.99,42094.086,42122.504,42545.28,42555.977,42516.92,43245.074,42975.52,42528.953,42973.445,42896.816,42926.285,43101.48,43190.633,43385.863,43413.85,43598.492,43997.246,43966.348,44034.066,44300.27,44358.793,44806.44,44579.81,44911.035,44863.992,45483.043,45615.08,45457.887,45846.62,45905.156,46130.527,46342.523,46920.46,46382.89,47845.3,47336.16,47455.785,47850.953,48081.24,48368.055,48992.44,49048.617,49471.88,49401.9,49856.523,50281.047,50365.953,50817.66,51190.996,51596.36,51897.58,52431.08,53164.598,53286.69,53561.16,54629.01,55281.32,55338.51,55842.734,55985.33,57340.332,58166.668,58550.047,59313.203,60690.89,60799.14,61460.574,62224.547,63251.816,64381.145,64933.055,65934.1,67237.46,68411.945,69452.62,70314.24,71721.53,72951.29,74359.76,76099.96,77794.79,78342.07,80221.27,81843.38,83813.14,85696.195,87893.87,90373.02,92613.14,94535.88,97155.93,99871.92,102411.805,106218.86,108855.34,112399.63,116965.55,121271.695,124787.055,129669.914,135191.64,139977.64,145524.3,152433.36,158748.77,166395.58,174798.28,183821.31,194304.6,205641.28,218771.36,234191.72,252091.44,270395.1,294616.3,323682.97,358207.3,408366.0,478353.4,638703.9,808913.0,810097.56,808358.25,808921.2,810891.7,810488.75,809611.7,811444.1,812338.9,811977.94,813224.06,812800.8,813834.6,814798.6,815948.75,812711.5,815774.1,816938.0,816762.06,814754.1,817928.5,818430.8,818678.6,820046.6,819930.8,819528.94,821700.9,823226.9,822836.6,825593.8,827147.7,826269.7,828486.3,830301.25,828311.6,831577.7,833466.44,832958.75,838335.25,838346.0,838497.06,842392.8,841344.1,845931.4,846533.56,847553.7,850578.2,859377.25,859652.9,860041.44,863403.4,863610.1,867345.6,870096.3,871702.56,875571.0,877253.56,878446.4,897483.7,904452.25,906500.75,910905.44,911879.7,914033.6,918783.5,921682.8,922840.8,933473.0,937474.75,939095.7,941823.44,944663.94,949200.2,951038.7,954980.0,957421.2,960573.0,964953.0,966533.25,971452.94,979937.2,986101.75,986909.25,992444.7,994885.6,1000620.0,1031566.56,1037957.0,1039024.9,1042925.06,1045939.56,1056864.1,1062308.5,1065491.5,1069459.8,1074925.9,1078183.0,1081159.9,1084651.2,1091564.4,1102421.8,1104653.5,1110945.0,1123609.0,1145389.2,1148799.8,1155990.9,1164087.9,1170869.6,1176053.4,1182003.1,1199029.4,1203943.9,1206604.1,1220150.5,1225878.4,1232063.9,1259775.4,1269454.1,1275373.6,1283934.5,1289462.4,1294500.4,1302227.0,1309539.9,1314672.5,1326389.2,1329016.5,1360248.0,1364625.9,1372995.0,1383060.9,1392658.4,1426292.1,1432165.4,1444706.1,1451955.6,1476544.5,1485923.4,1499878.0,1503451.4,1509971.2,1516176.4,1524280.2,1531670.1,1558875.5,1567314.6,1579980.5,1598555.2,1637262.2,1645970.1,1655767.8,1683411.1,1691497.5,1701370.1,1706518.1,1715058.0,1720950.4,1748176.0,1756096.8,1773212.0,1831869.4,1837718.0,1855504.5,1869916.8,1879252.2,1883811.1,1892373.9,1911839.1,1924816.6,1959405.9,2003817.9,2013128.2,2037154.1,2045470.4,2050726.9,2059388.5,2079077.6,2103118.8,2159215.2,2172742.5,2192808.2,2197914.8,2212887.0,2227777.5,2264181.2,2310538.0,2326228.8,2330451.5,2331475.0,2354634.8,2387019.2,2423561.8,2435689.2,2470862.2,2489526.0,2521119.5,2560900.2,2568117.2,2562734.2,2582714.2,2629152.0,2640701.0,2687976.2,2708447.8,2749370.5,2761212.0,2762083.0,2780082.2,2806449.5,2857726.8,2884677.5,2925818.2,2919886.2,2924068.2,2953919.8,3017246.5,3045082.0,3058769.2,3055386.2,3087996.0,3146215.8,3174652.2,3159351.2,3188467.5,3256499.5,3268099.2,3260956.2,3308904.2,3346905.5,3334639.2,3389952.5,3419437.2,3403283.0,3473371.5,3468887.5,3500679.8,3523363.0,3548310.8,3566156.8,3609179.2,3600796.5,3662008.5,3662908.5,3686293.0,3720247.8,3750770.0,3761561.2,3790929.2,3812575.0,3839272.8,3869151.0,3898854.2,3907118.0,3938598.5,3978851.2,4007453.2,4045629.2,4065258.8,4111321.8,4155577.0,4198155.0,4242515.5,4301483.5,4364923.0,4436823.0,4529275.0,4668554.0,4832713.5,5080865.5,5506128.5,6194618.5,7915378.0,0.0"/>
+        </phase> -->
+        <phase type = "tabphase" name = "300nm">
+            <string name="values" value="0.0679897678498122,0.0679797193054411,0.0679495948396205,0.0678994579215871,0.0678294142246393,0.0677396114631506,0.067630239164701,0.067501528377639,0.0673537513144763,0.0671872209316031,0.0670022904459009,0.0667993527889153,0.0665788399993369,0.0663412225546236,0.0660870086426781,0.0658167433745801,0.0655310079394494,0.0652304187025985,0.0649156262482058,0.0645873143678208,0.0642461989960836,0.0638930270951112,0.0635285754890761,0.0631536496505662,0.0627690824403825,0.0623757328024917,0.0619744844159119,0.061566244305367,0.0611519414125996,0.0607325251302841,0.060308963800533,0.0598822431800323,0.0594533648738891,0.0590233447403121,0.0585932112682859,0.0581640039304311,0.0577367715132781,0.0573125704272051,0.056892462998322,0.0564775157445978,0.0560687976385526,0.0556673783588475,0.0552743265331198,0.0548907079744183,0.0545175839136009,0.0541560092300582,0.0538070306831256,0.0534716851465448,0.0531509978483264,0.0528459806183558,0.0525576301460742,0.0522869262505448,0.052034830165203,0.051802282839561,0.051590203260116,0.0513994867926842,0.0512310035483521,0.0510855967752041,0.0509640812779521,0.0508672418675547,0.0507958318428755,0.0507505715063881,0.0507321467158935,0.0507412074741693,0.0507783665584263,0.0508441981913965,0.0509392367558323,0.0510639755541421,0.0512188656148378,0.0514043145474191,0.0516206854472653,0.0518682958520509,0.0521474167511514,0.0524582716494491,0.0528010356868967,0.053175834815143,0.0535827450324731,0.0540217916782625,0.0544929487880937,0.0549961385106365,0.0555312305873396,0.0560980418959394,0.0566963360587428,0.0573258231165993,0.0579861592694354,0.0586769466841851,0.0593977333709151,0.0601480131279078,0.0609272255564343,0.0617347561459232,0.0625699364302033,0.0634320442154808,0.0643203038806881,0.0652338867508332,0.066171911543963,0.0671334448923504,0.0681175019385095,0.0691230470066492,0.0701489943501747,0.0711942089758633,0.0722575075453487,0.0733376593545709,0.07443338739187,0.0755433694754287,0.0766662394708009,0.0778005885892993,0.0789449667680535,0.080097884132597,0.0812578125428854,0.0824231872237039,0.0835924084804751,0.0847638435015381,0.0859358282480311,0.0871066694325765,0.0882746465880351,0.0894380142276639,0.0905950040980871,0.0917438275265653,0.0928826778641164,0.0940097330261289,0.0951231581321737,0.0962211082468056,0.0973017312232162,0.0983631706516796,0.0994035689148008,0.100421070351651,0.101413824532936,0.102379989649424,0.103317736015887,0.104225249692907,0.105100736228908,0.105942424524835,0.106748570823945,0.107517462829175,0.108247423950589,0.108936817685413,0.109584052133146,0.110187584648239,0.110745926632789,0.111257648471662,0.111721384612402,0.1121358387922,0.112499789414119,0.112812095074653,0.113071700244589,0.11327764110497,0.113429051539819,0.113525169287083,0.11356534224904,0.113549034963197,0.11347583523445,0.113345460928974,0.113157766930034,0.112912752255567,0.112610567337011,0.112251521458499,0.111836090355099,0.111364923968355,0.1108388543569,0.110258903759424,0.109626292806753,0.108942448879214,0.108209014604909,0.107427856493868,0.106601073702437,0.10573100692155,0.104820247381854,0.103871645967916,0.102888322432976,0.101873674704917,0.100831388273341,0.0997654456467622,0.0986801358680818,0.0975800640756455,0.0964701610962408,0.095355693055496,0.0942422709901866,0.0931358604459974,0.0920427910433202,0.0909697659926763,0.0899238715403658,0.0889125863239435,0.0879437906161124,0.0870257754346317,0.0861672514948216,0.0853773579802562,0.0846656711062453,0.0840422124497259,0.0835174570182246,0.0831023410296092,0.0828082693734249,0.082647122723725,0.0826312642724363,0.0827735460514806,0.083087314811084,0.0835864174209661,0.0842852057604086,0.0851985410625593,0.0863417976777534,0.0877308662201074,0.0893821560611928,0.0913125971342183,0.0935396410118428,0.0960812612205187,0.0989559527541363,0.102182730749683,0.105781128287694,0.109771193280397,0.114173484410749,0.119009066085858,0.124299502368826,0.130066849853578,0.13633364944799,0.143122917031422,0.150458132953761,0.158363230344113,0.166862582198539,0.175980987217559,0.185743654365637,0.196176186126476,0.207304560429735,0.219155111226648,0.23175450769409,0.245129732048809,0.25930805595587,0.274317015517796,0.290184384833526,0.306938148119006,0.32460647038413,0.343217666663732,0.362800169803451,0.383382496804574,0.404993213735287,0.427660899219314,0.451414106516456,0.476281324213282,0.502290935546031,0.529471176381631,0.55785009188675,0.587455491918817,0.61831490517708,0.650455532155908,0.683904196946788,0.718687297939688,0.754830757478763,0.792359970531634,0.831299752435801,0.871674285790005,0.913507066562618,0.956820849493389,1.00163759286903,1.04797840275725,1.09586347678788,1.14531204757369,1.19634232586744,1.24897144355518,1.30321539658975,1.35908898797172,1.41660577088818,1.47577799212322,1.5366165358566,1.59913086796999,1.66332898098256,1.72921733974018,1.79680082798427,1.86608269592832,1.93706450897151,2.0097460976802,2.08412550916884,2.16019896001262,2.23796079082444,2.31740342262878,2.3985173151648,2.48129092725005,2.56571067933556,2.6517609183813,2.73942388517961,2.82867968425163,2.91950625643991,3.01187935431688,3.10577252052619,3.20115706916988,3.29800207035079,3.39627433797489,3.49593842091389,3.59695659762304,3.69928887430403,3.80289298669663,3.9077244055772,4.01373634603512,4.12087978059195,4.22910345622071,4.33835391531557,4.44857552065424,4.55971048438787,4.6716989010847,4.78447878484546,4.89798611050009,5.01215485888613,5.12691706620051,5.24220287740715,5.35794060367363,5.47405678380069,5.59047624959895,5.70712219515785,5.82391624994195,5.94077855564062,6.05762784668727,6.17438153435501,6.29095579432614,6.40726565762376,6.52322510478427,6.63874716314104,6.75374400708021,6.86812706112148,6.98180710566795,7.09469438526125,7.20669871917052,7.31772961413586,7.42769637908041,7.53650824159782,7.64407446601603,7.75030447283201,7.85510795930682,7.9583950210051,8.06007627405875,8.16006297793037,8.25826715844853,8.35460173088377,8.44898062283217,8.54131889667067,8.63153287134791,8.71954024327263,8.80526020606225,8.88861356891413,8.96952287336329,9.04791250819173,9.12370882225697,9.19684023500991,9.26723734447557,9.33483303247439,9.39956256686609,9.46136370060322,9.52017676738751,9.57594477372781,9.62861348720566,9.67813152076163,9.72445041282312,9.7675247031031,9.80731200390729,9.84377306679731,9.87687184446582,9.90657554769091,9.93285469724607,9.95568317065382,9.97503824368112,9.99090062648702,10.0032544943433,10.0120875128613,10.0173908576708,10.0191592285061"/>
+        </phase>
+        <volume name="sigma_t" type="gridvolume">
+            <transform name="to_world">
+				<translate x="-0.5" y="-0.5" z="-0.5" />
+                <scale x="5" y="5" z="5"/>
+                <translate y="6.0" x="0.3" z="-0.5" />
+            </transform>
+            <boolean name="accel" value="false"/>
+            <boolean name="use_grid_bbox" value="false"/>
+            <string name="filename" value="volumes/janga-smoke_ref.vol"/>
+        </volume>
+		<rgb name="albedo" value="1.0, 1.0, 1.0"/>
+    </medium>
+
+    <shape type="obj">
+		<ref id="medium1" name="interior"/>
+        <transform name="to_world">
+			<scale x="8.0" y="8.0" z="8.0"/>
+            <translate y="6.0" x="0.3" z="-0.5" />
+        </transform>
+        <string name="filename" value="meshes/mesh_deng.obj"/>
+        <!-- <bsdf type="diffuse" id="diffuse">
+            <rgb name="reflectance" value="0.2, 0.25, 0.7"/>
+        </bsdf> -->
+        <!-- <bsdf type="dielectric">
+            <string name="int_ior" value="water"/>
+            <string name="ext_ior" value="air"/>
+        </bsdf> -->
+        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
+		<bsdf type="null"/>
+    </shape>
+
+    <!--sensors-->
+    <film type="hdrfilm" id="film">
+        <integer name="width" value="436" />
+        <integer name="height" value="260" />
+        <string name="pixel_format" value="rgb" />
+		<string name="component_format" value="float32" />
+        <rfilter type="box" />
+    </film>
+
+    <sampler type="independent" id="sampler">
+        <integer name="sample_count" value="4"/>
+    </sampler>
+
+	<sensor type="perspective" id="elm__1" name="elm__1">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-4.3257111045250854e-06"/>
+			<rotate y="1" angle="-5.008956130975331e-06"/>
+			<rotate z="1" angle="-8.651422209050171e-06"/>
+			<translate value="0.300000 6.000000 -30.500000"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+
+	<sensor type="perspective" id="elm__3" name="elm__3">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-11.012186786538267"/>
+			<rotate y="1" angle="12.264647112379967"/>
+			<rotate z="1" angle="-3.4904101198634315e-06"/>
+			<translate value="-5.955479 0.269468 -29.275511"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__5" name="elm__5">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="23.216951922917442"/>
+			<rotate y="1" angle="-2.1574377658667645"/>
+			<rotate z="1" angle="-5.392830455699763e-06"/>
+			<translate value="1.337907 17.826412 -28.051020"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__7" name="elm__7">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-22.365790824023378"/>
+			<rotate y="1" angle="-18.389060028850608"/>
+			<rotate z="1" angle="1.1353535973111736e-05"/>
+			<translate value="9.052088 -5.415548 -26.826530"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__9" name="elm__9">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="5.47338873997582"/>
+			<rotate y="1" angle="32.799941262424404"/>
+			<rotate z="1" angle="-3.0070659575867868e-06"/>
+			<translate value="-15.877124 8.861506 -25.602041"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__11" name="elm__11">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="18.961771390756176"/>
+			<rotate y="1" angle="-32.69196280183567"/>
+			<rotate z="1" angle="-3.093209220134793e-06"/>
+			<translate value="15.624384 15.748118 -24.377550"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__13" name="elm__13">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-39.28143561492966"/>
+			<rotate y="1" angle="12.702084870226141"/>
+			<rotate z="1" angle="-1.0023943000737717e-06"/>
+			<translate value="-4.805954 -12.993895 -23.153061"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__15" name="elm__15">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="38.39536883428225"/>
+			<rotate y="1" angle="24.303689661379828"/>
+			<rotate z="1" angle="-6.738619321400544e-06"/>
+			<translate value="-9.377031 24.632536 -21.928572"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__17" name="elm__17">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-14.68943342339984"/>
+			<rotate y="1" angle="-45.875030447187754"/>
+			<rotate z="1" angle="2.8669605392021977e-06"/>
+			<translate value="21.130814 -1.607380 -20.704082"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__19" name="elm__19">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-17.186960395306702"/>
+			<rotate y="1" angle="48.53025965684105"/>
+			<rotate z="1" angle="1.5435453948192526e-05"/>
+			<translate value="-21.175377 -2.864723 -19.479591"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__21" name="elm__21">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="46.892619350492936"/>
+			<rotate y="1" angle="-29.996182759080018"/>
+			<rotate z="1" angle="9.52565236879094e-07"/>
+			<translate value="10.549332 27.902227 -18.255102"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__23" name="elm__23">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-52.77275311261901"/>
+			<rotate y="1" angle="-24.382407591564228"/>
+			<rotate z="1" angle="1.3433985541799181e-05"/>
+			<translate value="7.792498 -17.887262 -17.030613"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__25" name="elm__25">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="25.546090826121393"/>
+			<rotate y="1" angle="55.56388601128263"/>
+			<rotate z="1" angle="-7.5866046634651244e-06"/>
+			<translate value="-22.023836 18.937119 -15.806123"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__27" name="elm__27">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="10.929183766423334"/>
+			<rotate y="1" angle="-61.44131501849737"/>
+			<rotate z="1" angle="-5.8719463631384325e-06"/>
+			<translate value="26.171911 11.687867 -14.581633"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__29" name="elm__29">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-47.65700289598199"/>
+			<rotate y="1" angle="50.485674514323996"/>
+			<rotate z="1" angle="1.6041381675002514e-05"/>
+			<translate value="-15.289020 -16.173777 -13.357142"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__31" name="elm__31">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="66.08096006884948"/>
+			<rotate y="1" angle="16.987522286636917"/>
+			<rotate z="1" angle="-4.941385068656577e-06"/>
+			<translate value="-3.253690 33.423576 -12.132653"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__33" name="elm__33">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-37.18705031349905"/>
+			<rotate y="1" angle="-64.1836359702575"/>
+			<rotate z="1" angle="5.161391923749018e-06"/>
+			<translate value="21.814648 -12.132568 -10.908163"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__35" name="elm__35">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-2.2542638082013347"/>
+			<rotate y="1" angle="72.15999918489008"/>
+			<rotate z="1" angle="1.5771183733259332e-05"/>
+			<translate value="-28.235376 4.819973 -9.683674"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__37" name="elm__37">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="42.851650626176195"/>
+			<rotate y="1" angle="-68.78383667815278"/>
+			<rotate z="1" angle="-2.4694014632164388e-05"/>
+			<translate value="20.802837 26.403063 -8.459184"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__39" name="elm__39">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-76.76425702515236"/>
+			<rotate y="1" angle="11.338032913724772"/>
+			<rotate z="1" angle="1.1155978745182938e-07"/>
+			<translate value="-1.050374 -23.203089 -7.234694"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__41" name="elm__41">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="49.00105093595168"/>
+			<rotate y="1" angle="73.74154314758488"/>
+			<rotate z="1" angle="-4.595163626028682e-06"/>
+			<translate value="-18.594269 28.641649 -6.010204"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__43" name="elm__43">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-7.584012389271317"/>
+			<rotate y="1" angle="-81.71383556947214"/>
+			<rotate z="1" angle="2.6763328900800964e-05"/>
+			<translate value="29.727129 2.040621 -4.785714"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__45" name="elm__45">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-34.62131365744585"/>
+			<rotate y="1" angle="82.87709191720619"/>
+			<rotate z="1" angle="3.88990293238442e-05"/>
+			<translate value="-24.197210 -11.044519 -3.561224"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__47" name="elm__47">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="76.85221620128378"/>
+			<rotate y="1" angle="-74.38565730707376"/>
+			<rotate z="1" angle="-3.559036983847582e-05"/>
+			<translate value="6.872089 35.213593 -2.336735"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__49" name="elm__49">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-60.16566790797077"/>
+			<rotate y="1" angle="-87.6489557695114"/>
+			<rotate z="1" angle="0.00015888294260363463"/>
+			<translate value="15.212320 -20.023987 -1.112245"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__51" name="elm__51">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-162.30966479446158"/>
+			<rotate y="1" angle="88.77273362384277"/>
+			<rotate z="1" angle="-179.99990938630796"/>
+			<translate value="-28.274832 15.116151 0.112245"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__53" name="elm__53">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-155.2515522118455"/>
+			<rotate y="1" angle="-86.13427935879103"/>
+			<rotate z="1" angle="-179.99990938630796"/>
+			<translate value="27.482643 18.559071 1.336735"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__55" name="elm__55">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="113.41389780947105"/>
+			<rotate y="1" angle="75.1203192843895"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-11.221377 -21.529743 2.561224"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__57" name="elm__57">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-111.35657652957151"/>
+			<rotate y="1" angle="66.90353341097246"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-9.749426 33.939964 3.785714"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__59" name="elm__59">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="152.78590856298425"/>
+			<rotate y="1" angle="-78.08055742161888"/>
+			<rotate z="1" angle="-179.9999640278213"/>
+			<translate value="26.403898 -7.719478 5.010204"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__61" name="elm__61">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="165.61803084349734"/>
+			<rotate y="1" angle="76.59974508880343"/>
+			<rotate z="1" angle="179.99997768819966"/>
+			<translate value="-27.968685 -1.451535 6.234694"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__63" name="elm__63">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-125.80775417170109"/>
+			<rotate y="1" angle="-63.03395120840427"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="15.943692 30.329535 7.459184"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__65" name="elm__65">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="110.24240192121317"/>
+			<rotate y="1" angle="-27.7772540807761"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="5.137344 -22.147118 8.683674"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__67" name="elm__67">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-144.95136739627782"/>
+			<rotate y="1" angle="64.92615266511875"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-21.945475 23.228146 9.908163"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__69" name="elm__69">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-175.63526824250806"/>
+			<rotate y="1" angle="-67.11497557710854"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="27.858456 8.283162 11.132653"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__71" name="elm__71">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="138.45304345765763"/>
+			<rotate y="1" angle="55.06544954150636"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-18.106607 -13.897003 12.357142"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__73" name="elm__73">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-117.99586191228241"/>
+			<rotate y="1" angle="-0.5257753157854465"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="0.429224 32.489449 13.581633"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__75" name="elm__75">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="140.4312711469684"/>
+			<rotate y="1" angle="-48.55793558335794"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="17.635712 -13.110094 14.806123"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__77" name="elm__77">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-175.58324952178924"/>
+			<rotate y="1" angle="56.450191848550986"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-24.627922 8.310314 16.030613"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__79" name="elm__79">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-150.836026158729"/>
+			<rotate y="1" angle="-47.33138728767997"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="19.562189 20.619316 17.255102"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__81" name="elm__81">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="130.36536181993216"/>
+			<rotate y="1" angle="12.357962864367975"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-3.858336 -16.857895 18.479591"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__83" name="elm__83">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-141.27048282990955"/>
+			<rotate y="1" angle="30.31055929110278"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-11.511303 24.769342 19.704082"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__85" name="elm__85">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="169.3400468090474"/>
+			<rotate y="1" angle="-43.37877047537193"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="20.548962 0.450599 20.928572"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__87" name="elm__87">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="162.5825035310469"/>
+			<rotate y="1" angle="37.684592028494045"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-17.198545 -2.979964 22.153061"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__89" name="elm__89">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-145.41355263703423"/>
+			<rotate y="1" angle="-14.810623177390669"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="6.613458 23.029469 23.377550"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__91" name="elm__91">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="149.52297693230742"/>
+			<rotate y="1" angle="-13.861333604464678"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="6.494153 -9.215782 24.602041"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__93" name="elm__93">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-168.1504054405496"/>
+			<rotate y="1" angle="26.2777082466146"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-12.698636 12.160295 25.826530"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__95" name="elm__95">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-173.30454815051127"/>
+			<rotate y="1" angle="-22.380791626988017"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="11.644910 9.497757 27.051020"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__97" name="elm__97">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="165.87883478676508"/>
+			<rotate y="1" angle="8.478433345047304"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-3.989455 -1.319193 28.275511"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+	<sensor type="perspective" id="elm__99" name="elm__99">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="30"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="179.999991348578"/>
+			<rotate y="1" angle="5.008956130975331e-06"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="0.300000 6.000000 29.500000"/>
+		</transform>
+        <ref id="sampler"/>
+        <ref id="film"/>
+	</sensor>
+
+	<shape type="rectangle" id="arealight" name="arealight">
+		<transform name="to_world">
+			<matrix value="-5.000000 0.000000 0.000001 0.300000 0.000000 4.829629 1.294094 4.705905 -0.000000 1.294094 -4.829629 4.329629 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.000000 1.000000 1.000000" name="radiance"/>
+			<!-- <texture type="bitmap" name="radiance">
+				<string name="filename" value="textures/uvgrid.jpg"/>
+				<boolean name="raw" value="true"/>
+				<string name="filter_type" value="bilinear"/>
+				<transform name="to_uv">
+					<scale x="1" y="1"/>
+				</transform>
+			</texture> -->
+		</emitter>
+	</shape>
+
+</scene>

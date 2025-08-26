@@ -45,7 +45,7 @@
 
     <!--media-->
     <medium id="medium1" type="heterogeneous">
-        <float name="scale" value="5"/>
+        <float name="scale" value="10"/>
 		<phase type="hg">
 			<float name="g" value="0.6"/>
 		</phase>
@@ -530,6 +530,14 @@
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.000000 1.000000 1.000000" name="radiance"/>
+			<!-- <texture type="bitmap" name="radiance">
+				<string name="filename" value="textures/gogh2.jpg"/>
+				<boolean name="raw" value="true"/>
+				<string name="filter_type" value="bilinear"/>
+				<transform name="to_uv">
+					<scale x="1" y="-1"/>
+				</transform>
+			</texture> -->
 		</emitter>
 	</shape>
 </scene>

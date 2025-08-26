@@ -51,27 +51,27 @@
 		</phase>
         <volume name="sigma_t" type="gridvolume">
             <transform name="to_world">
-                <!-- <scale x="2.4" y="2.24" z="2.8"/>
-                <translate x="-1.23" y="-1.12" z="-1.52" /> -->
+                <scale x="2.4" y="2.24" z="2.8"/>
+                <translate x="-1.23" y="-1.12" z="-1.52" />
                 <scale x="5.0" y="5.0" z="5.0"/>
                 <rotate y="1" angle="45" />
                 <translate y="6.0" x="0.3" z="-0.5" />
             </transform>
             <boolean name="accel" value="false"/>
             <boolean name="use_grid_bbox" value="true"/>
-            <string name="filename" value="volumes/kiwi_sigma_t.vol"/>
+            <string name="filename" value="volumes/sigma_t.vol"/>
         </volume>
         <volume name="albedo" type="gridvolume">
             <transform name="to_world">
-			    <!-- <scale x="2.24" y="2.24" z="4.8"/>
-                <translate y="-1.27" x="-1.275" z="-2.555" /> -->
+			    <scale x="2.24" y="2.24" z="4.8"/>
+                <translate y="-1.27" x="-1.275" z="-2.555" />
                 <scale x="5.0" y="5.0" z="5.0"/>
                 <rotate y="1" angle="45" />
                 <translate y="6.0" x="0.3" z="-0.5" />
             </transform>
             <boolean name="accel" value="false"/>
             <boolean name="use_grid_bbox" value="true"/>
-            <string name="filename" value="volumes/kiwi_albedo.vol"/>
+            <string name="filename" value="volumes/albedo.vol"/>
         </volume>
 		<!-- <rgb name="albedo" value="0.0, 0.0, 0.0"/> -->
     </medium>
@@ -80,7 +80,6 @@
         <ref id="medium1" name="interior"/>
         <transform name="to_world">
 			<scale x="1.0" y="1.0" z="0.5"/>
-            <rotate y="1" angle="45" />
             <translate y="6.0" x="0.3" z="-0.5" />
         </transform>
         <string name="filename" value="meshes/slice.obj"/>

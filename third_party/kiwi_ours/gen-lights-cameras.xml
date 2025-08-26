@@ -40,10 +40,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-11.012186786538267"/>
-			<rotate y="1" angle="12.264647112379967"/>
-			<rotate z="1" angle="-3.4904101198634315e-06"/>
-			<translate value="-5.955479 0.269468 -29.275511"/>
+			<rotate x="1" angle="-7.7639118880466365"/>
+			<rotate y="1" angle="8.559155081979453"/>
+			<rotate z="1" angle="-2.980414843133369e-06"/>
+			<translate value="-4.123987 1.947265 -29.893940"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -61,10 +61,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="23.216951922917442"/>
-			<rotate y="1" angle="-2.1574377658667645"/>
-			<rotate z="1" angle="-5.392830455699763e-06"/>
-			<translate value="1.337907 17.826412 -28.051020"/>
+			<rotate x="1" angle="16.278345452661785"/>
+			<rotate y="1" angle="-1.4685042252093756"/>
+			<rotate z="1" angle="-2.091274446601399e-06"/>
+			<translate value="1.038000 14.409125 -29.287878"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -82,10 +82,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-22.365790824023378"/>
-			<rotate y="1" angle="-18.389060028850608"/>
-			<rotate z="1" angle="1.1353535973111736e-05"/>
-			<translate value="9.052088 -5.415548 -26.826530"/>
+			<rotate x="1" angle="-15.787949823085917"/>
+			<rotate y="1" angle="-12.519670154288965"/>
+			<rotate z="1" angle="-7.76245625958137e-06"/>
+			<translate value="6.557909 -2.162334 -28.681818"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -103,10 +103,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="5.47338873997582"/>
-			<rotate y="1" angle="32.799941262424404"/>
-			<rotate z="1" angle="-3.0070659575867868e-06"/>
-			<translate value="-15.877124 8.861506 -25.602041"/>
+			<rotate x="1" angle="3.933263471294808"/>
+			<rotate y="1" angle="22.87396543600879"/>
+			<rotate z="1" angle="-8.320638415512977e-07"/>
+			<translate value="-11.333696 8.057837 -28.075758"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -124,10 +124,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="18.961771390756176"/>
-			<rotate y="1" angle="-32.69196280183567"/>
-			<rotate z="1" angle="-3.093209220134793e-06"/>
-			<translate value="15.624384 15.748118 -24.377550"/>
+			<rotate x="1" angle="13.595762189156243"/>
+			<rotate y="1" angle="-22.345619567857035"/>
+			<rotate z="1" angle="-5.027285998382293e-07"/>
+			<translate value="11.386169 13.052113 -27.469696"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -145,10 +145,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-39.28143561492966"/>
-			<rotate y="1" angle="12.702084870226141"/>
-			<rotate z="1" angle="-1.0023943000737717e-06"/>
-			<translate value="-4.805954 -12.993895 -23.153061"/>
+			<rotate x="1" angle="-27.442064254805015"/>
+			<rotate y="1" angle="8.02434529355193"/>
+			<rotate z="1" angle="1.0985390381842454e-05"/>
+			<translate value="-3.416593 -7.825542 -26.863636"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -166,10 +166,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="38.39536883428225"/>
-			<rotate y="1" angle="24.303689661379828"/>
-			<rotate z="1" angle="-6.738619321400544e-06"/>
-			<translate value="-9.377031 24.632536 -21.928572"/>
+			<rotate x="1" angle="27.06288801057905"/>
+			<rotate y="1" angle="15.387531690541211"/>
+			<rotate z="1" angle="2.8770463070970557e-06"/>
+			<translate value="-6.788793 19.649040 -26.257576"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -187,10 +187,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-14.68943342339984"/>
-			<rotate y="1" angle="-45.875030447187754"/>
-			<rotate z="1" angle="2.8669605392021977e-06"/>
-			<translate value="21.130814 -1.607380 -20.704082"/>
+			<rotate x="1" angle="-10.776797123398472"/>
+			<rotate y="1" angle="-31.412644464630187"/>
+			<rotate z="1" angle="-4.553160355794402e-06"/>
+			<translate value="15.660167 0.390492 -25.651516"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -208,10 +208,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-17.186960395306702"/>
-			<rotate y="1" angle="48.53025965684105"/>
-			<rotate z="1" angle="1.5435453948192526e-05"/>
-			<translate value="-21.175377 -2.864723 -19.479591"/>
+			<rotate x="1" angle="-12.672581014332625"/>
+			<rotate y="1" angle="33.00629493762883"/>
+			<rotate z="1" angle="6.687614419862348e-06"/>
+			<translate value="-15.643840 -0.581385 -25.045454"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -229,10 +229,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="46.892619350492936"/>
-			<rotate y="1" angle="-29.996182759080018"/>
-			<rotate z="1" angle="9.52565236879094e-07"/>
-			<translate value="10.549332 27.902227 -18.255102"/>
+			<rotate x="1" angle="33.084241056437016"/>
+			<rotate y="1" angle="-17.750649077318684"/>
+			<rotate z="1" angle="-1.7901153062559791e-06"/>
+			<translate value="7.963359 22.376152 -24.439394"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -250,10 +250,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-52.77275311261901"/>
-			<rotate y="1" angle="-24.382407591564228"/>
-			<rotate z="1" angle="1.3433985541799181e-05"/>
-			<translate value="7.792498 -17.887262 -17.030613"/>
+			<rotate x="1" angle="-36.85054055347086"/>
+			<rotate y="1" angle="-13.596342755235694"/>
+			<rotate z="1" angle="1.2478575006146487e-05"/>
+			<translate value="5.943351 -11.991892 -23.833334"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -271,10 +271,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="25.546090826121393"/>
-			<rotate y="1" angle="55.56388601128263"/>
-			<rotate z="1" angle="-7.5866046634651244e-06"/>
-			<translate value="-22.023836 18.937119 -15.806123"/>
+			<rotate x="1" angle="19.104506976483812"/>
+			<rotate y="1" angle="36.704094467476615"/>
+			<rotate z="1" angle="5.449443820141065e-07"/>
+			<translate value="-16.642927 15.818772 -23.227272"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -292,10 +292,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="140.4312711469684"/>
-			<rotate y="1" angle="-48.55793558335794"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="17.635712 -13.110094 14.806123"/>
+			<rotate x="1" angle="8.339582429410115"/>
+			<rotate y="1" angle="-41.819079702926594"/>
+			<rotate z="1" angle="-7.488122884308036e-06"/>
+			<translate value="20.091894 10.351192 -22.621212"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -313,10 +313,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-175.58324952178924"/>
-			<rotate y="1" angle="56.450191848550986"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-24.627922 8.310314 16.030613"/>
+			<rotate x="1" angle="-34.757517874779666"/>
+			<rotate y="1" angle="29.199495833911392"/>
+			<rotate z="1" angle="1.425063717869723e-05"/>
+			<translate value="-11.724171 -11.103146 -22.015152"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -334,10 +334,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-150.836026158729"/>
-			<rotate y="1" angle="-47.33138728767997"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="19.562189 20.619316 17.255102"/>
+			<rotate x="1" angle="45.32892950228856"/>
+			<rotate y="1" angle="7.532091852521819"/>
+			<rotate z="1" angle="-5.402298330875543e-07"/>
+			<translate value="-2.464653 27.334635 -21.409090"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -355,10 +355,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="130.36536181993216"/>
-			<rotate y="1" angle="12.357962864367975"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-3.858336 -16.857895 18.479591"/>
+			<rotate x="1" angle="-28.32289228035903"/>
+			<rotate y="1" angle="-39.753514384698846"/>
+			<rotate z="1" angle="1.6513521328358426e-06"/>
+			<translate value="17.187960 -8.233191 -20.803030"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -376,10 +376,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-141.27048282990955"/>
-			<rotate y="1" angle="30.31055929110278"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-11.511303 24.769342 19.704082"/>
+			<rotate x="1" angle="-1.7859021554445162"/>
+			<rotate y="1" angle="48.93727404457669"/>
+			<rotate z="1" angle="-4.510442198645478e-06"/>
+			<translate value="-22.308744 5.065058 -20.196970"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -397,10 +397,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="169.3400468090474"/>
-			<rotate y="1" angle="-43.37877047537193"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="20.548962 0.450599 20.928572"/>
+			<rotate x="1" angle="32.964722991245544"/>
+			<rotate y="1" angle="-40.67020090339543"/>
+			<rotate z="1" angle="-4.62048715151362e-06"/>
+			<translate value="16.703501 22.323675 -19.590910"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -418,10 +418,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="162.5825035310469"/>
-			<rotate y="1" angle="37.684592028494045"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="-17.198545 -2.979964 22.153061"/>
+			<rotate x="1" angle="-51.88552861490728"/>
+			<rotate y="1" angle="3.3791075989300476"/>
+			<rotate z="1" angle="-8.764074911423863e-07"/>
+			<translate value="-0.791439 -17.603371 -18.984848"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -439,10 +439,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-145.41355263703423"/>
-			<rotate y="1" angle="-14.810623177390669"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="6.613458 23.029469 23.377550"/>
+			<rotate x="1" angle="38.06399537650991"/>
+			<rotate y="1" angle="40.80441753568076"/>
+			<rotate z="1" angle="-1.5001787912707595e-05"/>
+			<translate value="-15.134960 24.496241 -18.378788"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -460,10 +460,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="149.52297693230742"/>
-			<rotate y="1" angle="-13.861333604464678"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="6.494153 -9.215782 24.602041"/>
+			<rotate x="1" angle="-6.259233166723875"/>
+			<rotate y="1" angle="-54.60496843294786"/>
+			<rotate z="1" angle="-1.1142272233838702e-05"/>
+			<translate value="24.609558 2.729183 -17.772728"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -481,10 +481,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-168.1504054405496"/>
-			<rotate y="1" angle="26.2777082466146"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="-12.698636 12.160295 25.826530"/>
+			<rotate x="1" angle="-28.351833499419666"/>
+			<rotate y="1" angle="50.85549169183975"/>
+			<rotate z="1" angle="-1.1803200656644302e-05"/>
+			<translate value="-20.175806 -8.246531 -17.166666"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -502,10 +502,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-173.30454815051127"/>
-			<rotate y="1" angle="-22.380791626988017"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="11.644910 9.497757 27.051020"/>
+			<rotate x="1" angle="55.490591251299215"/>
+			<rotate y="1" angle="-19.099748042179606"/>
+			<rotate z="1" angle="-4.455331989791073e-06"/>
+			<translate value="5.861404 30.720997 -16.560606"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -523,10 +523,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="165.87883478676508"/>
-			<rotate y="1" angle="8.478433345047304"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="-3.989455 -1.319193 28.275511"/>
+			<rotate x="1" angle="-48.044079961530365"/>
+			<rotate y="1" angle="-39.59755726028536"/>
+			<rotate z="1" angle="-6.52296651844484e-06"/>
+			<translate value="13.083999 -16.309782 -15.954545"/>
 		</transform>
 		<sampler type="independent" name="sampler">
 			<integer name="sample_count" value="$spp"/>
@@ -537,6 +537,510 @@
 		</film>
 	</sensor>
 	<sensor type="perspective" id="elm__78" name="elm__78">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-136.74471752358906"/>
+			<rotate y="1" angle="44.98220519435662"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="-15.144939 26.557501 14.954545"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__81" name="elm__81">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="171.07005176354158"/>
+			<rotate y="1" angle="-57.185410486284084"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="25.207251 1.343204 15.560606"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__84" name="elm__84">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="153.93361256997818"/>
+			<rotate y="1" angle="51.79609070282054"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-20.876577 -7.182369 16.166666"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__87" name="elm__87">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-128.0493676157859"/>
+			<rotate y="1" angle="-20.90788353058957"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="6.898538 29.624399 16.772728"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__90" name="elm__90">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="134.25744949581556"/>
+			<rotate y="1" angle="-31.35581046054651"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="11.194338 -15.486330 17.378788"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__93" name="elm__93">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-163.8955527574685"/>
+			<rotate y="1" angle="50.10902714763823"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-21.814703 14.321677 17.984848"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__96" name="elm__96">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-163.30015150714013"/>
+			<rotate y="1" angle="-48.36481539967041"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="21.776035 14.620736 18.590910"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__99" name="elm__99">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="137.1551299304368"/>
+			<rotate y="1" angle="26.429536521674816"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-9.490317 -14.400467 19.196970"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__102" name="elm__102">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-135.20528850731657"/>
+			<rotate y="1" angle="17.506461276754266"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-6.104035 27.137060 19.803030"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__105" name="elm__105">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="158.55575184548755"/>
+			<rotate y="1" angle="-41.512882322434926"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="18.807177 -4.967876 20.409090"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__108" name="elm__108">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="171.7791210220373"/>
+			<rotate y="1" angle="43.56295677162508"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="-20.162085 1.710316 21.015152"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__111" name="elm__111">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-146.7171762024012"/>
+			<rotate y="1" angle="-28.108653151757824"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="12.115923 22.463169 21.621212"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__114" name="elm__114">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="139.5998048985461"/>
+			<rotate y="1" angle="-5.845926894102179"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="2.626960 -13.443670 22.227272"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__117" name="elm__117">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-155.81213315778513"/>
+			<rotate y="1" angle="31.50078464077462"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-13.999115 18.291903 22.833334"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__120" name="elm__120">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-178.90986583628728"/>
+			<rotate y="1" angle="-37.04863994506332"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="18.371513 6.570762 23.439394"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__123" name="elm__123">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="156.32367334548405"/>
+			<rotate y="1" angle="26.699064324059982"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="-12.044572 -6.047083 24.045454"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__126" name="elm__126">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-147.02815471531187"/>
+			<rotate y="1" angle="-2.0827338524802195"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="1.214676 22.326807 24.651516"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__129" name="elm__129">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="156.6213603102699"/>
+			<rotate y="1" angle="-20.710724997555275"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="10.038488 -5.904165 25.257576"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__132" name="elm__132">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-176.0867437466459"/>
+			<rotate y="1" angle="28.25596154913478"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="-13.869224 8.047384 25.863636"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__135" name="elm__135">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-165.7224917566635"/>
+			<rotate y="1" angle="-21.929758377598933"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="11.158025 13.398563 26.469696"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__138" name="elm__138">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="157.45889176667518"/>
+			<rotate y="1" angle="5.603138428543967"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-2.405349 -5.500378 27.075758"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__141" name="elm__141">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-162.59568579614503"/>
+			<rotate y="1" angle="10.112505731327724"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="-4.726290 14.973379 27.681818"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__144" name="elm__144">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="174.94379355131431"/>
+			<rotate y="1" angle="-15.56115851433752"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="8.316691 3.356009 28.287878"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__147" name="elm__147">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597755"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="1000.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="175.29042565169246"/>
+			<rotate y="1" angle="10.543184163216525"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-5.170761 3.536851 28.893940"/>
+		</transform>
+		<sampler type="independent" name="sampler">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+	<sensor type="perspective" id="elm__150" name="elm__150">
 		<string name="fov_axis" value="x"/>
 		<float name="fov" value="39.597755"/>
 		<float name="principal_point_offset_x" value="0.000000"/>
@@ -589,7 +1093,7 @@
 	<shape type="rectangle" id="elm__7" name="elm__7">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.351649 -0.211373 -0.105630 4.525181 -0.000001 9.447746 -0.052370 8.094799 1.380779 -0.972320 -0.485901 18.936043 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.427608 -0.068177 -0.074329 3.273149 0.000000 9.488949 -0.024110 6.964406 0.967399 -0.452989 -0.493856 19.254251 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -599,7 +1103,7 @@
 	<shape type="rectangle" id="elm__8" name="elm__8">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.351649 -0.556664 -0.102093 4.383719 0.000001 9.131430 -0.137921 11.516834 1.380779 -2.560687 -0.469633 18.285309 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.427608 -0.312375 -0.072576 3.203055 0.000001 9.265244 -0.110467 10.418678 0.967398 -2.075497 -0.482213 18.788538 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -609,7 +1113,7 @@
 	<shape type="rectangle" id="elm__10" name="elm__10">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.495393 -0.169092 0.016586 -0.363436 0.000000 8.371056 0.236406 -3.456229 -0.244695 4.488523 -0.440270 17.110783 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.497865 -0.088351 0.011940 -0.177606 0.000000 8.852369 0.181450 -1.257987 -0.166578 3.446411 -0.465761 18.130447 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -619,7 +1123,7 @@
 	<shape type="rectangle" id="elm__11" name="elm__11">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.495393 -0.111801 0.017879 -0.415173 0.000000 9.023856 0.156308 -0.252319 -0.244695 2.967747 -0.474603 18.484127 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.497865 -0.047615 0.012566 -0.202649 0.000000 9.316542 0.097788 2.088484 -0.166578 1.857360 -0.490183 19.107330 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -629,7 +1133,7 @@
 	<shape type="rectangle" id="elm__13" name="elm__13">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.168086 0.894502 0.150544 -5.721768 0.000001 9.066978 -0.149236 11.969419 -2.050541 -2.690685 -0.452841 17.613653 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.345441 0.385461 0.106472 -3.958873 0.000001 9.332103 -0.093587 9.743494 -1.409035 -1.735879 -0.479484 18.679371 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -639,7 +1143,7 @@
 	<shape type="rectangle" id="elm__14" name="elm__14">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.168086 1.377602 0.140082 -5.303277 -0.000001 8.436855 -0.229835 15.193392 -2.050540 -4.143872 -0.421370 16.354818 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.345440 0.730890 0.101331 -3.753256 0.000001 8.881553 -0.177455 13.098207 -1.409036 -3.291477 -0.456335 17.753401 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -649,7 +1153,7 @@
 	<shape type="rectangle" id="elm__16" name="elm__16">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.463686 0.935475 -0.266341 10.953645 0.000001 9.341724 0.090889 2.364422 3.521098 1.451574 -0.413281 16.031258 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.988853 0.573418 -0.191995 7.979808 0.000000 9.384764 0.077642 2.894320 2.526585 1.359191 -0.455093 17.703718 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -659,7 +1163,7 @@
 	<shape type="rectangle" id="elm__17" name="elm__17">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.463686 0.042519 -0.270844 11.133778 0.000000 9.499676 0.004131 5.834756 3.521098 0.065975 -0.420269 16.310770 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.988853 -0.068747 -0.194319 8.072762 -0.000000 9.498353 -0.009308 6.372337 2.526585 -0.162953 -0.460601 17.924049 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -669,7 +1173,7 @@
 	<shape type="rectangle" id="elm__19" name="elm__19">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.470313 -2.083904 0.246786 -9.571454 -0.000000 8.681257 0.203064 -2.122541 -3.510794 3.247016 -0.384528 14.881118 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.011898 -1.151773 0.180172 -6.906870 0.000000 9.004024 0.159445 -0.377789 -2.471252 2.801959 -0.438310 17.032394 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -679,7 +1183,7 @@
 	<shape type="rectangle" id="elm__20" name="elm__20">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.470313 -1.238018 0.262083 -10.183308 -0.000000 9.219341 0.120637 1.174509 -3.510794 1.929006 -0.408362 15.834473 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.011898 -0.539833 0.187961 -7.218441 0.000000 9.393291 0.074731 3.010751 -2.471252 1.313271 -0.457259 17.790363 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -689,7 +1193,7 @@
 	<shape type="rectangle" id="elm__22" name="elm__22">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.340923 -1.176577 -0.090842 3.933682 -0.000001 7.849671 -0.281629 17.265163 1.429231 -5.219994 -0.403030 15.621183 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.436357 -0.506255 -0.064511 2.880439 -0.000001 8.780528 -0.190874 13.634981 0.907360 -3.591105 -0.457608 17.804329 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -699,7 +1203,7 @@
 	<shape type="rectangle" id="elm__23" name="elm__23">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-6.340923 -1.458418 -0.078709 3.448351 -0.000001 6.801235 -0.349091 19.963663 1.429231 -6.470412 -0.349199 13.467967 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.436357 -0.711405 -0.058904 2.656162 -0.000001 8.017375 -0.268223 16.728931 0.907361 -5.046344 -0.417836 16.213427 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -709,7 +1213,7 @@
 	<shape type="rectangle" id="elm__25" name="elm__25">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.923949 2.686243 -0.149531 6.281228 0.000000 6.902987 0.343514 -7.740579 2.675224 5.948349 -0.331117 12.744678 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.266995 1.338160 -0.112436 4.797443 -0.000001 8.050927 0.265425 -4.616992 1.724752 4.862294 -0.408543 15.841742 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -719,7 +1223,7 @@
 	<shape type="rectangle" id="elm__26" name="elm__26">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.923949 2.152086 -0.171810 7.172383 0.000000 7.931477 0.275207 -5.008269 2.675225 4.765522 -0.380451 14.718030 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.266995 0.946868 -0.122958 5.218316 -0.000001 8.804337 0.187812 -1.512477 1.724752 3.440509 -0.446775 17.371008 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -729,7 +1233,7 @@
 	<shape type="rectangle" id="elm__28" name="elm__28">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-4.525468 1.147743 0.353791 -13.851655 0.000001 9.364478 -0.084154 9.366148 -4.665848 -1.113209 -0.343147 13.225879 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.547333 0.498374 0.259275 -10.071021 0.000000 9.451755 -0.050327 8.013070 -3.387786 -0.816061 -0.424551 16.482037 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -739,7 +1243,7 @@
 	<shape type="rectangle" id="elm__29" name="elm__29">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-4.525468 2.297574 0.337927 -13.217074 0.000001 8.944562 -0.168461 12.738428 -4.665848 -2.228446 -0.327760 12.610391 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.547333 1.346235 0.250782 -9.731269 0.000000 9.142118 -0.135945 11.437813 -3.387786 -2.204393 -0.410643 15.925709 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -749,7 +1253,7 @@
 	<shape type="rectangle" id="elm__31" name="elm__31">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-4.304458 -1.502714 -0.366210 14.948386 -0.000001 9.285907 -0.105551 10.222051 4.870486 -1.328073 -0.323650 12.446008 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.450970 -0.690918 -0.269927 11.097087 -0.000000 9.414948 -0.066756 8.670242 3.540753 -1.063665 -0.415551 16.122057 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -759,7 +1263,7 @@
 	<shape type="rectangle" id="elm__32" name="elm__32">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-4.304458 -2.688124 -0.346912 14.176490 -0.000000 8.796587 -0.188815 13.552604 4.870486 -2.375720 -0.306595 11.763819 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.450970 -1.570994 -0.259512 10.680472 0.000001 9.051665 -0.151789 12.071547 3.540753 -2.418539 -0.399517 15.480682 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -769,7 +1273,7 @@
 	<shape type="rectangle" id="elm__34" name="elm__34">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.629382 -3.737132 0.154266 -5.870659 -0.000000 5.862804 0.393428 -9.737112 -3.249624 6.473900 -0.267239 10.189544 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.190550 -1.786503 0.119984 -4.499371 -0.000000 7.477493 0.308410 -6.336392 -1.981688 5.580816 -0.374816 14.492648 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -779,7 +1283,7 @@
 	<shape type="rectangle" id="elm__35" name="elm__35">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.629383 -3.171381 0.186078 -7.143115 0.000001 7.071776 0.333868 -7.354734 -3.249623 5.493844 -0.322346 12.393842 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.190550 -1.363495 0.134489 -5.079558 0.000000 8.381434 0.235385 -3.415389 -1.981688 4.259393 -0.420127 16.305082 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -789,7 +1293,7 @@
 	<shape type="rectangle" id="elm__37" name="elm__37">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.920269 2.904059 0.138724 -5.248968 -0.000001 6.384693 -0.370242 20.809698 -2.683361 -6.407195 -0.306066 11.742624 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.317844 1.178502 0.099842 -3.693670 -0.000001 8.069561 -0.263853 16.554108 -1.528020 -4.872712 -0.412812 16.012465 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -799,7 +1303,7 @@
 	<shape type="rectangle" id="elm__38" name="elm__38">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-5.920268 3.317635 0.110075 -4.103014 -0.000001 5.066149 -0.422970 22.918791 -2.683361 -7.319661 -0.242858 9.214321 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.317844 1.490007 0.087554 -3.202165 -0.000001 7.076433 -0.333595 19.343796 -1.528020 -6.160679 -0.362006 13.980262 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -809,7 +1313,7 @@
 	<shape type="rectangle" id="elm__40" name="elm__40">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-3.675667 3.982092 -0.355149 14.505958 -0.000000 8.181595 0.254116 -4.164632 5.360921 2.730285 -0.243505 9.240179 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.211264 2.318904 -0.272783 11.211321 0.000000 8.671618 0.204201 -2.168049 3.884937 3.110583 -0.365912 14.136464 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -819,7 +1323,7 @@
 	<shape type="rectangle" id="elm__41" name="elm__41">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="-3.675665 2.749846 -0.386147 15.745892 -0.000000 8.895706 0.175480 -1.019221 5.360922 1.885407 -0.264758 10.090327 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.211262 1.383677 -0.289832 11.893287 0.000000 9.213602 0.121846 1.126170 3.884938 1.856066 -0.388781 15.051254 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -829,7 +1333,7 @@
 	<shape type="rectangle" id="elm__43" name="elm__43">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.302105 4.040664 0.308638 -12.045526 0.000000 7.822740 -0.283697 17.347885 -4.872565 3.567601 0.272504 -11.400165 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.844153 -1.461488 0.324395 -12.675812 0.000001 9.243688 0.115361 1.385561 -4.334073 1.633493 -0.362574 14.002942 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -839,7 +1343,7 @@
 	<shape type="rectangle" id="elm__44" name="elm__44">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.302105 4.997573 0.267020 -10.380803 -0.000001 6.767889 -0.350882 20.035282 -4.872565 4.412477 0.235758 -9.930341 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.844151 -0.369004 0.332824 -13.012964 -0.000001 9.483867 0.029127 4.834926 -4.334075 0.412431 -0.371994 14.379773 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -849,7 +1353,7 @@
 	<shape type="rectangle" id="elm__46" name="elm__46">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="3.592300 1.295391 -0.411088 16.743504 0.000000 9.371982 0.081807 2.727713 5.417138 -0.859021 0.272607 -11.404284 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.674021 -2.300294 -0.211760 8.770418 -0.000001 8.247268 -0.248165 15.926616 3.171039 -4.115971 -0.378908 14.656332 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -859,7 +1363,7 @@
 	<shape type="rectangle" id="elm__47" name="elm__47">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="3.592300 -0.080595 -0.416681 16.967253 -0.000000 9.499508 -0.005090 6.203589 5.417138 0.053446 0.276316 -11.552661 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.674021 -2.964011 -0.187520 7.800804 -0.000001 7.303199 -0.319770 18.790802 3.171040 -5.303577 -0.335534 12.921377 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -869,7 +1373,7 @@
 	<shape type="rectangle" id="elm__49" name="elm__49">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.405418 -3.922639 0.304200 -11.868016 -0.000000 7.860623 0.280781 -5.231261 -4.779361 -3.615728 0.280399 -11.715981 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.443915 0.958517 -0.041840 1.973597 0.000000 6.064603 0.384861 -9.394439 0.852032 7.249265 -0.316436 12.157423 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -879,7 +1383,7 @@
 	<shape type="rectangle" id="elm__50" name="elm__50">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.405419 -2.859393 0.335429 -13.117176 -0.000001 8.667589 0.204675 -2.186986 -4.779360 -2.635674 0.309185 -12.867406 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.443915 0.805913 -0.049965 2.298580 0.000001 7.242247 0.323587 -6.943496 0.852032 6.095111 -0.377882 14.615278 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -889,7 +1393,7 @@
 	<shape type="rectangle" id="elm__52" name="elm__52">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.349392 -1.428477 -0.076148 3.345920 0.000000 6.760215 -0.351292 20.051666 1.391122 6.519889 0.347557 -14.402270 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.997217 2.405214 0.293616 -11.444654 -0.000000 8.723739 -0.197956 13.918244 -4.156660 -2.891595 -0.352991 13.619652 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -899,7 +1403,7 @@
 	<shape type="rectangle" id="elm__53" name="elm__53">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.349392 -1.658011 -0.061936 2.777431 0.000000 5.498490 -0.407739 22.309555 1.391121 7.567536 0.282689 -11.807554 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.997217 3.337406 0.267173 -10.386941 0.000001 7.938087 -0.274678 16.987129 -4.156660 -4.012293 -0.321201 12.348047 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -909,7 +1413,7 @@
 	<shape type="rectangle" id="elm__55" name="elm__55">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.611467 3.314237 -0.182346 7.593843 -0.000000 6.864805 0.345627 -7.825098 3.280463 -5.669240 0.311916 -12.976642 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.269752 0.401604 -0.376402 15.356102 0.000000 9.485056 0.028034 4.878655 4.900941 0.349881 -0.327926 12.617030 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -919,7 +1423,7 @@
 	<shape type="rectangle" id="elm__56" name="elm__56">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.611467 2.662270 -0.209866 8.694635 -0.000000 7.900847 0.277637 -5.105463 3.280463 -4.554003 0.358991 -14.859627 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.269751 -0.846368 -0.374355 15.274183 0.000001 9.433449 -0.059080 8.363192 4.900942 -0.737366 -0.326141 12.545661 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -929,7 +1433,7 @@
 	<shape type="rectangle" id="elm__58" name="elm__58">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.724389 0.643503 0.341735 -13.369398 0.000000 9.453685 -0.049312 7.972491 -4.464319 0.680991 0.361643 -14.965714 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.930078 -3.808670 0.256898 -9.975933 0.000001 7.489703 0.307588 -6.303522 -4.236075 4.432650 -0.298986 11.459454 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -939,7 +1443,7 @@
 	<shape type="rectangle" id="elm__59" name="elm__59">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="4.724389 1.761219 0.330662 -12.926480 -0.000000 9.147366 -0.134964 11.398556 -4.464319 1.863818 0.349925 -14.496994 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.930078 -2.903219 0.287804 -11.212173 0.000000 8.390748 0.234464 -3.378555 -4.236075 3.378858 -0.334956 12.898229 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -949,7 +1453,7 @@
 	<shape type="rectangle" id="elm__61" name="elm__61">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.144022 -1.248804 -0.298507 12.240272 -0.000000 9.277763 -0.107517 10.300671 3.973542 1.616662 0.386437 -15.957498 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.488699 -0.408761 -0.020142 1.105693 -0.000001 6.492852 -0.364995 20.599792 0.383126 -6.922845 -0.341135 13.145401 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -959,7 +1463,7 @@
 	<shape type="rectangle" id="elm__62" name="elm__62">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.144021 -2.214701 -0.282559 11.602341 -0.000000 8.782081 -0.190676 13.627053 3.973543 2.867082 0.365791 -15.131652 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.488699 -0.469005 -0.016101 0.944021 0.000001 5.189982 -0.418790 22.751614 0.383126 -7.943181 -0.272682 10.407278 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -969,7 +1473,7 @@
 	<shape type="rectangle" id="elm__64" name="elm__64">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.284044 -1.547502 0.098501 -3.640021 0.000000 7.321308 0.318621 -6.744834 -1.661563 -5.852664 0.372530 -15.401193 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.920140 4.238949 -0.238713 9.848523 -0.000000 6.940619 0.341407 -7.656299 4.247613 4.910104 -0.276509 10.560346 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -979,7 +1483,7 @@
 	<shape type="rectangle" id="elm__65" name="elm__65">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.284044 -1.199007 0.111147 -4.145891 -0.000000 8.261312 0.246868 -3.874722 -1.661563 -4.534657 0.420360 -17.314398 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.920140 3.386960 -0.273828 11.253114 -0.000000 7.961586 0.272788 -4.911511 4.247613 3.923220 -0.317183 12.187326 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -989,7 +1493,7 @@
 	<shape type="rectangle" id="elm__67" name="elm__67">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.310709 0.978995 0.108138 -4.025527 -0.000000 8.576200 -0.215075 14.602983 -1.557224 3.967413 0.438234 -18.029364 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-3.764868 0.170186 0.407491 -15.999625 -0.000001 9.497705 -0.010988 6.439524 -5.298657 -0.120924 -0.289535 11.081411 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -999,7 +1503,7 @@
 	<shape type="rectangle" id="elm__68" name="elm__68">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.310709 1.320904 0.097548 -3.601917 0.000000 7.736308 -0.290188 17.607529 -1.557224 5.353014 0.395317 -16.312666 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-3.764868 1.512044 0.399744 -15.689780 0.000001 9.317161 -0.097624 9.904970 -5.298657 -1.074355 -0.284031 10.861257 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1009,7 +1513,7 @@
 	<shape type="rectangle" id="elm__70" name="elm__70">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.828282 1.219112 -0.211858 8.774317 0.000000 9.092155 0.144930 0.202795 2.877695 -2.469104 0.429082 -17.663288 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.103311 -2.920414 -0.356014 14.540583 0.000001 8.721837 -0.198188 13.927523 5.041115 -2.377128 -0.289785 11.091389 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1019,7 +1523,7 @@
 	<shape type="rectangle" id="elm__71" name="elm__71">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="5.828282 0.501605 -0.219781 9.091249 0.000000 9.432195 0.059632 3.614733 2.877695 -1.015916 0.445130 -18.305183 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-4.103311 -4.050651 -0.323915 13.256606 -0.000000 7.935448 -0.274889 16.995571 5.041115 -3.297104 -0.263657 10.046272 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1029,7 +1533,7 @@
 	<shape type="rectangle" id="elm__73" name="elm__73">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.010379 -0.733246 0.186428 -7.157109 -0.000000 9.302770 0.101355 1.945809 -2.474943 -1.780682 0.452738 -18.609531 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.142177 -2.705276 0.080587 -2.923490 0.000000 4.679380 0.435137 -11.405499 -2.126889 7.812483 -0.232725 8.809015 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1039,7 +1543,7 @@
 	<shape type="rectangle" id="elm__74" name="elm__74">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.010379 -0.107023 0.190297 -7.311876 0.000000 9.495841 0.014793 5.408261 -2.474943 -0.259904 0.462134 -18.985380 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-6.142177 -2.398293 0.104087 -3.863499 0.000000 6.043945 0.385760 -9.430405 -2.126889 6.925960 -0.300591 11.523639 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1049,7 +1553,7 @@
 	<shape type="rectangle" id="elm__76" name="elm__76">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.428964 -0.222036 -0.072786 3.211456 -0.000000 9.379875 -0.079262 9.170454 0.958341 1.489511 0.488282 -20.031301 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.008514 4.133052 0.232912 -9.016474 0.000001 6.942873 -0.341280 19.651217 -4.143041 -4.996438 -0.281567 10.762663 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1059,7 +1563,7 @@
 	<shape type="rectangle" id="elm__77" name="elm__77">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.428964 -0.458807 -0.069651 3.086054 -0.000000 8.975866 -0.163783 12.551336 0.958341 3.077875 0.467251 -19.190050 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="-5.008513 4.838712 0.191600 -7.363995 -0.000001 5.711404 -0.399549 21.981966 -4.143042 -5.849507 -0.231625 8.764985 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1069,7 +1573,7 @@
 	<shape type="rectangle" id="elm__79" name="elm__79">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
-			<matrix value="6.500000 0.000000 0.000000 0.300000 0.000000 9.463850 0.043578 4.256886 0.000000 -0.827979 0.498097 -20.423895 0.000000 0.000000 0.000000 1.000000"/>
+			<matrix value="4.597622 5.010505 -0.235327 9.713091 0.000000 6.325223 0.373059 -8.922373 4.594765 -5.013620 0.235474 -9.918944 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
@@ -1077,6 +1581,486 @@
 		<bsdf type="null" name="bsdf"/>
 	</shape>
 	<shape type="rectangle" id="elm__80" name="elm__80">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.597622 4.157966 -0.277545 11.401800 -0.000000 7.459970 0.309583 -6.383326 4.594766 -4.160549 0.277718 -11.608704 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__82" name="elm__82">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="3.522494 0.547202 0.419226 -16.469051 -0.000000 9.477662 -0.034268 7.370731 -5.462787 0.352845 0.270324 -11.312960 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__83" name="elm__83">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="3.522494 1.922047 0.407856 -16.014248 0.000001 9.220613 -0.120368 10.814704 -5.462787 1.239369 0.262992 -11.019695 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__85" name="elm__85">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.020004 -2.683376 -0.366647 14.965888 0.000000 8.865063 -0.179725 13.188990 5.107795 2.111906 0.288563 -12.042540 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__86" name="elm__86">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.020003 -3.852296 -0.336553 13.762105 0.000000 8.137413 -0.258016 16.320620 5.107796 3.031883 0.264878 -11.095122 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__88" name="elm__88">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.072010 -2.841697 0.097311 -3.592426 -0.000000 5.180935 0.419100 -10.764019 -2.319633 -7.438593 0.254726 -10.689048 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__89" name="elm__89">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.072010 -2.477466 0.121804 -4.572145 0.000000 6.484969 0.365383 -8.615315 -2.319633 -6.485163 0.318840 -13.253618 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__91" name="elm__91">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.550690 3.226323 0.197122 -7.584881 0.000000 7.197675 -0.326331 19.053223 -3.382283 5.294744 0.323498 -13.439943 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__92" name="elm__92">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.550690 3.827676 0.164641 -6.285629 -0.000000 6.011659 -0.387155 21.486206 -3.382283 6.281628 0.270193 -11.307730 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__94" name="elm__94">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.168637 2.624555 -0.357901 14.616045 -0.000001 8.862794 0.180035 -1.201385 4.987230 -2.193765 0.299156 -12.466244 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__95" name="elm__95">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.168637 1.403853 -0.376451 15.358024 -0.000001 9.322138 0.096299 2.148036 4.987230 -1.173427 0.314661 -13.086435 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__97" name="elm__97">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.318504 -2.625259 0.347213 -13.588508 -0.000000 8.826770 0.184872 -1.394883 -4.858037 -2.333699 0.308651 -12.846052 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__98" name="elm__98">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.318504 -1.439813 0.365931 -14.337239 -0.000000 9.302622 0.101392 1.944308 -4.858037 -1.279908 0.325291 -13.511630 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__100" name="elm__100">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.820637 -2.594242 -0.175741 7.329635 -0.000000 7.501912 -0.306763 18.270512 2.893128 5.219313 0.353570 -14.642802 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__101" name="elm__101">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.820636 -3.134655 -0.149361 6.274448 -0.000000 6.375834 -0.370665 20.826607 2.893129 6.306559 0.300497 -12.519891 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__103" name="elm__103">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.198940 2.182549 -0.097092 4.183669 0.000000 6.132519 0.381868 -9.274729 1.955286 -6.919443 0.307815 -12.812589 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__104" name="elm__104">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.198940 1.829055 -0.115564 4.922553 0.000000 7.299256 0.320019 -6.800776 1.955286 -5.798743 0.366378 -15.155108 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__106" name="elm__106">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.867244 1.782426 0.317839 -12.413548 0.000000 9.111407 -0.141541 11.661650 -4.308124 2.013755 0.359089 -14.863546 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__107" name="elm__107">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.867244 2.803998 0.296720 -11.568790 0.000001 8.505995 -0.222664 14.906540 -4.308125 3.167909 0.335229 -13.909154 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__109" name="elm__109">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.710015 -0.367842 -0.344031 14.061251 -0.000000 9.484993 -0.028093 7.123704 4.479482 0.386773 0.361737 -14.969463 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__110" name="elm__110">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="4.710014 -1.497321 -0.335443 13.717712 0.000000 9.248209 -0.114353 10.574109 4.479483 1.574378 0.352706 -14.608246 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__112" name="elm__112">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.733362 -2.773003 0.184916 -7.096622 0.000000 7.457140 0.309772 -6.390878 -3.062444 -5.191484 0.346190 -14.347607 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__113" name="elm__113">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.733362 -2.120779 0.207450 -7.997992 -0.000000 8.365886 0.236912 -3.476487 -3.062444 -3.970422 0.388378 -16.035109 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__115" name="elm__115">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.466196 0.560521 0.041512 -1.360473 -0.000000 7.743696 -0.289642 17.585678 -0.662049 5.474576 0.405443 -16.717735 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__116" name="elm__116">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.466196 0.688966 0.035758 -1.130334 0.000000 6.670433 -0.356014 20.240566 -0.662049 6.729090 0.349250 -14.469982 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__118" name="elm__118">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.542115 2.420743 -0.228082 9.423288 0.000000 8.293740 0.243837 -3.753501 3.396315 -3.950174 0.372185 -15.387407 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__119" name="elm__119">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.542116 1.631452 -0.246741 10.169648 -0.000000 8.972236 0.164333 -0.573339 3.396314 -2.662207 0.402633 -16.605320 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__121" name="elm__121">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.187807 -0.607241 0.299546 -11.681851 -0.000001 9.446384 0.053046 3.878141 -3.916204 -0.804416 0.396810 -16.372398 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__122" name="elm__122">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.187808 0.390281 0.300545 -11.721813 -0.000000 9.477889 -0.034094 7.363739 -3.916203 0.517006 0.398133 -16.425335 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__124" name="elm__124">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.806962 -1.366832 -0.212823 8.812904 0.000000 8.999755 -0.160111 12.404433 2.920478 2.717752 0.423168 -17.426718 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__125" name="elm__125">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.806962 -2.048235 -0.197097 8.183894 0.000000 8.334773 -0.239931 15.597222 2.920478 4.072628 0.391900 -16.176022 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__127" name="elm__127">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.495706 -0.212426 0.014325 -0.272987 -0.000000 7.488975 0.307637 -6.305485 -0.236227 -5.841244 0.393896 -16.255848 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__128" name="elm__128">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.495706 -0.161938 0.016049 -0.341940 -0.000000 8.390194 0.234519 -3.380754 -0.236227 -4.452912 0.441297 -18.151894 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__130" name="elm__130">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.079956 1.059289 0.167806 -6.412232 -0.000000 9.015440 -0.157648 12.305902 -2.298725 2.801740 0.443834 -18.253355 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__131" name="elm__131">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.079956 1.596840 0.155575 -5.923008 -0.000000 8.358347 -0.237648 15.505921 -2.298725 4.223523 0.411485 -16.959396 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__133" name="elm__133">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.725470 0.696823 -0.233847 9.653888 0.000000 9.385279 0.077469 2.901221 3.077173 -1.296529 0.435102 -17.904091 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__134" name="elm__134">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="5.725470 -0.085299 -0.236663 9.766522 0.000000 9.498291 -0.009483 6.379322 3.077173 0.158709 0.440342 -18.113663 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__136" name="elm__136">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.029675 -1.171338 0.176265 -6.750589 -0.000000 8.967340 0.165072 -0.602881 -2.427553 -2.909428 0.437815 -18.012602 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__137" name="elm__137">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.029675 -0.571990 0.184292 -7.071687 -0.000000 9.375731 0.080608 2.775668 -2.427553 -1.420737 0.457754 -18.810160 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__139" name="elm__139">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.468943 -0.279556 -0.046549 2.161946 0.000000 9.058260 -0.150695 12.027795 0.634643 2.849523 0.474473 -19.478907 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__140" name="elm__140">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.468943 -0.428887 -0.043287 2.031461 0.000000 8.423454 -0.231192 15.247693 0.634643 4.371666 0.441221 -18.148861 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__142" name="elm__142">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.399022 0.635751 -0.081164 3.546563 -0.000000 8.782915 0.190570 -1.622800 1.141280 -3.564579 0.455077 -18.703098 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__143" name="elm__143">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.399022 0.358306 -0.085741 3.729656 -0.000000 9.278234 0.107404 1.703822 1.141280 -2.008981 0.480742 -19.729673 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__145" name="elm__145">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.261740 0.002501 0.134133 -5.065337 0.000000 9.499995 -0.000491 6.019622 -1.743736 0.008981 0.481672 -19.766884 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__146" name="elm__146">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.261740 0.445011 0.132073 -4.982911 0.000000 9.354050 -0.087307 9.492285 -1.743735 1.598033 0.474272 -19.470896 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__148" name="elm__148">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.390262 0.008811 -0.091487 3.959483 0.000000 9.499878 0.002534 5.898622 1.189347 -0.047342 0.491552 -20.162096 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__149" name="elm__149">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.390262 -0.293167 -0.090178 3.907108 0.000000 9.363915 -0.084327 9.373080 1.189347 1.575162 0.484517 -19.880692 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__151" name="elm__151">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="6.500000 0.000000 0.000000 0.300000 0.000000 9.463850 0.043578 4.256886 0.000000 -0.827979 0.498097 -20.423895 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="1.012146 1.012146 1.012146" name="radiance"/>
+		</emitter>
+		<bsdf type="null" name="bsdf"/>
+	</shape>
+	<shape type="rectangle" id="elm__152" name="elm__152">
 		<boolean name="flip_normals" value="true"/>
 		<transform name="to_world">
 			<matrix value="6.500000 0.000000 0.000000 0.300000 0.000000 9.463850 -0.043578 7.743114 0.000000 0.827980 0.498097 -20.423895 0.000000 0.000000 0.000000 1.000000"/>

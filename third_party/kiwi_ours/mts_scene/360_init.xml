@@ -75,7 +75,6 @@
         <ref id="medium1" name="interior"/>
         <transform name="to_world">
 			<scale x="1.0" y="1.0" z="0.5"/>
-            <rotate y="1" angle="45" />
             <translate y="6.0" x="0.3" z="-0.5" />
         </transform>
         <string name="filename" value="meshes/slice.obj"/>

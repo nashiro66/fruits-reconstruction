@@ -160,7 +160,7 @@ def optimize(scene, params, opt, ref_images, spp):
             print(f"Sensor {i:02d} Light {j}: error={dr.mean(loss)}")
     print(f"Iteration {it:02d}: error={dr.mean(total_loss)}")
 
-ref_spp=4096
+ref_spp=2048
 opt_spp=128
 
 key1="medium1.sigma_t.data"
@@ -188,7 +188,7 @@ mi.set_variant('cuda_ad_rgb')
 
 import numpy as np
 
-ref_scene_path="third_party/kiwi_ours/mts_scene/kiwi_ref.xml"
+ref_scene_path="third_party/kiwi_ours/mts_scene/360_ref.xml"
 ref_dir=Path("third_party/kiwi_ours/references")
 
 ref_scene = mi.load_file(ref_scene_path)
@@ -197,7 +197,7 @@ ref_params = mi.traverse(ref_scene)
 #print(ref_scene)
 save_images(ref_scene, ref_params, ref_dir, ref_spp)
 
-init_scene_path="third_party/kiwi_ours/mts_scene/kiwi_init.xml"
+init_scene_path="third_party/kiwi_ours/mts_scene/360_init.xml"
 init_scene = mi.load_file(init_scene_path)
 
 ref_images=[]

@@ -432,7 +432,6 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
 
         # Add the nested emitter to switchemitter
         switchemitter.append(nested_emitter)
-
         # Replace the original emitter with switchemitter
         shape.remove(emitter)
         shape.append(switchemitter)

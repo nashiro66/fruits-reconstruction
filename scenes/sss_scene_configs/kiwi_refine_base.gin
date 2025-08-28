@@ -2,7 +2,7 @@ deng_clearcoat_lr = 0.1
 deng_normalmap_lr = 0.01
 
 SceneConfig:
-    scene_setup = %Setup.FULL_ON
+    scene_setup = %Setup.OLAT
     scene_name = 'kiwi_refine'
     scene_folder = 'third_party/kiwi_refine/'
     result_folder = 'results/kiwi_refine/results/'

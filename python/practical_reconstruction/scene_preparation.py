@@ -466,6 +466,7 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
 
   scene = mi.load_file(modified_xml)
   params = mi.traverse(scene)
+  print(params)
   # Make sure that we call prepare() on any emitters that have
   # such a function exposed.
   for emitter in scene.emitters():
@@ -476,6 +477,7 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
   if scene_config.sss_optimization:
     # Set the albedo scaling for each material
     for mat_key in scene_config.per_material_sss_albedo_scaling.keys():
+      # print(mat_key)
       prefix = ''
       for param_key in params.keys():
         if f'{mat_key}.' in param_key and 'nested_bsdf' in param_key:

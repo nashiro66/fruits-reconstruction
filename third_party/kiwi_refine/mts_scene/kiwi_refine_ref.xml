@@ -8,7 +8,7 @@
 
 <!-- Camera and Rendering Parameters -->
 
-	<integrator type="path" id="elm__0" name="elm__0">
+	<integrator type="prbvolpath" id="elm__0" name="elm__0">
         <integer name="max_depth" value="-1" />
 		<boolean name="hide_emitters" value="false"/>
 	</integrator>
@@ -443,31 +443,33 @@
 	</sensor>
 
 <!-- Materials -->
-	<bsdf type="sss_bsdf" name="mat-kiwi" id="mat-kiwi">
-		<bsdf type="principled" name="nested_bsdf">
-			<texture type="mipmap_flat" name="base_color">
-				<texture type="bitmap" name="nested_bitmap">
-					<string name="format" value="variant" />
-					<string name="filename" value="textures/albedo_init.exr" />
-				</texture>
-			</texture>
-			<rgb value="0.000000 0.000000 0.000000" name="spec_tint"/>
-			<float name="spec_trans" value="1.000000"/>
-			<float name="metallic" value="0.000000"/>
-			<float name="anisotropic" value="0.000000"/>
-			<float name="roughness" value="0.440000"/>
-			<float name="sheen" value="0.000000"/>
-			<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
-			<float name="clearcoat" value="0.000000"/>
-			<float name="clearcoat_gloss" value="0.000900"/>
-			<float name="specular" value="1.000000"/>
+
+	<bsdf type="diffuse_switch" id="mat-Material.001" name="mat-Material.001">
+		<string name="diffuse_mode" value="entry_forced_exit" />
+		<bsdf type="sss_bsdf" name="sss_bsdf">
+			<bsdf type="principled" name="nested_bsdf">
+				<rgb value="1.0 1.0 1.0" name="base_color"/>
+				<rgb value="0.000000 0.000000 0.000000" name="spec_tint"/>
+				<float name="spec_trans" value="1.000000"/>
+				<float name="metallic" value="0.000000"/>
+				<float name="anisotropic" value="0.000000"/>
+				<float name="roughness" value="0.440000"/>
+				<float name="sheen" value="0.000000"/>
+				<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
+				<float name="clearcoat" value="0.000000"/>
+				<float name="clearcoat_gloss" value="0.000900"/>
+				<float name="specular" value="1.000000"/>
+			</bsdf>
+			<rgb value="0.125611 0.608826 0.989205" name="single_scattering_albedo"/>
+			<spectrum type="srgb" name="extinction_coefficient">
+				<rgb name="color" value="15, 7.0, 5.0" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum>
+			<spectrum type="srgb" name="hg_coefficient">
+				<rgb name="color" value="-0.5, -0.2, 0.1" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum>
 		</bsdf>
-		<texture type="mipmap_flat" name="single_scattering_albedo">
-			<texture type="bitmap" name="nested_bitmap">
-				<string name="format" value="variant" />
-				<string name="filename" value="textures/albedo_init.exr" />
-			</texture>
-		</texture>
 	</bsdf>
 
 <!-- Emitters -->
@@ -481,7 +483,8 @@
 	</shape>
 
 <!-- Shapes -->
-    <shape type="obj" name="slice" id="slice">
+    <shape type="obj">
+        <ref id="medium1" name="interior"/>
         <transform name="to_world">
 			<scale x="1.0" y="1.0" z="0.5"/>
             <translate y="6.0" x="0.3" z="-0.5" />
@@ -494,6 +497,40 @@
             <string name="int_ior" value="water"/>
             <string name="ext_ior" value="air"/>
         </bsdf> -->
-        <ref name="bsdf" id="mat-kiwi"/>
+        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
+		<bsdf type="null"/>
     </shape>
+
+<!-- Volumes -->
+    <medium id="medium1" type="heterogeneous">
+        <float name="scale" value="10"/>
+		<phase type="hg">
+			<float name="g" value="0.6"/>
+		</phase>
+        <volume name="sigma_t" type="gridvolume">
+            <transform name="to_world">
+                <!-- <scale x="2.4" y="2.24" z="2.8"/>
+                <translate x="-1.23" y="-1.12" z="-1.52" /> -->
+                <scale x="5.0" y="5.0" z="5.0"/>
+                <rotate y="1" angle="45" />
+                <translate y="6.0" x="0.3" z="-0.5" />
+            </transform>
+            <boolean name="accel" value="false"/>
+            <boolean name="use_grid_bbox" value="true"/>
+            <string name="filename" value="volumes/kiwi_sigma_t.vol"/>
+        </volume>
+        <volume name="albedo" type="gridvolume">
+            <transform name="to_world">
+			    <!-- <scale x="2.24" y="2.24" z="4.8"/>
+                <translate y="-1.27" x="-1.275" z="-2.555" /> -->
+                <scale x="5.0" y="5.0" z="5.0"/>
+                <rotate y="1" angle="45" />
+                <translate y="6.0" x="0.3" z="-0.5" />
+            </transform>
+            <boolean name="accel" value="false"/>
+            <boolean name="use_grid_bbox" value="true"/>
+            <string name="filename" value="volumes/kiwi_albedo.vol"/>
+        </volume>
+		<!-- <rgb name="albedo" value="0.0, 0.0, 0.0"/> -->
+    </medium>
 </scene>

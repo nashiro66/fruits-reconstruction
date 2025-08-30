@@ -640,8 +640,9 @@ def optimize(
   return variables, loss_values, opt, frames
 
 
-def _update_light_position(params, camera_idx, light_idx):
+def _update_light_position(params, camera_idx):
   # Update light position for the selected sensor
+  # print(camera_idx)
   light_positions = [
     ["-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"],
     ["-6.500000 0.000002 -0.000000 0.300000 0.000001 9.396926 -0.171010 12.840401 -0.000000 -3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"],
@@ -696,11 +697,13 @@ def _update_light_position(params, camera_idx, light_idx):
     ["6.500000 0.000000 0.000000 0.300000 0.000000 9.396926 0.171010 -0.840401 0.000000 -3.420202 0.469846 -19.293852 0.000000 0.000000 0.000000 1.000000"],
     ["6.500000 0.000000 0.000000 0.300000 0.000000 9.396926 -0.171010 12.840401 0.000000 3.420201 0.469846 -19.293852 0.000000 0.000000 0.000000 1.000000"],
 ]
-  raw_string = light_positions[camera_idx * 2 + light_idx][0]
+  # print("before(no T):\n", np.array(params['arealight.to_world']))
+  raw_string = light_positions[camera_idx][0]
   float_values = list(map(float, raw_string.strip().split()))
   matrix_4x4 = np.array(float_values).reshape((4, 4))
   params['arealight.to_world'] = mi.Transform4f(matrix_4x4)
   params.update()
+  # print("after(no T):\n", np.array(params['arealight.to_world']))
 
 def optimize_deng_comparison(
     scene_config,
@@ -719,7 +722,7 @@ def optimize_deng_comparison(
     optimizer,and the optimized frames.
   """
   assert scene_config.deng_comparison
-  assert scene_config.scene_name in ['kiwi', 'kiwi_naive']
+  assert scene_config.scene_name in ['kiwi_refine']
   assert scene_config.scene_setup == scene_configuration.Setup.FULL_ON
   assert scene_config.random_lights == 0
   assert scene_config.random_sensors
@@ -781,7 +784,7 @@ def optimize_deng_comparison(
   )
 
   # pyformat: disable
-  backlit_indices = [1,2,3,4,20,21,23,24,25,26,27,28,30,31,34,38,41,45,47]
+  backlit_indices = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51]
   # pyformat: enable
   frontlit_indices = [
       i for i in range(len(all_sensors[-1])) if i not in backlit_indices
@@ -801,31 +804,35 @@ def optimize_deng_comparison(
       view_lights_references = all_references[resolution_level]
 
     with dr.isolate_grad():
-      front_indices = np.random.choice(
-          len(frontlit_indices),
-          scene_config.deng_dual_sensor_batch_size,
-          replace=False,
-      ).tolist()
-      back_indices = np.random.choice(
-          len(backlit_indices),
-          scene_config.deng_dual_sensor_batch_size,
-          replace=False,
-      ).tolist()
+      # front_indices = np.random.choice(
+      #     len(frontlit_indices),
+      #     scene_config.deng_dual_sensor_batch_size,
+      #     replace=False,
+      # ).tolist()
+      # back_indices = np.random.choice(
+      #     len(backlit_indices),
+      #     scene_config.deng_dual_sensor_batch_size,
+      #     replace=False,
+      # ).tolist()
+      # print(front_indices)
+      # print(back_indices)
+      interleaved = [x for pair in zip(frontlit_indices, backlit_indices) for x in pair]
+      # print(interleaved)
 
       sampled_view_sensors = [
           view_sensors[sensor_index]
-          for sensor_index in front_indices + back_indices
+          for sensor_index in interleaved
       ]
       sampled_view_lights_references = [
           view_lights_references[sensor_index]
-          for sensor_index in front_indices + back_indices
+          for sensor_index in interleaved
       ]
       for idx, (sensor, lights_ref_img) in enumerate(zip(
           sampled_view_sensors, sampled_view_lights_references)):
         assert len(lights_ref_img) == len(emitter_keys)
-        ref_img = lights_ref_img[0]
 
-        _update_light_position(params, idx, 0)
+        ref_img = lights_ref_img[0]
+        _update_light_position(params, idx)
 
         seed += 1
         img = mi.render(
@@ -856,10 +863,9 @@ def optimize_deng_comparison(
         loss_values.append(float(rendering_loss.array[0]))
         with dr.suspend_grad():
           if i in scene_config.output_iterations:
-            for idx, sensor in all_sensors[-1]:
+            for idx, sensor in enumerate(all_sensors[-1]):
               emitter_key = emitter_keys[0]
-
-              _update_light_position(params, idx, 0)
+              _update_light_position(params, idx)
 
               output_name = f'{sensor.id()}_iter_{i:03d}'
               if scene_config.scene_setup == scene_configuration.Setup.OLAT:
@@ -883,6 +889,21 @@ def optimize_deng_comparison(
                   frame_folder_tmp / f'{output_name}.png',
               )
 
+              # # Tonemapしてnumpyに
+              # bm = mi.Bitmap(img)  # GPU→CPU
+              # bm_disp = image_util.tonemap(bm)  # 既存のトーンマップ関数を利用
+              # bm_u8 = bm_disp.convert(mi.Bitmap.PixelFormat.RGB,
+              #                         mi.Struct.Type.UInt8,
+              #                         srgb_gamma=True)
+              # arr = np.array(bm_u8)  # H×W×3, uint8
+
+              # # 表示
+              # plt.figure(figsize=(6,4))
+              # plt.imshow(arr)
+              # plt.title(output_name)
+              # plt.axis('off')
+              # plt.show()
+
     variables.evaluate_regularization_gradients(opt)
     variables.process_gradients(opt)
 
@@ -894,12 +915,12 @@ def optimize_deng_comparison(
     print(f'Re-rendering final frame with {scene_config.rerender_spp} spp')
     # Re-render the final frame with the full scene.
     with dr.suspend_grad():
-      for idx, sensor in all_sensors[-1]:
+      for idx, sensor in  enumerate(all_sensors[-1]):
         for emitter_key in emitter_keys:
           if scene_config.scene_setup == scene_configuration.Setup.OLAT:
             scene_preparation.switch_emitter(params, emitter_key, emitter_keys)
 
-          _update_light_position(params, idx, 0)
+          _update_light_position(params, idx)
 
           output_name = f'{sensor.id()}_iter_{(scene_config.n_iter-1):03d}'
           if scene_config.scene_setup == scene_configuration.Setup.OLAT:

@@ -2,12 +2,18 @@ deng_clearcoat_lr = 0.1
 deng_normalmap_lr = 0.01
 
 SceneConfig:
-    scene_setup = %Setup.OLAT
+    scene_setup = %Setup.FULL_ON
     scene_name = 'kiwi_refine'
     scene_folder = 'third_party/kiwi_refine/'
     result_folder = 'results/kiwi_refine/results/'
     
-    random_sensors = False
+    deng_comparison = True
+    deng_dual_sensor_batch_size = 13
+    deng_displacement_scale = 0.0
+    deng_displacement_learning_rate = 0.0
+    deng_displacement_res = 32
+
+    random_sensors = True
     sss_optimization = True
     sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
     sss_volume_albedo_remapping = True
@@ -15,7 +21,7 @@ SceneConfig:
     sss_hg_resolution = 512
     sss_uniform_extinction = False
     sss_uniform_hg = False
-    optimized_sensors_indices = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+    optimized_sensors_indices = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51]
     optimized_shapes = ['slice']
     base_learning_rate = 0.05
     loss = @losses.l2_norm
@@ -30,7 +36,7 @@ SceneConfig:
     optimized_path_depth = -1
     samples_per_pixel_primal = 128
     samples_per_pixel_gradient = 6
-    output_iterations = [32,128,512,1024,2048]
+    output_iterations = [0,32,128,512,1024,2048]
     use_mitsuba_reference = True
 
     per_material_learning_rates = {

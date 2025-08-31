@@ -64,7 +64,6 @@ def run_config(gin_config_name: str, gin_overrides: list[str], sss_config: bool 
       scene, scene_config
   )
   
-  print(optimized_keys)
   scene_preparation.initialize_optimized_parameter(
       scene_config, params, optimized_keys
   )

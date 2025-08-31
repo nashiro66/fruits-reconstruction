@@ -922,8 +922,8 @@
             <string name="int_ior" value="water"/>
             <string name="ext_ior" value="air"/>
         </bsdf> -->
-        <ref name="bsdf" id="mat-kiwi"/>
-		<!-- <bsdf type="null"/> -->
+        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
+		<bsdf type="null"/>
     </shape>
 
 <!-- Volumes -->

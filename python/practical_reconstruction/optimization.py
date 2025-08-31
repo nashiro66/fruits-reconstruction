@@ -705,6 +705,10 @@ def _update_light_position(params, camera_idx):
   params.update()
   # print("after(no T):\n", np.array(params['arealight.to_world']))
 
+def tonemap(x, gamma=2.2, exposure=1.0):
+    x = np.clip(x * exposure, 0, 1)   # clamp
+    return np.power(x, 1/gamma)       # gamma correction
+
 def optimize_deng_comparison(
     scene_config,
     scene,
@@ -785,6 +789,7 @@ def optimize_deng_comparison(
 
   # pyformat: disable
   backlit_indices = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51]
+  # backlit_indices = [1,3]
   # pyformat: enable
   frontlit_indices = [
       i for i in range(len(all_sensors[-1])) if i not in backlit_indices
@@ -857,52 +862,56 @@ def optimize_deng_comparison(
               shape=ref_img.shape,
           )
         rendering_loss = scene_config.loss(img, ref_img, weight=mask)
-
+        # for k in params.keys():
+        #   print(k, params[k])
+          
         dr.backward(rendering_loss)
+        # print(rendering_loss)
+        # img_np = np.array(img)
+        # ref_np = np.array(ref_img)
+        # img_disp = tonemap(img_np)
+        # ref_disp = tonemap(ref_np)
+
+        # plt.figure(figsize=(12,5))
+        # plt.subplot(1,2,1)
+        # plt.title("Rendered img")
+        # plt.imshow(img_disp)
+        # plt.axis("off")
+
+        # plt.subplot(1,2,2)
+        # plt.title("Reference ref_img")
+        # plt.imshow(ref_disp)
+        # plt.axis("off")
+        # plt.show()
 
         loss_values.append(float(rendering_loss.array[0]))
-        with dr.suspend_grad():
-          if i in scene_config.output_iterations:
-            for idx, sensor in enumerate(all_sensors[-1]):
-              emitter_key = emitter_keys[0]
-              _update_light_position(params, idx)
+      with dr.suspend_grad():
+        if i in scene_config.output_iterations:
+          for idx, sensor in enumerate(all_sensors[-1]):
+            emitter_key = emitter_keys[0]
+            _update_light_position(params, idx)
 
-              output_name = f'{sensor.id()}_iter_{i:03d}'
-              if scene_config.scene_setup == scene_configuration.Setup.OLAT:
-                emitter_idx = emitter_keys.index(emitter_key)
-                output_name += f'_{emitter_idx:03d}'
-              img = mi.render(
-                  scene,
-                  integrator=integrator,
-                  sensor=sensor,
-                  spp=32,
-                  params=params,
-                  seed=seed,
-              )
-              output_bitmap = mi.Bitmap(img)
-              mitsuba_io.write_bitmap(
-                  output_bitmap,
-                  frame_folder_tmp / f'{output_name}.exr',
-              )
-              mitsuba_io.write_bitmap(
-                  image_util.tonemap(output_bitmap),
-                  frame_folder_tmp / f'{output_name}.png',
-              )
-
-              # # Tonemapしてnumpyに
-              # bm = mi.Bitmap(img)  # GPU→CPU
-              # bm_disp = image_util.tonemap(bm)  # 既存のトーンマップ関数を利用
-              # bm_u8 = bm_disp.convert(mi.Bitmap.PixelFormat.RGB,
-              #                         mi.Struct.Type.UInt8,
-              #                         srgb_gamma=True)
-              # arr = np.array(bm_u8)  # H×W×3, uint8
-
-              # # 表示
-              # plt.figure(figsize=(6,4))
-              # plt.imshow(arr)
-              # plt.title(output_name)
-              # plt.axis('off')
-              # plt.show()
+            output_name = f'{sensor.id()}_iter_{i:03d}'
+            if scene_config.scene_setup == scene_configuration.Setup.OLAT:
+              emitter_idx = emitter_keys.index(emitter_key)
+              output_name += f'_{emitter_idx:03d}'
+            img = mi.render(
+                scene,
+                integrator=integrator,
+                sensor=sensor,
+                spp=32,
+                params=params,
+                seed=seed,
+            )
+            output_bitmap = mi.Bitmap(img)
+            mitsuba_io.write_bitmap(
+                output_bitmap,
+                frame_folder_tmp / f'{output_name}.exr',
+            )
+            mitsuba_io.write_bitmap(
+                image_util.tonemap(output_bitmap),
+                frame_folder_tmp / f'{output_name}.png',
+            )
 
     variables.evaluate_regularization_gradients(opt)
     variables.process_gradients(opt)

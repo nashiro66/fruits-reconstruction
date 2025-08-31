@@ -1,52 +1,50 @@
-deng_clearcoat_lr = 0.1
-deng_normalmap_lr = 0.01
-
 SceneConfig:
+    deng_comparison = True
+    deng_dual_sensor_batch_size = 4
+    deng_displacement_scale = 0.0
+    deng_displacement_learning_rate = 0.0
+    deng_displacement_res = 32
+
     scene_setup = %Setup.FULL_ON
     scene_name = 'kiwi_refine'
     scene_folder = 'third_party/kiwi_refine/'
     result_folder = 'results/kiwi_refine/results/'
-    
-    deng_comparison = True
-    deng_dual_sensor_batch_size = 13
-    deng_displacement_scale = 0.0
-    deng_displacement_learning_rate = 0.0
-    deng_displacement_res = 32
 
     random_sensors = True
     sss_optimization = True
     sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
     sss_volume_albedo_remapping = True
     sss_extinction_resolution = 512
-    sss_hg_resolution = 512
+    sss_hg_resolution = 16
     sss_uniform_extinction = False
     sss_uniform_hg = False
     optimized_sensors_indices = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51]
     optimized_shapes = ['slice']
-    base_learning_rate = 0.05
-    loss = @losses.l2_norm
+    base_learning_rate = 0.0005
+    loss = @losses.l1_norm
 
-    n_iter = 128
+    n_iter = 10
     mip_bias = -1.0
 
     reference_scaling = 1.0
     reference_spp = 1024 
     rerender_spp = 8192
 
-    optimized_path_depth = -1
+    optimized_path_depth = 10
     samples_per_pixel_primal = 128
     samples_per_pixel_gradient = 6
-    output_iterations = [0,32,128,512,1024,2048]
+    output_iterations = [0,1,2,3,4,5,6,7,8,9,10]
     use_mitsuba_reference = True
 
     per_material_learning_rates = {
         'mat-kiwi': {
             'base_color': 0.0,
             'metallic': 0.0,
-            'roughness': 1.0,
+            'roughness': 0.0,
             'specular': 0.0,
             'clearcoat': 0.0,
-            'clearcoat_gloss': %deng_clearcoat_lr,
+            'clearcoat_gloss': 0.1,
+            'normalmap': 0.01,
             'single_scattering_albedo': 1.0,
             'extinction_coefficient': 1000.0,
             'hg_coefficient': 1.0,
@@ -62,9 +60,9 @@ SceneConfig:
             'base_color' : [0.5,0.5,0.5],
             'single_scattering_albedo' : [0.5,0.5,0.5],
             'extinction_coefficient' : [10,10,10],
-            'hg_coefficient' : [0.0, 0.0, 0.0],
-            'roughness' : 0.5,
-            'clearcoat': 0.5,
+            'hg_coefficient' : [0.6, 0.6, 0.6],
+            'roughness' : 0.0,
+            'clearcoat_gloss': 0.0009,
             'clearcoat_gloss': 0.5,
         }
     }

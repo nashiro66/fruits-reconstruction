@@ -884,51 +884,35 @@
 	</sensor>
 
 <!-- Materials -->
-    <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
-        <boolean name="shadow_terminator" value="False"/>
-        <bsdf type="sss_bsdf" name="bsdf">
-			<bsdf type="principled" name="nested_bsdf">
-                <float name="specular" value="0.0" />
-                <texture type="mipmap_flat" name="base_color">
-                    <texture type="bitmap" name="nested_bitmap">
-                        <string name="format" value="variant" />
-                        <string name="filename" value="textures/albedo_init.exr" />
-                    </texture>
-                </texture>
-                <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
-                <float name="spec_trans" value="1.000000" />
-                <float name="metallic" value="0.000000" />
-                <float name="anisotropic" value="0.000000" />
-                <texture type="mipmap_flat" name="roughness">
-                    <texture type="bitmap" name="nested_bitmap">
-                        <string name="format" value="variant" />
-                        <string name="filename" value="textures/rough_init.exr" />
-                        <boolean name="raw" value="true" />
-                    </texture>
-                </texture>
-                <float name="sheen" value="0.000000" />
-                <rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
-                <float name="clearcoat" value="0.0" />
-                <texture type="mipmap_flat" name="clearcoat_gloss">
-                    <texture type="bitmap" name="nested_bitmap">
-                        <string name="format" value="variant" />
-                        <string name="filename" value="textures/rough_init.exr" />
-                        <boolean name="raw" value="true" />
-                    </texture>
-                </texture>
-            </bsdf>
-            <texture type="mipmap_flat" name="single_scattering_albedo">
-                <texture type="bitmap" name="nested_bitmap">
-                    <string name="format" value="variant" />
-                    <string name="filename" value="textures/albedo_init.exr" />
-                </texture>
-            </texture>
-        </bsdf>
-        <texture type="mipmap_flat" name="normalmap">
+	<bsdf type="sss_bsdf" name="bsdf" id="mat-kiwi" >
+		<bsdf type="principled" name="nested_bsdf">
+			<float name="specular" value="0.0" />
+			<texture type="mipmap_flat" name="base_color">
+				<texture type="bitmap" name="nested_bitmap">
+					<string name="format" value="variant" />
+					<string name="filename" value="textures/albedo_init.exr" />
+				</texture>
+			</texture>
+			<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
+			<float name="spec_trans" value="1.000000" />
+			<float name="metallic" value="0.000000" />
+			<float name="anisotropic" value="0.000000" />
+			<texture type="mipmap_flat" name="roughness">
+				<texture type="bitmap" name="nested_bitmap">
+					<string name="format" value="variant" />
+					<string name="filename" value="textures/rough_init.exr" />
+					<boolean name="raw" value="true" />
+				</texture>
+			</texture>
+			<float name="sheen" value="0.000000" />
+			<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
+			<float name="clearcoat" value="0.0" />
+			<float name="clearcoat_gloss" value="0.0" />
+		</bsdf>
+		<texture type="mipmap_flat" name="single_scattering_albedo">
 			<texture type="bitmap" name="nested_bitmap">
-				<string name="format" value="variant"/>
-				<string name="filename" value="textures/normalmap_init.exr"/>
-				<boolean name="raw" value="true"/>
+				<string name="format" value="variant" />
+				<string name="filename" value="textures/albedo_init.exr" />
 			</texture>
 		</texture>
     </bsdf>

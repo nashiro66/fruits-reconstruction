@@ -582,8 +582,8 @@ def switch_emitter(params, emitter_key, emitter_keys, full_on=False):
       params[f'{k}.nested_emitter.sampling_weight'] = 1.0
     else:
       # Turn off all other emitters
-      params[f'{k}.sampling_weight'] = 0.0
-      params[f'{k}.nested_emitter.sampling_weight'] = 0.0
+      params[f'{k}.sampling_weight'] = 1.0
+      params[f'{k}.nested_emitter.sampling_weight'] = 1.0
   params.update()
 
 

@@ -12,7 +12,7 @@ SceneConfig:
 
     random_sensors = True
     sss_optimization = True
-    sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
+    sss_diffuse_switch = %DiffuseSwitch.EXIT
     sss_volume_albedo_remapping = True
     sss_extinction_resolution = 512
     sss_hg_resolution = 16

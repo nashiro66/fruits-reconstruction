@@ -896,7 +896,7 @@
 		<float name="clearcoat_gloss" value="0.000900"/>
 		<float name="specular" value="1.000000"/>
 	</bsdf>
-	
+
 <!-- Emitters -->
 	<shape type="rectangle" id="arealight" name="arealight">
 		<transform name="to_world">
@@ -922,8 +922,8 @@
             <string name="int_ior" value="water"/>
             <string name="ext_ior" value="air"/>
         </bsdf> -->
-        <!-- <ref name="bsdf" id="mat-kiwi"/> -->
-		<bsdf type="null"/>
+        <ref name="bsdf" id="mat-kiwi"/>
+		<!-- <bsdf type="null"/> -->
     </shape>
 
 <!-- Volumes -->

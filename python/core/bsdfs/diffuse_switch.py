@@ -129,12 +129,12 @@ class DiffuseSwitch(mi.BSDF):
     self.query_specular = False
     if self.sss_bsdf.has_attribute('eta'):
       sss_bsdf_params = mi.traverse(self.sss_bsdf)
-      if 'eta.value' not in sss_bsdf_params:
+      if 'eta' not in sss_bsdf_params:
         raise ValueError(
             'Only float eta values are supported, used a specular texture'
             ' instead.'
         )
-      self.eta = sss_bsdf_params['eta.value']
+      self.eta = sss_bsdf_params['eta']
     elif self.sss_bsdf.has_attribute('specular'):
       self.query_specular = True
 
@@ -185,292 +185,21 @@ class DiffuseSwitch(mi.BSDF):
     # return (1 - mi.fresnel(mi.Frame3f.cos_theta(w), eta)[0]) / (c)
     return (1 - mi.fresnel(dr.abs(mi.Frame3f.cos_theta(w)), eta)[0]) / (c)
 
-  def sample_diffuse_entry_exit(self, ctx, si, sample1, sample2, active):
-    diffuse_fresnel = self._diffuse_transmission_fresnel(si, active)
-    sampled_reflection = active & (sample1 < diffuse_fresnel)
-    sampled_refraction = active & (sample1 >= diffuse_fresnel)
-
-    # Reweight sample1 to reuse the sample1 if the nested bsdf needs it
-    sample1 = dr.select(
-        sampled_reflection,
-        dr.clip(sample1 / diffuse_fresnel, 0, 1),
-        (diffuse_fresnel - sample1) / (1 - diffuse_fresnel),
-    )
-    # Sample reflection
-    ctx_nested = mi.BSDFContext()
-    ctx_nested.type_mask = mi.BSDFFlags.Reflection
-
-    bs_reflection, weight_reflection = self.sss_bsdf.sample(
-        ctx_nested, si, sample1, sample2, sampled_reflection
-    )
-
-    # Sample refraction
-    swap_wi = sampled_refraction & (mi.Frame3f.cos_theta(si.wi) < 0.0)
-    swap_wo = sampled_refraction & (mi.Frame3f.cos_theta(si.wi) > 0.0)
-    si.wi.z[swap_wi] *= -1
-    bs_refraction, weight_refraction = _sample_diffuse(
-        si, sample2, sampled_refraction
-    )
-    if dr.hint(dr.grad_enabled(diffuse_fresnel), mode='scalar'):
-      weight_refraction[weight_refraction > 0] = dr.replace_grad(
-          weight_refraction,
-          (1 - diffuse_fresnel) / (1 - dr.detach(diffuse_fresnel)),
-      )
-    # We are perfectly importance sampling the diffuse refraction, so the weight
-    # scaling for the refraction is just 1, for the reflection we need to
-    # account for the probabilit of samplign that lobe which differs from
-    # the fresnel of the nested bsdf.
-    si.wi.z[swap_wi] *= -1
-    bs_refraction.wo.z[swap_wo] *= -1
-
-    bs = dr.select(sampled_reflection, bs_reflection, bs_refraction)
-    weight_reflection /= dr.detach(diffuse_fresnel)
-
-    weight = dr.select(sampled_reflection, weight_reflection, weight_refraction)
-    # Multiply the nested pdfs with the probability given by the fresnel
-    # maximum to avoid floating point errors
-    bs.pdf *= dr.detach(
-        dr.select(
-            sampled_reflection,
-            dr.maximum(diffuse_fresnel, 0.0),
-            dr.maximum(1.0 - diffuse_fresnel, 0.0),
-        )
-    )
-
-    return bs, weight
-
-  def eval_diffuse_entry_exit(self, ctx, si, wo, active):
-    cos_theta_i = mi.Frame3f.cos_theta(si.wi)
-    cos_theta_o = mi.Frame3f.cos_theta(wo)
-    eval_diff_trans = cos_theta_i * cos_theta_o < 0.0 & active
-    eval_nested = cos_theta_i * cos_theta_o > 0.0 & active
-    ctx_nested = mi.BSDFContext()
-    ctx_nested.type_mask = mi.BSDFFlags.Reflection
-    value = self.sss_bsdf.eval(ctx_nested, si, wo, eval_nested)
-
-    # Fresnel for diffuse transmission
-    diffuse_fresnel = self._diffuse_transmission_fresnel(si, eval_diff_trans)
-
-    swap_wi = eval_diff_trans & (cos_theta_i < 0.0)
-    swap_wo = eval_diff_trans & (cos_theta_o < 0.0)
-    si.wi.z[swap_wi] *= -1
-    wo.z[swap_wo] *= -1
-
-    value_diffuse = _eval_diffuse(si, wo, eval_diff_trans)
-    # maximum to avoid floating point errors
-    value_diffuse[eval_diff_trans] *= dr.maximum(1.0 - diffuse_fresnel, 0.0)
-    value[eval_diff_trans] = value_diffuse
-
-    return value
-
-  def pdf_diffuse_entry_exit(self, ctx, si, wo, active):
-    diffuse_fresnel = self._diffuse_transmission_fresnel(si, active)
-
-    cos_theta_i = mi.Frame3f.cos_theta(si.wi)
-    cos_theta_o = mi.Frame3f.cos_theta(wo)
-    eval_pdf_diffuse = cos_theta_i * cos_theta_o < 0.0 & active
-    eval_pdf_nested = cos_theta_i * cos_theta_o > 0.0 & active
-
-    # We can only sample reflection of the nested bsdf
-    ctx_nested = mi.BSDFContext()
-    ctx_nested.type_mask = mi.BSDFFlags.Reflection
-    pdf_nested = self.sss_bsdf.pdf(ctx_nested, si, wo, eval_pdf_nested)
-
-    swap_wi = eval_pdf_diffuse & (cos_theta_i < 0.0)
-    swap_wo = eval_pdf_diffuse & (cos_theta_o < 0.0)
-    si.wi.z[swap_wi] *= -1
-    wo.z[swap_wo] *= -1
-    pdf_diffuse = _pdf_diffuse(si, wo, eval_pdf_diffuse)
-
-    # Scale with fresnel and solid angle compression
-    pdf = dr.select(eval_pdf_nested, pdf_nested, pdf_diffuse)
-    # maximum to avoid floating point errors
-    pdf *= dr.select(
-        eval_pdf_nested,
-        dr.maximum(diffuse_fresnel, 0.0),
-        dr.maximum(1.0 - diffuse_fresnel, 0.0),
-    )
-
-    return pdf
-
-  def sample_diffuse_entry_forced_exit(self, ctx, si, sample1, sample2, active):
-    sample_diff_trans = mi.Frame3f.cos_theta(si.wi) < 0.0 & active
-    sample_nested = mi.Frame3f.cos_theta(si.wi) > 0.0 & active
-
-    bs, value = self.sss_bsdf.sample(ctx, si, sample1, sample2, sample_nested)
-    # We can only sample reflection of the nested bsdf, adjust the pdf to
-    # account for this.
-    ctx_nested = mi.BSDFContext()
-    ctx_nested.type_mask = mi.BSDFFlags.Reflection
-    bs.pdf = self.sss_bsdf.pdf(ctx_nested, si, bs.wo, active)
-
-    sampled_transmission = mi.has_flag(
-        bs.sampled_type, mi.BSDFFlags.GlossyTransmission
-    )
-    sample_diff_trans |= sampled_transmission
-
-    swap_wi = sample_diff_trans & (mi.Frame3f.cos_theta(si.wi) < 0.0)
-    swap_wo = sampled_transmission & (mi.Frame3f.cos_theta(bs.wo) < 0.0)
-    si.wi.z[swap_wi] *= -1
-    bs_diffuse, value_diffuse = _sample_diffuse(si, sample2, sample_diff_trans)
-    bs_diffuse.wo.z[swap_wo] *= -1
-    bs_diffuse.eta = bs.eta
-
-    bs[sample_diff_trans] = bs_diffuse
-    value[sample_diff_trans] = value_diffuse
-
-    return bs, value
-
-  def eval_diffuse_entry_forced_exit(self, ctx, si, wo, active):
-    eval_diff_trans = (
-        mi.Frame3f.cos_theta(si.wi) * mi.Frame3f.cos_theta(wo) < 0.0 & active
-    )
-    eval_nested = (
-        mi.Frame3f.cos_theta(si.wi) * mi.Frame3f.cos_theta(wo) > 0.0 & active
-    )
-
-    value = self.sss_bsdf.eval(ctx, si, wo, eval_nested)
-
-    swap_wi = eval_diff_trans & (mi.Frame3f.cos_theta(si.wi) < 0.0)
-    swap_wo = eval_diff_trans & (mi.Frame3f.cos_theta(wo) < 0.0)
-    si.wi.z[swap_wi] *= -1
-    wo.z[swap_wo] *= -1
-    value_diffuse = _eval_diffuse(si, wo, eval_diff_trans)
-    value[eval_diff_trans] = value_diffuse
-
-    return value
-
-  def pdf_diffuse_entry_forced_exit(self, ctx, si, wo, active):
-    pdf_diff_trans = (
-        mi.Frame3f.cos_theta(si.wi) * mi.Frame3f.cos_theta(wo) < 0.0 & active
-    )
-    pdf_nested = (
-        mi.Frame3f.cos_theta(si.wi) * mi.Frame3f.cos_theta(wo) > 0.0 & active
-    )
-
-    # We can only sample reflection of the nested bsdf
-    ctx_nested = mi.BSDFContext()
-    ctx_nested.type_mask = mi.BSDFFlags.Reflection
-    pdf = self.sss_bsdf.pdf(ctx_nested, si, wo, pdf_nested)
-
-    swap_wi = pdf_diff_trans & (mi.Frame3f.cos_theta(si.wi) < 0.0)
-    swap_wo = pdf_diff_trans & (mi.Frame3f.cos_theta(wo) < 0.0)
-    si.wi.z[swap_wi] *= -1
-    wo.z[swap_wo] *= -1
-    pdf_diffuse = _pdf_diffuse(si, wo, pdf_diff_trans)
-
-    pdf[pdf_diff_trans] = pdf_diffuse
-
-    return pdf
-
-  def sample_diffuse_forced_exit(self, ctx, si, sample1, sample2, active):
-    sample_diff_trans = mi.Frame3f.cos_theta(si.wi) < 0.0 & active
-    sample_nested = mi.Frame3f.cos_theta(si.wi) > 0.0 & active
-
-    bs, value = self.sss_bsdf.sample(ctx, si, sample1, sample2, sample_nested)
-
-    si.wi.z[sample_diff_trans] *= -1
-    bs_diffuse, value_diffuse = _sample_diffuse(si, sample2, sample_diff_trans)
-
-    # Set eta on exit
-    eta = self.eta
-    if self.query_specular:
-      eta = _eta_from_specular(
-          self.sss_bsdf.eval_attribute_1('specular', si, active)
-      )
-    bs_diffuse.eta = dr.rcp(eta)
-
-    bs[sample_diff_trans] = bs_diffuse
-    # eta^2 accounts for the solid angle compression when crossing the interface
-    value[sample_diff_trans] = value_diffuse * dr.square(eta)
-
-    return bs, value
-
-  def eval_diffuse_forced_exit(self, ctx, si, wo, active):
-    eval_diff_trans = mi.Frame3f.cos_theta(si.wi) < 0.0 & active
-    eval_nested = mi.Frame3f.cos_theta(si.wi) > 0.0 & active
-
-    nested_value = self.sss_bsdf.eval(ctx, si, wo, eval_nested)
-
-    swap_wo = eval_diff_trans & (mi.Frame3f.cos_theta(wo) < 0.0)
-    si.wi.z[eval_diff_trans] *= -1
-    wo.z[swap_wo] *= -1
-    # eta^2 accounts for the solid angle compression when crossing the interface
-    eta = self.eta
-    if self.query_specular:
-      eta = _eta_from_specular(
-          self.sss_bsdf.eval_attribute_1('specular', si, active)
-      )
-    diffuse_value = _eval_diffuse(si, wo, eval_diff_trans) * dr.square(eta)
-    value = dr.select(eval_nested, nested_value, diffuse_value)
-
-    return value
-
-  def pdf_diffuse_forced_exit(self, ctx, si, wo, active):
-    pdf_diff_trans = mi.Frame3f.cos_theta(si.wi) < 0.0 & active
-    pdf_nested = mi.Frame3f.cos_theta(si.wi) > 0.0 & active
-
-    nested_pdf = self.sss_bsdf.pdf(ctx, si, wo, pdf_nested)
-
-    si.wi.z[pdf_diff_trans] *= -1
-    pdf_diffuse = _pdf_diffuse(si, wo, pdf_diff_trans)
-    pdf = dr.select(pdf_nested, nested_pdf, pdf_diffuse)
-
-    return pdf
-
   def sample_diffuse_exit(self, ctx, si, sample1, sample2, active):
     bs, value = self.sss_bsdf.sample(ctx, si, sample1, sample2, active)
-    sampled_transmission = mi.has_flag(
-        bs.sampled_type, mi.BSDFFlags.GlossyTransmission
-    )
-    sample_diffuse_exit = (
-        sampled_transmission & (mi.Frame3f.cos_theta(bs.wo) > 0.0) & active
-    )
-
-    si.wi.z[sample_diffuse_exit] *= -1
-    bs_diffuse, value_diffuse = _sample_diffuse(
-        si, sample2, sample_diffuse_exit
-    )
-    bs_diffuse.eta = bs.eta
-
-    bs[sample_diffuse_exit] = bs_diffuse
-    value[sample_diffuse_exit] = value_diffuse
-
     return bs, value
 
   def sample(self, ctx, si_, sample1, sample2, active):
     si = mi.SurfaceInteraction3f(si_)
-
-    if dr.hint(self.diffuse_mode == 'entry_exit', mode='scalar'):
-      return self.sample_diffuse_entry_exit(ctx, si, sample1, sample2, active)
-    if dr.hint(self.diffuse_mode == 'entry_forced_exit', mode='scalar'):
-      return self.sample_diffuse_entry_forced_exit(
-          ctx, si, sample1, sample2, active
-      )
-    if dr.hint(self.diffuse_mode == 'exit', mode='scalar'):
-      return self.sample_diffuse_exit(ctx, si, sample1, sample2, active)
-    if dr.hint(self.diffuse_mode == 'forced_exit', mode='scalar'):
-      return self.sample_diffuse_forced_exit(ctx, si, sample1, sample2, active)
+    return self.sample_diffuse_exit(ctx, si, sample1, sample2, active)
 
   def eval(self, ctx, si_, wo, active):
     si = mi.SurfaceInteraction3f(si_)
-
-    if dr.hint(self.diffuse_mode == 'entry_exit', mode='scalar'):
-      return self.eval_diffuse_entry_exit(ctx, si, wo, active)
-    if dr.hint(self.diffuse_mode == 'entry_forced_exit', mode='scalar'):
-      return self.eval_diffuse_entry_forced_exit(ctx, si, wo, active)
-    if dr.hint(self.diffuse_mode == 'forced_exit', mode='scalar'):
-      return self.eval_diffuse_forced_exit(ctx, si, wo, active)
+    return self.sss_bsdf.eval(ctx, si, wo, active)
 
   def pdf(self, ctx, si_, wo, active):
     si = mi.SurfaceInteraction3f(si_)
-
-    if dr.hint(self.diffuse_mode == 'entry_exit', mode='scalar'):
-      return self.pdf_diffuse_entry_exit(ctx, si, wo, active)
-    if dr.hint(self.diffuse_mode == 'entry_forced_exit', mode='scalar'):
-      return self.pdf_diffuse_entry_forced_exit(ctx, si, wo, active)
-    if dr.hint(self.diffuse_mode == 'forced_exit', mode='scalar'):
-      return self.pdf_diffuse_forced_exit(ctx, si, wo, active)
+    return self.sss_bsdf.pdf(ctx, si, wo, active)
 
   def eval_pdf(self, ctx, si_, wo, active):
     si = mi.SurfaceInteraction3f(si_)

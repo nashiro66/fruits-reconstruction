@@ -46,7 +46,7 @@ SceneConfig:
             'clearcoat_gloss': 0.0,
             'normalmap': 0.0,
             'single_scattering_albedo': 1.0,
-            'extinction_coefficient': 1000.0,
+            'extinction_coefficient': 1.0,
             'hg_coefficient': 1.0,
         }
     }

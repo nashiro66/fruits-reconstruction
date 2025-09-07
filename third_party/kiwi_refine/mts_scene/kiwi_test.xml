@@ -891,20 +891,20 @@
 			<float name="spec_trans" value="1.000000"/>
 			<float name="metallic" value="0.000000"/>
 			<float name="anisotropic" value="0.000000"/>
-			<float name="roughness" value="0.0000"/>
+			<float name="roughness" value="0.440000"/>
 			<float name="sheen" value="0.000000"/>
 			<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
 			<float name="clearcoat" value="0.000000"/>
-			<float name="clearcoat_gloss" value="0.0000"/>
-			<float name="eta" value="1.500000"/>
+			<float name="clearcoat_gloss" value="0.000900"/>
+			<float name="specular" value="1.000000"/>
 		</bsdf>
-		<rgb value="0.0, 0.0, 0.0" name="single_scattering_albedo"/>
+		<rgb value="0.125611 0.608826 0.989205" name="single_scattering_albedo"/>
 		<spectrum type="srgb" name="extinction_coefficient">
-			<rgb name="color" value="0.0, 0.0, 0.0" />	
+			<rgb name="color" value="15, 7.0, 5.0" />	
 			<boolean name="unbounded" value="true" />
 		</spectrum>
 		<spectrum type="srgb" name="hg_coefficient">
-			<rgb name="color" value="0.9, 0.9, 0.9" />	
+			<rgb name="color" value="0,0,0" />	
 			<boolean name="unbounded" value="true" />
 		</spectrum>
     </bsdf>
@@ -918,8 +918,11 @@
 			<rgb value="1.000000 1.000000 1.000000" name="radiance"/>
 		</emitter>
 	</shape>
-	<!-- <emitter type="envmap">
+	<!-- <emitter type="envmap" id="World" name="World">
 		<string name="filename" value="textures/env.exr"/>
+		<transform name="to_world">
+			<matrix value="0.000000 0.000000 1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
 	</emitter> -->
 <!-- Shapes -->
     <shape type="obj" name="slice" id="slice">
@@ -937,4 +940,5 @@
         </bsdf> -->
         <ref name="bsdf" id="mat-kiwi"/>
     </shape>
+
 </scene>

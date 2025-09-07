@@ -12,7 +12,7 @@ SceneConfig:
 
     random_sensors = True
     sss_optimization = True
-    sss_diffuse_switch = %DiffuseSwitch.EXIT
+    sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
     sss_volume_albedo_remapping = True
     sss_extinction_resolution = 512
     sss_hg_resolution = 16
@@ -30,9 +30,9 @@ SceneConfig:
     reference_spp = 1024 
     rerender_spp = 8192
 
-    optimized_path_depth = 10
-    samples_per_pixel_primal = 128
-    samples_per_pixel_gradient = 6
+    optimized_path_depth = 20
+    samples_per_pixel_primal = 256
+    samples_per_pixel_gradient = 256
     output_iterations = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
     use_mitsuba_reference = True
 
@@ -40,7 +40,7 @@ SceneConfig:
         'mat-kiwi': {
             'base_color': 0.0,
             'metallic': 0.0,
-            'roughness': 0.0,
+            'roughness': 1.0,
             'specular': 0.0,
             'clearcoat': 0.0,
             'clearcoat_gloss': 0.0,
@@ -58,10 +58,10 @@ SceneConfig:
     per_material_initial_values = {
         'mat-kiwi': {
             'base_color' : [0.0,0.0,0.0],
-            'single_scattering_albedo' : [0.01,0.01,0.01],
-            'extinction_coefficient' : [0.01,0.01,0.01],
-            'hg_coefficient' : [0.9, 0.9, 0.9],
-            'roughness' : 0.0,
+            'single_scattering_albedo' : [0.5,0.5,0.5],
+            'extinction_coefficient' : [10,10,10],
+            'hg_coefficient' : [0.0, 0.0, 0.0],
+            'roughness' : 0.5,
             'clearcoat_gloss': 0.0,
         }
     }

@@ -1634,13 +1634,7 @@
 			<float name="spec_trans" value="1.000000"/>
 			<float name="metallic" value="0.000000"/>
 			<float name="anisotropic" value="0.000000"/>
-			<texture type="mipmap_flat" name="roughness">
-				<texture type="bitmap" name="nested_bitmap">
-					<string name="format" value="variant" />
-					<string name="filename" value="textures/rough_init.exr" />
-					<boolean name="raw" value="true" />
-				</texture>
-			</texture>
+			<float name="roughness" value="0.440000"/>
 			<float name="sheen" value="0.000000"/>
 			<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
 			<float name="clearcoat" value="0.000000"/>

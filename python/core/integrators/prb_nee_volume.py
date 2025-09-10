@@ -45,7 +45,7 @@ class PrbNeeVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
 
   def __init__(self, props: mi.llvm_ad_rgb.Properties):
     super().__init__(props)
-    max_path_depth = props.get("max_path_depth", 256)
+    max_path_depth = props.get("max_path_depth", 2)
     self.max_path_depth = max_path_depth if max_path_depth != -1 else 0xFFFFFFFF
 
     max_sss_depth = props.get("max_sss_depth", 256)
@@ -92,7 +92,7 @@ class PrbNeeVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
     bsdf_ctx = mi.BSDFContext()
     # Throughput is kept in a matrix to enable (robust) spectral MIS
     p_over_f = dr.full(dr.matrix_t(mi.Spectrum), 1.0)
-    eta = mi.Float(1.5)
+    eta = mi.Float(1.0)
 
     depth = mi.UInt32(0)
     sss_medium = dr.zeros(SSSMedium)

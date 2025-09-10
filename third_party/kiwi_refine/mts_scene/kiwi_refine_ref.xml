@@ -1632,7 +1632,7 @@
 		<float name="spec_trans" value="1.000000"/>
 		<float name="metallic" value="0.000000"/>
 		<float name="anisotropic" value="0.000000"/>
-		<float name="roughness" value="0.440000"/>
+		<float name="roughness" value="0.000000"/>
 		<float name="sheen" value="0.000000"/>
 		<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
 		<float name="clearcoat" value="0.000000"/>
@@ -1646,7 +1646,7 @@
 			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
-			<rgb value="2.000000 2.000000 2.000000" name="radiance"/>
+			<rgb value="1.000000 1.000000 1.00000" name="radiance"/>
 			<!-- <texture type="bitmap" name="radiance">
 				<string name="filename" value="textures/gogh2.jpg"/>
 				<boolean name="raw" value="true"/>
@@ -1685,8 +1685,6 @@
 		</phase>
         <volume name="sigma_t" type="gridvolume">
             <transform name="to_world">
-                <!-- <scale x="2.4" y="2.24" z="2.8"/>
-                <translate x="-1.23" y="-1.12" z="-1.52" /> -->
                 <scale x="5.0" y="5.0" z="5.0"/>
                 <rotate y="1" angle="45" />
                 <translate y="6.0" x="0.3" z="-0.5" />
@@ -1697,8 +1695,6 @@
         </volume>
         <volume name="albedo" type="gridvolume">
             <transform name="to_world">
-			    <!-- <scale x="2.24" y="2.24" z="4.8"/>
-                <translate y="-1.27" x="-1.275" z="-2.555" /> -->
                 <scale x="5.0" y="5.0" z="5.0"/>
                 <rotate y="1" angle="45" />
                 <translate y="6.0" x="0.3" z="-0.5" />
@@ -1707,6 +1703,11 @@
             <boolean name="use_grid_bbox" value="true"/>
             <string name="filename" value="volumes/kiwi_albedo.vol"/>
         </volume>
-		<!-- <rgb name="albedo" value="0.0, 0.0, 0.0"/> -->
+		<!-- <volume type="constvolume" name="sigma_t">
+			<rgb name="value" value="0.8, 0.8, 0.8"/>
+		</volume> -->
+		<!-- <volume type="constvolume" name="albedo">
+			<rgb name="value" value="0.0, 0.8, 0.8"/>
+		</volume> -->
     </medium>
 </scene>

@@ -1,17 +1,81 @@
 <scene version="2.1.0">
 
-<!-- Defaults, these can be set via the command line: -Darg=value -->
+    <integrator type="prb_nee_volume" id="elm__0" name="elm__0">
+        <integer name="max_depth" value="200" />
+    </integrator>
 
-	<default name="spp" value="128"/>
-	<default name="resx" value="400"/>
-	<default name="resy" value="240"/>
 
-<!-- Camera and Rendering Parameters -->
+	<shape type="rectangle" id="arealight" name="arealight">
+		<transform name="to_world">
+			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area" name="emitter">
+			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
+		</emitter>
+	</shape>
 
-	<integrator type="prbvolpath" id="elm__0" name="elm__0">
-        <integer name="max_depth" value="-1" />
-		<boolean name="hide_emitters" value="false"/>
-	</integrator>
+    <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
+        <boolean name="shadow_terminator" value="False" />
+        <bsdf type="sss_bsdf" name="bsdf">
+			<bsdf type="principled" name="nested_bsdf">
+                <float name="specular" value="0.5" />
+            	<rgb name="base_color" value="0.5,0.5,0.5" />
+                <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
+                <float name="spec_trans" value="1.000000" />
+                <float name="metallic" value="0.000000" />
+                <float name="anisotropic" value="0.000000" />
+                <float name="sheen" value="0.000000" />
+                <rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
+                <float name="clearcoat" value="0.5" />
+                <texture type="mipmap_flat" name="roughness">
+                    <texture type="bitmap" name="nested_bitmap">
+                        <string name="format" value="variant" />
+                        <string name="filename" value="textures/roughness.exr" />
+                        <boolean name="raw" value="true" />
+                    </texture>
+                </texture>
+                <texture type="mipmap_flat" name="clearcoat_gloss">
+                    <texture type="bitmap" name="nested_bitmap">
+                        <string name="format" value="variant" />
+                        <string name="filename" value="textures/clearcoat.exr" />
+                        <boolean name="raw" value="true" />
+                    </texture>
+                </texture>
+            </bsdf>
+            <texture type="mipmap_flat" name="single_scattering_albedo">
+                <texture type="bitmap" name="nested_bitmap">
+                    <string name="format" value="variant" />
+                    <string name="filename" value="textures/albedo.exr" />
+                </texture>
+            </texture>
+			<spectrum type="srgb" name="extinction_coefficient">
+				<rgb name="color" value="4.87669, 5.03648, 10.9488" />
+				<boolean name="unbounded" value="true" />
+			</spectrum>
+			<texture type="mipmap_flat" name="hg_coefficient">
+				<texture type="bitmap" name="nested_bitmap">
+					<string name="filename" value="textures/hg.exr" />
+					<boolean name="raw" value="true" />
+                </texture>
+			</texture>
+        </bsdf>
+        <texture type="mipmap_flat" name="normalmap">
+			<texture type="bitmap" name="nested_bitmap">
+				<string name="format" value="variant"/>
+				<string name="filename" value="textures/normal.exr"/>
+				<boolean name="raw" value="true"/>
+			</texture>
+		</texture>
+	</bsdf>
+
+    <shape type="obj" id="mesh-kiwi" name="mesh-kiwi">
+        <string name="filename" value="meshes/kiwi_mesh_smooth_v3.obj" />
+        <transform name="to_world">
+            <rotate y="1" angle="45" />
+            <translate y="6.0" x="0.3" z="-0.5" />
+        </transform>
+        <ref id="mat-kiwi" name="bsdf" />
+    </shape>
 
     <film type="hdrfilm" id="film">
         <integer name="width" value="436" />
@@ -1624,90 +1688,4 @@
         <ref id="sampler"/>
         <ref id="film"/>
 	</sensor>
-
-<!-- Materials -->
-	<bsdf type="principled" name="mat-kiwi" id="mat-kiwi">
-		<rgb value="1.0 1.0 1.0" name="base_color"/>
-		<rgb value="0.000000 0.000000 0.000000" name="spec_tint"/>
-		<float name="spec_trans" value="1.000000"/>
-		<float name="metallic" value="0.000000"/>
-		<float name="anisotropic" value="0.000000"/>
-		<float name="roughness" value="0.000000"/>
-		<float name="sheen" value="0.000000"/>
-		<rgb value="1.000000 1.000000 1.000000" name="sheen_tint"/>
-		<float name="clearcoat" value="0.000000"/>
-		<float name="clearcoat_gloss" value="0.000900"/>
-		<float name="specular" value="1.000000"/>
-	</bsdf>
-
-<!-- Emitters -->
-	<shape type="rectangle" id="arealight" name="arealight">
-		<transform name="to_world">
-			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
-		</transform>
-		<emitter type="area" name="emitter">
-			<rgb value="1.000000 1.000000 1.00000" name="radiance"/>
-			<!-- <texture type="bitmap" name="radiance">
-				<string name="filename" value="textures/gogh2.jpg"/>
-				<boolean name="raw" value="true"/>
-				<string name="filter_type" value="bilinear"/>
-				<transform name="to_uv">
-					<scale x="1" y="-1"/>
-				</transform>
-			</texture> -->
-		</emitter>
-	</shape>
-
-<!-- Shapes -->
-    <shape type="obj">
-        <ref id="medium1" name="interior"/>
-        <transform name="to_world">
-			<scale x="1.0" y="1.0" z="0.5"/>
-            <translate y="6.0" x="0.3" z="-0.5" />
-        </transform>
-        <string name="filename" value="meshes/slice.obj"/>
-        <!-- <bsdf type="diffuse" id="diffuse">
-            <rgb name="reflectance" value="0.2, 0.25, 0.7"/>
-        </bsdf> -->
-        <!-- <bsdf type="dielectric">
-            <string name="int_ior" value="water"/>
-            <string name="ext_ior" value="air"/>
-        </bsdf> -->
-        <ref name="bsdf" id="mat-kiwi"/>
-		<!-- <bsdf type="null"/> -->
-    </shape>
-
-<!-- Volumes -->
-    <medium id="medium1" type="heterogeneous">
-        <float name="scale" value="10"/>
-		<phase type="hg">
-			<float name="g" value="0.0"/>
-		</phase>
-        <volume name="sigma_t" type="gridvolume">
-            <transform name="to_world">
-                <scale x="5.0" y="5.0" z="5.0"/>
-                <rotate y="1" angle="45" />
-                <translate y="6.0" x="0.3" z="-0.5" />
-            </transform>
-            <boolean name="accel" value="false"/>
-            <boolean name="use_grid_bbox" value="true"/>
-            <string name="filename" value="volumes/kiwi_sigma_t.vol"/>
-        </volume>
-        <volume name="albedo" type="gridvolume">
-            <transform name="to_world">
-                <scale x="5.0" y="5.0" z="5.0"/>
-                <rotate y="1" angle="45" />
-                <translate y="6.0" x="0.3" z="-0.5" />
-            </transform>
-            <boolean name="accel" value="false"/>
-            <boolean name="use_grid_bbox" value="true"/>
-            <string name="filename" value="volumes/kiwi_albedo.vol"/>
-        </volume>
-		<!-- <volume type="constvolume" name="sigma_t">
-			<rgb name="value" value="0.8, 0.8, 0.8"/>
-		</volume> -->
-		<!-- <volume type="constvolume" name="albedo">
-			<rgb name="value" value="0.0, 0.8, 0.8"/>
-		</volume> -->
-    </medium>
 </scene>

@@ -73,7 +73,7 @@ def run_config(gin_config_name: str, gin_overrides: list[str], sss_config: bool 
 
   if scene_config.sss_optimization:
     integrator = mi.load_dict({
-        'type': 'prb_nee_volume',
+        'type': 'prb_path_volume',
         'max_sss_depth': -1,
         'max_path_depth': scene_config.optimized_path_depth,
     })

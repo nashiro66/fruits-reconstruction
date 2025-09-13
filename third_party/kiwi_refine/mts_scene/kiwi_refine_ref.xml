@@ -16,50 +16,53 @@
 
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False" />
-        <bsdf type="sss_bsdf" name="bsdf">
-			<bsdf type="principled" name="nested_bsdf">
-                <float name="specular" value="0.5" />
-            	<rgb name="base_color" value="0.5,0.5,0.5" />
-                <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
-                <float name="spec_trans" value="1.000000" />
-                <float name="metallic" value="0.000000" />
-                <float name="anisotropic" value="0.000000" />
-                <float name="sheen" value="0.000000" />
-                <rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
-                <float name="clearcoat" value="0.5" />
-                <texture type="mipmap_flat" name="roughness">
-                    <texture type="bitmap" name="nested_bitmap">
-                        <string name="format" value="variant" />
-                        <string name="filename" value="textures/roughness.exr" />
-                        <boolean name="raw" value="true" />
-                    </texture>
-                </texture>
-                <texture type="mipmap_flat" name="clearcoat_gloss">
-                    <texture type="bitmap" name="nested_bitmap">
-                        <string name="format" value="variant" />
-                        <string name="filename" value="textures/clearcoat.exr" />
-                        <boolean name="raw" value="true" />
-                    </texture>
-                </texture>
-            </bsdf>
-            <texture type="mipmap_flat" name="single_scattering_albedo">
-                <texture type="bitmap" name="nested_bitmap">
-                    <string name="format" value="variant" />
-                    <string name="filename" value="textures/albedo.exr" />
-                </texture>
-            </texture>
-			<spectrum type="srgb" name="extinction_coefficient">
-				<rgb name="color" value="4.87669, 5.03648, 10.9488" />
-				<boolean name="unbounded" value="true" />
-			</spectrum>
-			<texture type="mipmap_flat" name="hg_coefficient">
-				<texture type="bitmap" name="nested_bitmap">
-					<string name="filename" value="textures/hg.exr" />
-					<boolean name="raw" value="true" />
-                </texture>
-			</texture>
-        </bsdf>
-        <texture type="mipmap_flat" name="normalmap">
+		<bsdf type="diffuse_switch" name="bsdf">
+			<string name="diffuse_mode" value="forced_exit" />
+			<bsdf type="sss_bsdf" name="sss_bsdf">
+				<bsdf type="principled" name="nested_bsdf">
+					<float name="specular" value="0.5" />
+					<rgb name="base_color" value="0.5,0.5,0.5" />
+					<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
+					<float name="spec_trans" value="1.000000" />
+					<float name="metallic" value="0.000000" />
+					<float name="anisotropic" value="0.000000" />
+					<float name="sheen" value="0.000000" />
+					<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
+					<float name="clearcoat" value="0.5" />
+					<texture type="mipmap_flat" name="roughness">
+						<texture type="bitmap" name="nested_bitmap">
+							<string name="format" value="variant" />
+							<string name="filename" value="textures/roughness.exr" />
+							<boolean name="raw" value="true" />
+						</texture>
+					</texture>
+					<texture type="mipmap_flat" name="clearcoat_gloss">
+						<texture type="bitmap" name="nested_bitmap">
+							<string name="format" value="variant" />
+							<string name="filename" value="textures/clearcoat.exr" />
+							<boolean name="raw" value="true" />
+						</texture>
+					</texture>
+				</bsdf>
+				<texture type="mipmap_flat" name="single_scattering_albedo">
+					<texture type="bitmap" name="nested_bitmap">
+						<string name="format" value="variant" />
+						<string name="filename" value="textures/albedo.exr" />
+					</texture>
+				</texture>
+				<spectrum type="srgb" name="extinction_coefficient">
+					<rgb name="color" value="4.87669, 5.03648, 10.9488" />
+					<boolean name="unbounded" value="true" />
+				</spectrum>
+				<texture type="mipmap_flat" name="hg_coefficient">
+					<texture type="bitmap" name="nested_bitmap">
+						<string name="filename" value="textures/hg.exr" />
+						<boolean name="raw" value="true" />
+					</texture>
+				</texture>
+			</bsdf>
+		</bsdf>
+		<texture type="mipmap_flat" name="normalmap">
 			<texture type="bitmap" name="nested_bitmap">
 				<string name="format" value="variant"/>
 				<string name="filename" value="textures/normal.exr"/>

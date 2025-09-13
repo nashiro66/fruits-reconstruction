@@ -24,7 +24,7 @@ import mitsuba as mi  # type: ignore
 from core.integrators import volume_utils
 
 if not mi.variant():
-  mi.set_variant("llvm_ad_rgb")
+  mi.set_variant("cuda_ad_rgb")
 
 SSSMedium = volume_utils.SSSMedium
 SSSInteraction = volume_utils.SSSInteraction

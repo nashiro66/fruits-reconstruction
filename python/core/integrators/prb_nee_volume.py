@@ -210,8 +210,9 @@ class PrbNeeVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
 
       # ---------------- Intersection with emitters ----------------
       # Only count direct hits for now
+      count_direct = depth == 0
       emitter = si.emitter(scene)
-      active_e = active_surface
+      active_e = active_surface & count_direct & (emitter != None)
       Le = emitter.eval(si, active_e)
 
       # --------------------- Emitter sampling ---------------------

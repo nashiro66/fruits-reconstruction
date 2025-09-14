@@ -754,9 +754,6 @@ def _update_light_position(params, sensor):
   params.update()
   # print("after(no T):\n", np.array(params['arealight.to_world']))
 
-def tonemap(x, gamma=2.2, exposure=1.0):
-    x = np.clip(x * exposure, 0, 1)   # clamp
-    return np.power(x, 1/gamma)       # gamma correction
 
 def optimize_deng_comparison(
     scene_config,
@@ -906,29 +903,10 @@ def optimize_deng_comparison(
               shape=ref_img.shape,
           )
         rendering_loss = scene_config.loss(img, ref_img, weight=mask)
-        # for k in params.keys():
-        #   print(k, params[k])
-          
+
         dr.backward(rendering_loss)
-        #print(rendering_loss)
-        # img_np = np.array(img)
-        # ref_np = np.array(ref_img)
-        # img_disp = tonemap(img_np)
-        # ref_disp = tonemap(ref_np)
 
-        # plt.figure(figsize=(12,5))
-        # plt.subplot(1,2,1)
-        # plt.title("Rendered img")
-        # plt.imshow(img_disp)
-        # plt.axis("off")
-
-        # plt.subplot(1,2,2)
-        # plt.title("Reference ref_img")
-        # plt.imshow(ref_disp)
-        # plt.axis("off")
-        # plt.show()
         loss_values.append(float(rendering_loss.array[0]))
-
         with dr.suspend_grad():
           if i in scene_config.output_iterations:
             for sensor in all_sensors[-1]:

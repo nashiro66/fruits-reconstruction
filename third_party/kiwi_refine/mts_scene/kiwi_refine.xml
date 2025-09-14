@@ -1,20 +1,76 @@
 <scene version="2.1.0">
 
-	<integrator type="prb_path_volume" id="elm__0" name="elm__0">
-        <integer name="max_depth" value="10" />
-		<boolean name="hide_emitters" value="false"/>
-	</integrator>
+    <integrator type="path" id="elm__0" name="elm__0">
+        <integer name="max_depth" value="200" />
+    </integrator>
 
-    <film type="hdrfilm" id="film">
-        <integer name="width" value="436" />
-        <integer name="height" value="260" />
-        <string name="pixel_format" value="rgb" />
-		<string name="component_format" value="float32" />
-        <rfilter type="box" />
-    </film>
-    <sampler type="independent" id="sampler">
-        <integer name="sample_count" value="4"/>
-    </sampler>
+
+    <emitter type="point" id="emit-Point">
+        <!-- intensit = power / 4.0f * Pi (power=150000)-->
+        <rgb name="intensity" value='11936.6207319, 11936.6207319, 11936.6207319' />
+        <!-- <transform name="to_world" id='light-transform'> -->
+        <transform name="to_world">
+            <!-- <translate x="-2.944557" y="48.8898" z="-41.4402"/> -->
+            <translate x="-2.944557" y="48.8898" z="-41.4402" />
+        </transform>
+    </emitter>
+
+    <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
+        <boolean name="shadow_terminator" value="False"/>
+        <bsdf type="sss_bsdf" name="bsdf">
+			<bsdf type="principled" name="nested_bsdf">
+
+                <float name="specular" value="0.5" />
+                <rgb name="base_color" value="1.0,1.0,1.0" />
+                <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
+                <float name="spec_trans" value="1.000000" />
+                <float name="metallic" value="0.000000" />
+                <float name="anisotropic" value="0.000000" />
+                <texture type="mipmap_flat" name="roughness">
+                    <texture type="bitmap" name="nested_bitmap">
+                        <string name="format" value="variant" />
+                        <string name="filename" value="textures/roughness.exr" />
+                        <boolean name="raw" value="true" />
+                    </texture>
+                </texture>
+                <float name="sheen" value="0.000000" />
+                <rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
+                
+                <float name="clearcoat" value="0.5" />
+
+                <texture type="mipmap_flat" name="clearcoat_gloss">
+                    <texture type="bitmap" name="nested_bitmap">
+                        <string name="format" value="variant" />
+                        <string name="filename" value="textures/clearcoat.exr" />
+                        <boolean name="raw" value="true" />
+                    </texture>
+                </texture>
+            </bsdf>
+            <texture type="mipmap_flat" name="single_scattering_albedo">
+                <texture type="bitmap" name="nested_bitmap">
+                    <string name="format" value="variant" />
+                    <string name="filename" value="textures/albedo_init.exr" />
+                </texture>
+            </texture>
+        </bsdf>
+        <texture type="mipmap_flat" name="normalmap">
+			<texture type="bitmap" name="nested_bitmap">
+				<string name="format" value="variant"/>
+				<string name="filename" value="textures/normal.exr"/>
+				<boolean name="raw" value="true"/>
+			</texture>
+		</texture>
+    </bsdf>
+
+    <shape type="obj" id="mesh-kiwi" name="mesh-kiwi">
+        <string name="filename" value="meshes/kiwi_mesh_smooth_v3.obj" />
+        <transform name="to_world">
+            <rotate y="1" angle="45" />
+            <translate y="6.0" x="0.3" z="-0.5" />
+        </transform>
+        <ref id="mat-kiwi" name="bsdf" />
+    </shape>
+
 	<sensor type="perspective" id="elm__1" name="elm__1">
 		<string name="fov_axis" value="x"/>
 		<float name="fov" value="39.597755"/>
@@ -1616,80 +1672,5 @@
         <ref id="film"/>
 	</sensor>
 
-<!-- Materials -->
-   <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
-        <boolean name="shadow_terminator" value="False"/>
-		<bsdf type="sss_bsdf" name="sss_bsdf">
-			<bsdf type="principled" name="nested_bsdf">
-				<float name="specular" value="0.5" />
-				<rgb name="base_color" value="1.0,1.0,1.0" />
-				<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
-				<float name="spec_trans" value="1.000000" />
-				<float name="metallic" value="0.000000" />
-				<float name="anisotropic" value="0.000000" />
-				<float name="sheen" value="0.000000" />
-				<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
-				<float name="clearcoat" value="0.5" />
-				<texture type="mipmap_flat" name="roughness">
-					<texture type="bitmap" name="nested_bitmap">
-						<string name="format" value="variant" />
-						<string name="filename" value="textures/roughness.exr" />
-						<boolean name="raw" value="true" />
-					</texture>
-				</texture>
-				<texture type="mipmap_flat" name="clearcoat_gloss">
-					<texture type="bitmap" name="nested_bitmap">
-						<string name="format" value="variant" />
-						<string name="filename" value="textures/clearcoat.exr" />
-						<boolean name="raw" value="true" />
-					</texture>
-				</texture>
-			</bsdf>
-			<texture type="mipmap_flat" name="single_scattering_albedo">
-				<texture type="bitmap" name="nested_bitmap">
-					<string name="format" value="variant" />
-					<string name="filename" value="textures/albedo_init.exr" />
-				</texture>
-			</texture>
-        </bsdf>
-		<texture type="mipmap_flat" name="normalmap">
-			<texture type="bitmap" name="nested_bitmap">
-				<string name="format" value="variant"/>
-				<string name="filename" value="textures/normal.exr"/>
-				<boolean name="raw" value="true"/>
-			</texture>
-		</texture>
-    </bsdf>
-
-<!-- Shapes -->
-    <shape type="obj" id="slice" name="slice">
-        <string name="filename" value="meshes/kiwi_mesh_smooth_v3.obj" />
-        <transform name="to_world">
-            <rotate y="1" angle="45" />
-            <translate y="6.0" x="0.3" z="-0.5" />
-        </transform>
-        <ref id="mat-kiwi" name="bsdf" />
-    </shape>
-
-<!-- Emitters -->
-	<shape type="rectangle" id="arealight" name="arealight">
-		<transform name="to_world">
-			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
-		</transform>
-		<emitter type="area" name="emitter">
-			<rgb value="100.000000 100.000000 100.000000" name="radiance"/>
-			<!-- <texture type="bitmap" name="radiance">
-				<string name="filename" value="textures/gogh2.jpg"/>
-				<boolean name="raw" value="true"/>
-				<string name="filter_type" value="bilinear"/>
-				<transform name="to_uv">
-					<scale x="1" y="-1"/>
-				</transform>
-			</texture> -->
-		</emitter>
-	</shape>
-	<!-- <emitter type="envmap">
-		<string name="filename" value="textures/env.exr"/>
-	</emitter> -->
 
 </scene>

@@ -335,7 +335,7 @@ def transform_xml_for_sss(
 
 def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
   # TODO(pweier) only transform into mipmaps if the optimized materials are mipmaps
-  print("load")
+
   modified_xml = tmp_mitsuba_xml
   tree = ElementTree.parse(modified_xml)
   root = tree.getroot()
@@ -372,13 +372,7 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
         mipmap_texture.append(gpu_accel)
   else:
     # Add mip_bias to all mipmap_flat textures
-    mipmap_textures = root.findall(".//texture[@type='mipmap_flat']")
-    print(f"mipmap_flat texture num: {len(mipmap_textures)}")
-
-    for i, mipmap_texture in enumerate(root.findall(".//texture[@type='mipmap_flat']")):
-      name = mipmap_texture.get('name', f'[no name {i}]')
-      print(f"{i}: テクスチャ名 = {name}")
-
+    for mipmap_texture in root.findall(".//texture[@type='mipmap_flat']"):
       bias_exists = any(
           child.tag == 'float' and child.attrib.get('name') == 'mip_bias'
           for child in root
@@ -432,6 +426,7 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
 
         # Add the nested emitter to switchemitter
         switchemitter.append(nested_emitter)
+
         # Replace the original emitter with switchemitter
         shape.remove(emitter)
         shape.append(switchemitter)
@@ -465,7 +460,6 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
 
   scene = mi.load_file(modified_xml)
   params = mi.traverse(scene)
-  print(params)
   # Make sure that we call prepare() on any emitters that have
   # such a function exposed.
   for emitter in scene.emitters():
@@ -476,7 +470,6 @@ def load_mitsuba_scene(scene_config, tmp_mitsuba_xml):
   if scene_config.sss_optimization:
     # Set the albedo scaling for each material
     for mat_key in scene_config.per_material_sss_albedo_scaling.keys():
-      # print(mat_key)
       prefix = ''
       for param_key in params.keys():
         if f'{mat_key}.' in param_key and 'nested_bsdf' in param_key:

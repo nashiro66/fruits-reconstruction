@@ -210,7 +210,6 @@ class NormalMapFlip(mi.BSDF):
     return (
         f"NormalMapFlip[\nsafe_flip: {self.safe_flip} \n"
         f"shadow_terminator:  {self.shadow_terminator}\n"
-        f"outgoing_perturbation:  {self.outgoing_perturbation}\n"
         f"nested_bsdf:  {self.nested_bsdf}\n"
         f"normalmap:  {self.normalmap}\n]"
     )

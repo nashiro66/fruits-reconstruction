@@ -84,6 +84,7 @@ def run_config(gin_config_name: str, gin_overrides: list[str], sss_config: bool 
 
   print('Starting optimization')
 
+  optimization.save_texture_results(params, optimized_keys, scene_config)
   mts_variables, loss_values, opt, frames = optimization.optimize(
       scene_config,
       scene,

@@ -64,9 +64,10 @@ SceneConfig:
     
     per_material_initial_values = {
         'mat-kiwi': {
+            'base_color' : [0.5,0.5,0.5],
             'single_scattering_albedo' : [0.5,0.5,0.5],
             'extinction_coefficient' : [10,10,10],
-            'hg_coefficient' : [0.0, 0.0, 0.0]
+            'hg_coefficient' : [0.0, 0.0, 0.0],
         }
     }
     

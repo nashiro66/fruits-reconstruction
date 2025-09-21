@@ -10,13 +10,13 @@
 			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
-			<rgb value="100.000000 100.000000 100.000000" name="radiance"/>
+			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
 		</emitter>
 	</shape>
 
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
-		<bsdf type="diffuse_switch" name="sss_bsdf">
+		<bsdf type="diffuse_switch" name="bsdf">
 			<string name="diffuse_mode" value="forced_exit"/>
 			<bsdf type="sss_bsdf" name="sss_bsdf">
 				<bsdf type="principled" name="nested_bsdf">
@@ -32,6 +32,7 @@
 							<string name="filename" value="textures/roughness.exr" />
 							<boolean name="raw" value="true" />
 						</texture>
+						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 					</texture>
 					<float name="sheen" value="0.000000" />
 					<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
@@ -42,6 +43,7 @@
 							<string name="filename" value="textures/clearcoat.exr" />
 							<boolean name="raw" value="true" />
 						</texture>
+						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 					</texture>
 				</bsdf>
 				<texture type="mipmap_flat" name="single_scattering_albedo">
@@ -49,6 +51,8 @@
 						<string name="format" value="variant" />
 						<string name="filename" value="textures/albedo.exr" />
 					</texture>
+					<boolean name="volume_albedo_remap" value="true" />
+					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
 					<rgb name="color" value="4.87669, 5.03648, 10.9488" />
@@ -59,6 +63,7 @@
 						<string name="filename" value="textures/hg.exr" />
 						<boolean name="raw" value="true" />
 					</texture>
+					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 			</bsdf>
 		</bsdf>
@@ -68,12 +73,14 @@
 				<string name="filename" value="textures/normal.exr"/>
 				<boolean name="raw" value="true"/>
 			</texture>
+			<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 		</texture>
     </bsdf>
 
     <shape type="obj" id="mesh-kiwi" name="mesh-kiwi">
         <string name="filename" value="meshes/kiwi_mesh_smooth_v3.obj" />
         <transform name="to_world">
+			<scale x="1.0" y="1.0" z="0.1"/>
             <rotate y="1" angle="45" />
             <translate y="6.0" x="0.3" z="-0.5" />
         </transform>

@@ -50,6 +50,17 @@
                     <string name="filename" value="textures/albedo_init.exr" />
                 </texture>
             </texture>
+            <spectrum type="srgb" name="extinction_coefficient">
+                <rgb name="color" value="4.87669, 5.03648, 10.9488" />
+                <boolean name="unbounded" value="true" />
+            </spectrum>
+            <texture type="mipmap_flat" name="hg_coefficient">
+                <texture type="bitmap" name="nested_bitmap">
+                    <string name="filename" value="textures/hg.exr" />
+                    <boolean name="raw" value="true" />
+                </texture>
+                <float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
+            </texture>
         </bsdf>
         <texture type="mipmap_flat" name="normalmap">
 			<texture type="bitmap" name="nested_bitmap">

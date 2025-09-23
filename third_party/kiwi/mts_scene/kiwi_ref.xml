@@ -21,7 +21,7 @@
 			<bsdf type="sss_bsdf" name="sss_bsdf">
 				<bsdf type="principled" name="nested_bsdf">
 					<float name="specular" value="0.5" />
-					<rgb name="base_color" value="0.5,0.5,0.5" />
+					<rgb name="base_color" value="1.0,1.0,1.0" />
 					<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
 					<float name="spec_trans" value="1.000000" />
 					<float name="metallic" value="0.000000" />
@@ -32,6 +32,7 @@
 							<string name="filename" value="textures/roughness.exr" />
 							<boolean name="raw" value="true" />
 						</texture>
+						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 					</texture>
 					<float name="sheen" value="0.000000" />
 					<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
@@ -42,6 +43,7 @@
 							<string name="filename" value="textures/clearcoat.exr" />
 							<boolean name="raw" value="true" />
 						</texture>
+						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 					</texture>
 				</bsdf>
 				<texture type="mipmap_flat" name="single_scattering_albedo">
@@ -49,9 +51,11 @@
 						<string name="format" value="variant" />
 						<string name="filename" value="textures/albedo.exr" />
 					</texture>
+					<boolean name="volume_albedo_remap" value="true" />
+					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="4.87669, 5.03648, 10.9488" />
+					<rgb name="color" value="4.95111, 5.09739, 11.1818" />
 					<boolean name="unbounded" value="true" />
 				</spectrum>
 				<texture type="mipmap_flat" name="hg_coefficient">
@@ -59,6 +63,7 @@
 						<string name="filename" value="textures/hg.exr" />
 						<boolean name="raw" value="true" />
 					</texture>
+					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 			</bsdf>
 		</bsdf>
@@ -68,6 +73,7 @@
 				<string name="filename" value="textures/normal.exr"/>
 				<boolean name="raw" value="true"/>
 			</texture>
+			<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 		</texture>
     </bsdf>
 

@@ -3,7 +3,7 @@ deng_normalmap_lr = 0.01
 
 SceneConfig:
     deng_comparison = True
-    deng_dual_sensor_batch_size = 10
+    deng_dual_sensor_batch_size = 2
     deng_displacement_scale = 0.0
     deng_displacement_learning_rate = 0.0
     deng_displacement_res = 32
@@ -53,8 +53,8 @@ SceneConfig:
             'clearcoat_gloss': 0.0,
             'normalmap': 0.0,
             'single_scattering_albedo': 1.0,
-            'extinction_coefficient': 0.0,
-            'hg_coefficient': 0.0,
+            'extinction_coefficient': 1000.0,
+            'hg_coefficient': 1.0,
         }
     }
     
@@ -66,6 +66,8 @@ SceneConfig:
         'mat-kiwi': {
             'base_color' : [0.5,0.5,0.5],
             'single_scattering_albedo' : [0.5,0.5,0.5],
+            'extinction_coefficient' : [10,10,10],
+            'hg_coefficient' : [0.0, 0.0, 0.0],
         }
     }
     

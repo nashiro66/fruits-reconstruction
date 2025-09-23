@@ -22,7 +22,7 @@
 			<bsdf type="sss_bsdf" name="sss_bsdf">
 				<bsdf type="principled" name="nested_bsdf">
 					<float name="specular" value="0.5" />
-					<rgb name="base_color" value="0.5,0.5,0.5" />
+					<rgb name="base_color" value="1.0,1.0,1.0" />
 					<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
 					<float name="spec_trans" value="1.000000" />
 					<float name="metallic" value="0.000000" />
@@ -56,7 +56,7 @@
                     <float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="4.87669, 5.03648, 10.9488" />
+					<rgb name="color" value="4.95111, 5.09739, 11.1818" />
 					<boolean name="unbounded" value="true" />
 				</spectrum>
 				<texture type="mipmap_flat" name="hg_coefficient">

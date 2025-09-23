@@ -59,7 +59,6 @@
                     <string name="filename" value="textures/hg.exr" />
                     <boolean name="raw" value="true" />
                 </texture>
-                <float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
             </texture>
         </bsdf>
         <texture type="mipmap_flat" name="normalmap">

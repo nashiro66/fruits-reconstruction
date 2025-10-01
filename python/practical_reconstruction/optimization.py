@@ -815,16 +815,15 @@ def optimize_deng_comparison(
 
     with dr.isolate_grad():
       front_indices = np.random.choice(
-          len(frontlit_indices),
+          frontlit_indices,
           scene_config.deng_dual_sensor_batch_size,
           replace=False,
       ).tolist()
       back_indices = np.random.choice(
-          len(backlit_indices),
+          backlit_indices,
           scene_config.deng_dual_sensor_batch_size,
           replace=False,
       ).tolist()
-
       sampled_view_sensors = [
           view_sensors[sensor_index]
           for sensor_index in front_indices + back_indices

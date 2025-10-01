@@ -17,7 +17,7 @@ SceneConfig:
     sss_optimization = True
     sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
     sss_volume_albedo_remapping = True
-    sss_extinction_resolution = 1
+    sss_extinction_resolution = 512
     sss_hg_resolution = 512
     sss_uniform_extinction = False
     sss_uniform_hg = False
@@ -28,7 +28,7 @@ SceneConfig:
     base_learning_rate = 0.0005
     loss = @losses.l1_norm
 
-    n_iter = 4096
+    n_iter = 2048
     mip_bias = -1.0
 
     reference_scaling = 1.0

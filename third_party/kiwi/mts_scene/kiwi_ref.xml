@@ -55,7 +55,7 @@
 					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="0.8,0.8,1.0" />
+					<rgb name="color" value="0.309375, 0.318575, 0.69885" />
 					<boolean name="unbounded" value="true" />
 				</spectrum>
 				<texture type="mipmap_flat" name="hg_coefficient">

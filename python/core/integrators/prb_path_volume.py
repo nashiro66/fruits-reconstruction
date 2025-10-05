@@ -297,6 +297,22 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
       # ---- Update loop variables based on current interaction -----
 
       L = (L + Le + Lr_dir) if primal else (L - Le - Lr_dir)
+      # L0 = mi.Color3f(0.0, 0.0, 0.0)
+      # L1 = mi.Color3f(1.0, 0.0, 0.0)
+      # L2 = mi.Color3f(0.0, 1.0, 0.0)
+      # Lelse = mi.Color3f(0.0, 0.0, 1.0)
+
+      # mask_d1 = (depth == 1)
+      # mask0 = mask_d1 & (sss_bounces == mi.UInt32(0))
+      # mask1 = mask_d1 & (sss_bounces < mi.UInt32(2))
+      # mask2 = mask_d1 & (sss_bounces < mi.UInt32(5))
+      # maskE = mask_d1 & (sss_bounces >= mi.UInt32(10))
+
+      # L = dr.select(mask0, L0, 
+      #     dr.select(mask1, L1, 
+      #     dr.select(mask2, L2, 
+      #     dr.select(maskE, Lelse, L))))
+
       # Update throughput matrix
       update_weight_matrix(
           p_over_f,

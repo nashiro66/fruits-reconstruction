@@ -11,8 +11,19 @@
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
+			<!-- <texture type="bitmap" name="radiance">
+				<string name="filename" value="textures/gogh.jpg"/>
+				<boolean name="raw" value="true"/>
+				<string name="filter_type" value="bilinear"/>
+				<transform name="to_uv">
+					<scale x="1" y="1"/>
+				</transform>
+			</texture> -->
 		</emitter>
 	</shape>
+	<emitter type="envmap">
+		<string name="filename" value="textures/env.exr"/>
+	</emitter>
 
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
@@ -55,16 +66,10 @@
 					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="0.309375, 0.318575, 0.69885" />
+					<rgb name="color" value="1.0,1.0,1.0" />
 					<boolean name="unbounded" value="true" />
 				</spectrum>
-				<texture type="mipmap_flat" name="hg_coefficient">
-					<texture type="bitmap" name="nested_bitmap">
-						<string name="filename" value="textures/hg.exr" />
-						<boolean name="raw" value="true" />
-					</texture>
-					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
-				</texture>
+				<float name="hg_coefficient" value="0.9" />
 			</bsdf>
 		</bsdf>
         <texture type="mipmap_flat" name="normalmap">

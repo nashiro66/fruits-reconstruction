@@ -51,7 +51,7 @@ _DEFAULT_CLAMP_RANGES = {
     'clearcoat_gloss': (0.05, 0.995),
     'normalmap': (0.0, 1.0),
     'single_scattering_albedo': (0.0001, 0.99999),
-    'extinction_coefficient': (0.5, 2000),
+    'extinction_coefficient': (0.01, 2000),
     'hg_coefficient': (-0.99, 0.99),
 }
 

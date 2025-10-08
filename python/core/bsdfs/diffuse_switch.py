@@ -129,12 +129,12 @@ class DiffuseSwitch(mi.BSDF):
     self.query_specular = False
     if self.sss_bsdf.has_attribute('eta'):
       sss_bsdf_params = mi.traverse(self.sss_bsdf)
-      if 'eta' not in sss_bsdf_params:
+      if 'eta.value' not in sss_bsdf_params:
         raise ValueError(
             'Only float eta values are supported, used a specular texture'
             ' instead.'
         )
-      self.eta = sss_bsdf_params['eta']
+      self.eta = sss_bsdf_params['eta.value']
     elif self.sss_bsdf.has_attribute('specular'):
       self.query_specular = True
 

@@ -1,22 +1,24 @@
 <scene version="2.1.0">
 
-    <integrator type="path" id="elm__0" name="elm__0">
-        <integer name="max_depth" value="200" />
-    </integrator>
-
-
 	<shape type="rectangle" id="arealight" name="arealight">
 		<transform name="to_world">
 			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
+			<!-- <texture type="bitmap" name="radiance">
+				<string name="filename" value="textures/gogh.jpg"/>
+				<boolean name="raw" value="true"/>
+				<string name="filter_type" value="bilinear"/>
+				<transform name="to_uv">
+					<scale x="1" y="1"/>
+				</transform>
+			</texture> -->
 		</emitter>
 	</shape>
-
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
-		<bsdf type="diffuse_switch" name="bsdf">
+		<bsdf type="diffuse_switch" name="sss_bsdf">
 			<string name="diffuse_mode" value="forced_exit"/>
 			<bsdf type="sss_bsdf" name="sss_bsdf">
 				<bsdf type="principled" name="nested_bsdf">
@@ -49,22 +51,20 @@
 				<texture type="mipmap_flat" name="single_scattering_albedo">
 					<texture type="bitmap" name="nested_bitmap">
 						<string name="format" value="variant" />
-						<string name="filename" value="textures/albedo.exr" />
+						<string name="filename" value="textures/albedo_ref.png" />
 					</texture>
 					<boolean name="volume_albedo_remap" value="true" />
 					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
-				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="4.87669, 5.03648, 10.9488" />
-					<boolean name="unbounded" value="true" />
-				</spectrum>
-				<texture type="mipmap_flat" name="hg_coefficient">
+				<texture type="mipmap_flat" name="extinction_coefficient">
 					<texture type="bitmap" name="nested_bitmap">
-						<string name="filename" value="textures/hg.exr" />
-						<boolean name="raw" value="true" />
+						<string name="format" value="variant" />
+						<string name="filename" value="textures/sigma_t_ref.png" />
 					</texture>
 					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
+
+				<float name="hg_coefficient" value="0.9" />
 			</bsdf>
 		</bsdf>
         <texture type="mipmap_flat" name="normalmap">
@@ -80,8 +80,6 @@
     <shape type="obj" id="mesh-kiwi" name="mesh-kiwi">
         <string name="filename" value="meshes/kiwi_mesh_smooth_v3.obj" />
         <transform name="to_world">
-			<scale x="1.0" y="1.0" z="0.1"/>
-            <rotate y="1" angle="45" />
             <translate y="6.0" x="0.3" z="-0.5" />
         </transform>
         <ref id="mat-kiwi" name="bsdf" />
@@ -105,10 +103,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-4.3257111045250854e-06"/>
-			<rotate y="1" angle="-5.008956130975331e-06"/>
-			<rotate z="1" angle="-8.651422209050171e-06"/>
-			<translate value="0.300000 6.000000 -30.500000"/>
+			<rotate x="1" angle="-24.23834694913761"/>
+			<rotate y="1" angle="-24.35823384454426"/>
+			<rotate z="1" angle="3.558090287929979e-06"/>
+			<translate value="7.821639 -2.210661 -17.113548"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -121,10 +119,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-4.3257111045250854e-06"/>
-			<rotate y="1" angle="-5.008956130975331e-06"/>
-			<rotate z="1" angle="-8.651422209050171e-06"/>
-			<translate value="0.300000 6.000000 -30.500000"/>
+			<rotate x="1" angle="-24.23834694913761"/>
+			<rotate y="1" angle="-24.35823384454426"/>
+			<rotate z="1" angle="3.558090287929979e-06"/>
+			<translate value="7.821639 -2.210661 -17.113548"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -137,10 +135,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="11.012186786538267"/>
-			<rotate y="1" angle="12.264646258606321"/>
-			<rotate z="1" angle="-3.8101298577746247e-06"/>
-			<translate value="-5.955479 11.730532 -29.275511"/>
+			<rotate x="1" angle="3.0378455213434115"/>
+			<rotate y="1" angle="37.20769114517083"/>
+			<rotate z="1" angle="8.587417846195647e-06"/>
+			<translate value="-11.777127 7.059910 -16.406590"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -153,10 +151,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="11.012186786538267"/>
-			<rotate y="1" angle="12.264646258606321"/>
-			<rotate z="1" angle="-3.8101298577746247e-06"/>
-			<translate value="-5.955479 11.730532 -29.275511"/>
+			<rotate x="1" angle="3.0378455213434115"/>
+			<rotate y="1" angle="37.20769114517083"/>
+			<rotate z="1" angle="8.587417846195647e-06"/>
+			<translate value="-11.777127 7.059910 -16.406590"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -169,10 +167,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-23.216941677633685"/>
-			<rotate y="1" angle="-2.1574413944047612"/>
-			<rotate z="1" angle="-6.865851279323067e-06"/>
-			<translate value="1.337907 -5.826412 -28.051020"/>
+			<rotate x="1" angle="23.294146720916924"/>
+			<rotate y="1" angle="-34.16459939821461"/>
+			<rotate z="1" angle="-1.044457761669288e-05"/>
+			<translate value="10.615932 13.909033 -15.699630"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -185,10 +183,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-23.216941677633685"/>
-			<rotate y="1" angle="-2.1574413944047612"/>
-			<rotate z="1" angle="-6.865851279323067e-06"/>
-			<translate value="1.337907 -5.826412 -28.051020"/>
+			<rotate x="1" angle="23.294146720916924"/>
+			<rotate y="1" angle="-34.16459939821461"/>
+			<rotate z="1" angle="-1.044457761669288e-05"/>
+			<translate value="10.615932 13.909033 -15.699630"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -201,10 +199,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="22.365787408928792"/>
-			<rotate y="1" angle="-18.38906856658707"/>
-			<rotate z="1" angle="4.021015238262753e-07"/>
-			<translate value="9.052088 17.415548 -26.826530"/>
+			<rotate x="1" angle="37.68297668875533"/>
+			<rotate y="1" angle="29.429102888145124"/>
+			<rotate z="1" angle="-1.1266784690286385e-06"/>
+			<translate value="-7.477080 18.225842 -14.285710"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -217,10 +215,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="22.365787408928792"/>
-			<rotate y="1" angle="-18.38906856658707"/>
-			<rotate z="1" angle="4.021015238262753e-07"/>
-			<translate value="9.052088 17.415548 -26.826530"/>
+			<rotate x="1" angle="37.68297668875533"/>
+			<rotate y="1" angle="29.429102888145124"/>
+			<rotate z="1" angle="-1.1266784690286385e-06"/>
+			<translate value="-7.477080 18.225842 -14.285710"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -233,10 +231,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-5.473397704599106"/>
-			<rotate y="1" angle="32.79993443223523"/>
-			<rotate z="1" angle="-2.695906542656347e-06"/>
-			<translate value="-15.877124 3.138494 -25.602041"/>
+			<rotate x="1" angle="-11.326709313854538"/>
+			<rotate y="1" angle="-48.169659819610224"/>
+			<rotate z="1" angle="-1.587966349700207e-07"/>
+			<translate value="14.912207 2.071935 -13.578751"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -249,10 +247,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-5.473397704599106"/>
-			<rotate y="1" angle="32.79993443223523"/>
-			<rotate z="1" angle="-2.695906542656347e-06"/>
-			<translate value="-15.877124 3.138494 -25.602041"/>
+			<rotate x="1" angle="-11.326709313854538"/>
+			<rotate y="1" angle="-48.169659819610224"/>
+			<rotate z="1" angle="-1.587966349700207e-07"/>
+			<translate value="14.912207 2.071935 -13.578751"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -265,10 +263,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-18.961773098303468"/>
-			<rotate y="1" angle="-32.69195938674109"/>
-			<rotate z="1" angle="-4.10316631946346e-06"/>
-			<translate value="15.624384 -3.748118 -24.377550"/>
+			<rotate x="1" angle="-21.23176768593699"/>
+			<rotate y="1" angle="48.42230851700899"/>
+			<rotate z="1" angle="5.530773911122956e-06"/>
+			<translate value="-13.645618 -1.242825 -12.871792"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -281,10 +279,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-18.961773098303468"/>
-			<rotate y="1" angle="-32.69195938674109"/>
-			<rotate z="1" angle="-4.10316631946346e-06"/>
-			<translate value="15.624384 -3.748118 -24.377550"/>
+			<rotate x="1" angle="-21.23176768593699"/>
+			<rotate y="1" angle="48.42230851700899"/>
+			<rotate z="1" angle="5.530773911122956e-06"/>
+			<translate value="-13.645618 -1.242825 -12.871792"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -297,10 +295,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="39.28141853945674"/>
-			<rotate y="1" angle="12.702078893810619"/>
-			<rotate z="1" angle="-2.503055212545366e-06"/>
-			<translate value="-4.805954 24.993895 -23.153061"/>
+			<rotate x="1" angle="21.342333080673864"/>
+			<rotate y="1" angle="56.61358704897062"/>
+			<rotate z="1" angle="2.806789329960899e-06"/>
+			<translate value="-15.254355 13.278791 -10.750913"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -313,10 +311,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="39.28141853945674"/>
-			<rotate y="1" angle="12.702078893810619"/>
-			<rotate z="1" angle="-2.503055212545366e-06"/>
-			<translate value="-4.805954 24.993895 -23.153061"/>
+			<rotate x="1" angle="21.342333080673864"/>
+			<rotate y="1" angle="56.61358704897062"/>
+			<rotate z="1" angle="2.806789329960899e-06"/>
+			<translate value="-15.254355 13.278791 -10.750913"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -329,10 +327,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-38.39538932484976"/>
-			<rotate y="1" angle="24.303679416096074"/>
-			<rotate z="1" angle="-3.488238589793553e-06"/>
-			<translate value="-9.377031 -12.632536 -21.928572"/>
+			<rotate x="1" angle="15.248696142829655"/>
+			<rotate y="1" angle="-60.35587501597728"/>
+			<rotate z="1" angle="6.0532613888643084e-06"/>
+			<translate value="17.070311 11.260189 -10.043954"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -345,10 +343,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-38.39538932484976"/>
-			<rotate y="1" angle="24.303679416096074"/>
-			<rotate z="1" angle="-3.488238589793553e-06"/>
-			<translate value="-9.377031 -12.632536 -21.928572"/>
+			<rotate x="1" angle="15.248696142829655"/>
+			<rotate y="1" angle="-60.35587501597728"/>
+			<rotate z="1" angle="6.0532613888643084e-06"/>
+			<translate value="17.070311 11.260189 -10.043954"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -361,10 +359,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="14.689419763021501"/>
-			<rotate y="1" angle="-45.87502703209317"/>
-			<rotate z="1" angle="-5.391840667082891e-07"/>
-			<translate value="21.130814 13.607380 -20.704082"/>
+			<rotate x="1" angle="-50.91137971472338"/>
+			<rotate y="1" angle="45.51131262860083"/>
+			<rotate z="1" angle="-5.027301366822513e-06"/>
+			<translate value="-8.696145 -9.523431 -9.336994"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -377,10 +375,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="14.689419763021501"/>
-			<rotate y="1" angle="-45.87502703209317"/>
-			<rotate z="1" angle="-5.391840667082891e-07"/>
-			<translate value="21.130814 13.607380 -20.704082"/>
+			<rotate x="1" angle="-50.91137971472338"/>
+			<rotate y="1" angle="45.51131262860083"/>
+			<rotate z="1" angle="-5.027301366822513e-06"/>
+			<translate value="-8.696145 -9.523431 -9.336994"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -393,10 +391,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="17.18696551794858"/>
-			<rotate y="1" angle="48.530252826651875"/>
-			<rotate z="1" angle="9.894056882655731e-06"/>
-			<translate value="-21.175377 14.864723 -19.479591"/>
+			<rotate x="1" angle="-32.27943986653441"/>
+			<rotate y="1" angle="-63.9599404447504"/>
+			<rotate z="1" angle="9.489928378608742e-06"/>
+			<translate value="15.492588 -4.680975 -7.923075"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -409,10 +407,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="17.18696551794858"/>
-			<rotate y="1" angle="48.530252826651875"/>
-			<rotate z="1" angle="9.894056882655731e-06"/>
-			<translate value="-21.175377 14.864723 -19.479591"/>
+			<rotate x="1" angle="-32.27943986653441"/>
+			<rotate y="1" angle="-63.9599404447504"/>
+			<rotate z="1" angle="9.489928378608742e-06"/>
+			<translate value="15.492588 -4.680975 -7.923075"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -425,10 +423,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-46.89262959577669"/>
-			<rotate y="1" angle="-29.996169098701678"/>
-			<rotate z="1" angle="1.5183589028966548e-05"/>
-			<translate value="10.549332 -15.902227 -18.255102"/>
+			<rotate x="1" angle="-6.952589148147141"/>
+			<rotate y="1" angle="70.22706247996564"/>
+			<rotate z="1" angle="6.763149794658987e-06"/>
+			<translate value="-18.382418 3.579035 -7.216115"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -441,10 +439,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-46.89262959577669"/>
-			<rotate y="1" angle="-29.996169098701678"/>
-			<rotate z="1" angle="1.5183589028966548e-05"/>
-			<translate value="10.549332 -15.902227 -18.255102"/>
+			<rotate x="1" angle="-6.952589148147141"/>
+			<rotate y="1" angle="70.22706247996564"/>
+			<rotate z="1" angle="6.763149794658987e-06"/>
+			<translate value="-18.382418 3.579035 -7.216115"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -457,10 +455,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="52.77273945224067"/>
-			<rotate y="1" angle="-24.382407591564228"/>
-			<rotate z="1" angle="-2.407219654883256e-06"/>
-			<translate value="7.792498 29.887262 -17.030613"/>
+			<rotate x="1" angle="46.829286421414"/>
+			<rotate y="1" angle="-63.950104972345585"/>
+			<rotate z="1" angle="-2.925522031552552e-07"/>
+			<translate value="12.593408 20.586369 -6.509156"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -473,10 +471,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="52.77273945224067"/>
-			<rotate y="1" angle="-24.382407591564228"/>
-			<rotate z="1" angle="-2.407219654883256e-06"/>
-			<translate value="7.792498 29.887262 -17.030613"/>
+			<rotate x="1" angle="46.829286421414"/>
+			<rotate y="1" angle="-63.950104972345585"/>
+			<rotate z="1" angle="-2.925522031552552e-07"/>
+			<translate value="12.593408 20.586369 -6.509156"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -489,10 +487,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-25.546104486499733"/>
-			<rotate y="1" angle="55.56388259618804"/>
-			<rotate z="1" angle="1.725320130285456e-06"/>
-			<translate value="-22.023836 -6.937119 -15.806123"/>
+			<rotate x="1" angle="43.61952098323654"/>
+			<rotate y="1" angle="71.4955447220529"/>
+			<rotate z="1" angle="1.615036691793967e-05"/>
+			<translate value="-13.430177 19.797321 -5.095237"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -505,10 +503,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-25.546104486499733"/>
-			<rotate y="1" angle="55.56388259618804"/>
-			<rotate z="1" angle="1.725320130285456e-06"/>
-			<translate value="-22.023836 -6.937119 -15.806123"/>
+			<rotate x="1" angle="43.61952098323654"/>
+			<rotate y="1" angle="71.4955447220529"/>
+			<rotate z="1" angle="1.615036691793967e-05"/>
+			<translate value="-13.430177 19.797321 -5.095237"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -521,10 +519,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-10.929182912649686"/>
-			<rotate y="1" angle="-61.44131501849737"/>
-			<rotate z="1" angle="-1.0551444253990053e-05"/>
-			<translate value="26.171911 0.312133 -14.581633"/>
+			<rotate x="1" angle="-2.5969472054655682"/>
+			<rotate y="1" angle="-78.77783094341797"/>
+			<rotate z="1" angle="-3.0159036860024134e-05"/>
+			<translate value="19.897451 5.093798 -4.388277"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -537,10 +535,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-10.929182912649686"/>
-			<rotate y="1" angle="-61.44131501849737"/>
-			<rotate z="1" angle="-1.0551444253990053e-05"/>
-			<translate value="26.171911 0.312133 -14.581633"/>
+			<rotate x="1" angle="-2.5969472054655682"/>
+			<rotate y="1" angle="-78.77783094341797"/>
+			<rotate z="1" angle="-3.0159036860024134e-05"/>
+			<translate value="19.897451 5.093798 -4.388277"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -553,10 +551,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="47.65700631107657"/>
-			<rotate y="1" angle="50.48567792941858"/>
-			<rotate z="1" angle="-1.1361841851717974e-05"/>
-			<translate value="-15.289020 28.173777 -13.357142"/>
+			<rotate x="1" angle="-39.23864106468495"/>
+			<rotate y="1" angle="78.14861342650889"/>
+			<rotate z="1" angle="5.541449175744695e-06"/>
+			<translate value="-14.860165 -6.651032 -3.681318"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -569,10 +567,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="47.65700631107657"/>
-			<rotate y="1" angle="50.48567792941858"/>
-			<rotate z="1" angle="-1.1361841851717974e-05"/>
-			<translate value="-15.289020 28.173777 -13.357142"/>
+			<rotate x="1" angle="-39.23864106468495"/>
+			<rotate y="1" angle="78.14861342650889"/>
+			<rotate z="1" angle="5.541449175744695e-06"/>
+			<translate value="-14.860165 -6.651032 -3.681318"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -585,10 +583,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-66.08094640847115"/>
-			<rotate y="1" angle="16.987527409278794"/>
-			<rotate z="1" angle="1.468656837978186e-05"/>
-			<translate value="-3.253690 -21.423578 -12.132653"/>
+			<rotate x="1" angle="-54.849957073192456"/>
+			<rotate y="1" angle="-81.17047353043012"/>
+			<rotate z="1" angle="4.3341053262181534e-05"/>
+			<translate value="11.677949 -10.352938 -2.267399"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -601,10 +599,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-66.08094640847115"/>
-			<rotate y="1" angle="16.987527409278794"/>
-			<rotate z="1" angle="1.468656837978186e-05"/>
-			<translate value="-3.253690 -21.423578 -12.132653"/>
+			<rotate x="1" angle="-54.849957073192456"/>
+			<rotate y="1" angle="-81.17047353043012"/>
+			<rotate z="1" angle="4.3341053262181534e-05"/>
+			<translate value="11.677949 -10.352938 -2.267399"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -617,10 +615,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="37.18702299274237"/>
-			<rotate y="1" angle="-64.1836359702575"/>
-			<rotate z="1" angle="1.4971646432102302e-06"/>
-			<translate value="21.814648 24.132568 -10.908163"/>
+			<rotate x="1" angle="12.660355829491948"/>
+			<rotate y="1" angle="86.88482835611622"/>
+			<rotate z="1" angle="-8.202530385038538e-05"/>
+			<translate value="-19.184887 10.383453 -1.560439"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -633,10 +631,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="37.18702299274237"/>
-			<rotate y="1" angle="-64.1836359702575"/>
-			<rotate z="1" angle="1.4971646432102302e-06"/>
-			<translate value="21.814648 24.132568 -10.908163"/>
+			<rotate x="1" angle="12.660355829491948"/>
+			<rotate y="1" angle="86.88482835611622"/>
+			<rotate z="1" angle="-8.202530385038538e-05"/>
+			<translate value="-19.184887 10.383453 -1.560439"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -649,10 +647,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="2.254291342401426"/>
-			<rotate y="1" angle="72.16001967545759"/>
-			<rotate z="1" angle="1.8112537713799595e-05"/>
-			<translate value="-28.235376 7.180027 -9.683674"/>
+			<rotate x="1" angle="29.808697481457752"/>
+			<rotate y="1" angle="-88.83299638288979"/>
+			<rotate z="1" angle="-9.755183341443705e-05"/>
+			<translate value="17.650227 15.942064 -0.853480"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -665,10 +663,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="2.254291342401426"/>
-			<rotate y="1" angle="72.16001967545759"/>
-			<rotate z="1" angle="1.8112537713799595e-05"/>
-			<translate value="-28.235376 7.180027 -9.683674"/>
+			<rotate x="1" angle="29.808697481457752"/>
+			<rotate y="1" angle="-88.83299638288979"/>
+			<rotate z="1" angle="-9.755183341443705e-05"/>
+			<translate value="17.650227 15.942064 -0.853480"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -681,10 +679,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-42.85163013560869"/>
-			<rotate y="1" angle="-68.78383667815278"/>
-			<rotate z="1" angle="-4.0797771310024767e-07"/>
-			<translate value="20.802837 -14.403063 -8.459184"/>
+			<rotate x="1" angle="157.38416949715526"/>
+			<rotate y="1" angle="-84.50657014749612"/>
+			<rotate z="1" angle="179.99997768819966"/>
+			<translate value="18.677284 -1.691014 1.267399"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -697,10 +695,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-42.85163013560869"/>
-			<rotate y="1" angle="-68.78383667815278"/>
-			<rotate z="1" angle="-4.0797771310024767e-07"/>
-			<translate value="20.802837 -14.403063 -8.459184"/>
+			<rotate x="1" angle="157.38416949715526"/>
+			<rotate y="1" angle="-84.50657014749612"/>
+			<rotate z="1" angle="179.99997768819966"/>
+			<translate value="18.677284 -1.691014 1.267399"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -713,10 +711,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="76.76425702515236"/>
-			<rotate y="1" angle="11.338026937309248"/>
-			<rotate z="1" angle="-3.4844740343836978e-06"/>
-			<translate value="-1.050374 35.203087 -7.234694"/>
+			<rotate x="1" angle="160.37566941021578"/>
+			<rotate y="1" angle="82.4525478489657"/>
+			<rotate z="1" angle="-179.99995036744298"/>
+			<translate value="-18.375088 -0.717042 1.974358"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -729,10 +727,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="76.76425702515236"/>
-			<rotate y="1" angle="11.338026937309248"/>
-			<rotate z="1" angle="-3.4844740343836978e-06"/>
-			<translate value="-1.050374 35.203087 -7.234694"/>
+			<rotate x="1" angle="160.37566941021578"/>
+			<rotate y="1" angle="82.4525478489657"/>
+			<rotate z="1" angle="-179.99995036744298"/>
+			<translate value="-18.375088 -0.717042 1.974358"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -745,10 +743,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-49.00105435104627"/>
-			<rotate y="1" angle="73.74152948720653"/>
-			<rotate z="1" angle="8.837649436092723e-06"/>
-			<translate value="-18.594269 -16.641649 -6.010204"/>
+			<rotate x="1" angle="-148.239543406127"/>
+			<rotate y="1" angle="74.32224583081936"/>
+			<rotate z="1" angle="-179.9999640278213"/>
+			<translate value="-16.072485 16.527374 4.095237"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -761,10 +759,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-49.00105435104627"/>
-			<rotate y="1" angle="73.74152948720653"/>
-			<rotate z="1" angle="8.837649436092723e-06"/>
-			<translate value="-18.594269 -16.641649 -6.010204"/>
+			<rotate x="1" angle="-148.239543406127"/>
+			<rotate y="1" angle="74.32224583081936"/>
+			<rotate z="1" angle="-179.9999640278213"/>
+			<translate value="-16.072485 16.527374 4.095237"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -777,10 +775,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="7.583946648700556"/>
-			<rotate y="1" angle="-81.7138423996613"/>
-			<rotate z="1" angle="3.6545719307478635e-05"/>
-			<translate value="29.727129 9.959379 -4.785714"/>
+			<rotate x="1" angle="-170.60062652226495"/>
+			<rotate y="1" angle="-74.41202183727"/>
+			<rotate z="1" angle="-179.99997768819966"/>
+			<translate value="19.305733 9.266312 4.802197"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -793,10 +791,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="7.583946648700556"/>
-			<rotate y="1" angle="-81.7138423996613"/>
-			<rotate z="1" angle="3.6545719307478635e-05"/>
-			<translate value="29.727129 9.959379 -4.785714"/>
+			<rotate x="1" angle="-170.60062652226495"/>
+			<rotate y="1" angle="-74.41202183727"/>
+			<rotate z="1" angle="-179.99997768819966"/>
+			<translate value="19.305733 9.266312 4.802197"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -809,10 +807,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="34.6213717140538"/>
-			<rotate y="1" angle="82.87716704928705"/>
-			<rotate z="1" angle="-1.89023949331725e-05"/>
-			<translate value="-24.197210 23.044519 -3.561224"/>
+			<rotate x="1" angle="131.05384488826945"/>
+			<rotate y="1" angle="62.77545586907596"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-11.380233 -9.081850 5.509156"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -825,10 +823,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="34.6213717140538"/>
-			<rotate y="1" angle="82.87716704928705"/>
-			<rotate z="1" angle="-1.89023949331725e-05"/>
-			<translate value="-24.197210 23.044519 -3.561224"/>
+			<rotate x="1" angle="131.05384488826945"/>
+			<rotate y="1" angle="62.77545586907596"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-11.380233 -9.081850 5.509156"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -841,10 +839,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-76.85218888052711"/>
-			<rotate y="1" angle="-74.38563681650625"/>
-			<rotate z="1" angle="-1.2318841952267149e-06"/>
-			<translate value="6.872089 -23.213594 -2.336735"/>
+			<rotate x="1" angle="140.90754023779343"/>
+			<rotate y="1" angle="-61.431356602687494"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="13.932633 -6.611474 6.923075"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -857,10 +855,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-76.85218888052711"/>
-			<rotate y="1" angle="-74.38563681650625"/>
-			<rotate z="1" angle="-1.2318841952267149e-06"/>
-			<translate value="6.872089 -23.213594 -2.336735"/>
+			<rotate x="1" angle="140.90754023779343"/>
+			<rotate y="1" angle="-61.431356602687494"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="13.932633 -6.611474 6.923075"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -873,10 +871,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="60.165647417403264"/>
-			<rotate y="1" angle="-87.64899675064642"/>
-			<rotate z="1" angle="-0.0001031814555046164"/>
-			<translate value="15.212320 32.023987 -1.112245"/>
+			<rotate x="1" angle="-179.74465155664623"/>
+			<rotate y="1" angle="66.01449549803608"/>
+			<rotate z="1" angle="179.99997768819966"/>
+			<translate value="-17.972784 6.089141 7.630034"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -889,10 +887,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="60.165647417403264"/>
-			<rotate y="1" angle="-87.64899675064642"/>
-			<rotate z="1" angle="-0.0001031814555046164"/>
-			<translate value="15.212320 32.023987 -1.112245"/>
+			<rotate x="1" angle="-179.74465155664623"/>
+			<rotate y="1" angle="66.01449549803608"/>
+			<rotate z="1" angle="179.99997768819966"/>
+			<translate value="-17.972784 6.089141 7.630034"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -905,10 +903,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="162.30973309635326"/>
-			<rotate y="1" angle="88.77265166157272"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-28.274832 -3.116151 0.112245"/>
+			<rotate x="1" angle="-142.9335382701593"/>
+			<rotate y="1" angle="-56.37602282435382"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="13.588676 18.054817 8.336994"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -921,10 +919,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="162.30973309635326"/>
-			<rotate y="1" angle="88.77265166157272"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-28.274832 -3.116151 0.112245"/>
+			<rotate x="1" angle="-142.9335382701593"/>
+			<rotate y="1" angle="-56.37602282435382"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="13.588676 18.054817 8.336994"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -937,10 +935,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="155.25138828730542"/>
-			<rotate y="1" angle="-86.13442962295277"/>
-			<rotate z="1" angle="-179.9998547447946"/>
-			<translate value="27.482643 -6.559071 1.336735"/>
+			<rotate x="1" angle="-136.84505300249654"/>
+			<rotate y="1" angle="45.36466163693148"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-10.082233 19.679474 9.750913"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -953,10 +951,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="155.25138828730542"/>
-			<rotate y="1" angle="-86.13442962295277"/>
-			<rotate z="1" angle="-179.9998547447946"/>
-			<translate value="27.482643 -6.559071 1.336735"/>
+			<rotate x="1" angle="-136.84505300249654"/>
+			<rotate y="1" angle="45.36466163693148"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-10.082233 19.679474 9.750913"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -969,10 +967,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-113.41391830003856"/>
-			<rotate y="1" angle="75.12035343533535"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-11.221377 33.529743 2.561224"/>
+			<rotate x="1" angle="171.3888303524844"/>
+			<rotate y="1" angle="-56.34846984124199"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="16.760790 3.005433 10.457872"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -985,10 +983,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-113.41391830003856"/>
-			<rotate y="1" angle="75.12035343533535"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-11.221377 33.529743 2.561224"/>
+			<rotate x="1" angle="171.3888303524844"/>
+			<rotate y="1" angle="-56.34846984124199"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="16.760790 3.005433 10.457872"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1001,10 +999,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="111.35653554843648"/>
-			<rotate y="1" angle="66.90354024116164"/>
-			<rotate z="1" angle="179.99997768819966"/>
-			<translate value="-9.749426 -21.939966 3.785714"/>
+			<rotate x="1" angle="154.36510294060454"/>
+			<rotate y="1" angle="49.6903467968002"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-13.450001 -2.652697 11.164832"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1017,10 +1015,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="111.35653554843648"/>
-			<rotate y="1" angle="66.90354024116164"/>
-			<rotate z="1" angle="179.99997768819966"/>
-			<translate value="-9.749426 -21.939966 3.785714"/>
+			<rotate x="1" angle="154.36510294060454"/>
+			<rotate y="1" angle="49.6903467968002"/>
+			<rotate z="1" angle="180.00000500895632"/>
+			<translate value="-13.450001 -2.652697 11.164832"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1033,10 +1031,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-152.78597686487595"/>
-			<rotate y="1" angle="-78.08054376124053"/>
-			<rotate z="1" angle="-179.9999640278213"/>
-			<translate value="26.403898 19.719479 5.010204"/>
+			<rotate x="1" angle="-165.4132754325587"/>
+			<rotate y="1" angle="44.58231127883071"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-13.286164 11.036897 13.285710"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1049,10 +1047,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-152.78597686487595"/>
-			<rotate y="1" angle="-78.08054376124053"/>
-			<rotate z="1" angle="-179.9999640278213"/>
-			<translate value="26.403898 19.719479 5.010204"/>
+			<rotate x="1" angle="-165.4132754325587"/>
+			<rotate y="1" angle="44.58231127883071"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="-13.286164 11.036897 13.285710"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1065,10 +1063,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-165.61803084349734"/>
-			<rotate y="1" angle="76.59971093785758"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-27.968685 13.451534 6.234694"/>
+			<rotate x="1" angle="-164.93984770042843"/>
+			<rotate y="1" angle="-41.374318274742876"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="13.065470 11.196661 13.992670"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1081,10 +1079,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-165.61803084349734"/>
-			<rotate y="1" angle="76.59971093785758"/>
-			<rotate z="1" angle="-179.99997768819966"/>
-			<translate value="-27.968685 13.451534 6.234694"/>
+			<rotate x="1" angle="-164.93984770042843"/>
+			<rotate y="1" angle="-41.374318274742876"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate value="13.065470 11.196661 13.992670"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1097,10 +1095,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="125.80778149245776"/>
-			<rotate y="1" angle="-63.033964868782604"/>
-			<rotate z="1" angle="179.99997768819966"/>
-			<translate value="15.943692 -18.329535 7.459184"/>
+			<rotate x="1" angle="163.64981621150977"/>
+			<rotate y="1" angle="-30.038796309311728"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="9.906845 0.369854 16.113548"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1113,10 +1111,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="125.80778149245776"/>
-			<rotate y="1" angle="-63.033964868782604"/>
-			<rotate z="1" angle="179.99997768819966"/>
-			<translate value="15.943692 -18.329535 7.459184"/>
+			<rotate x="1" angle="163.64981621150977"/>
+			<rotate y="1" angle="-30.038796309311728"/>
+			<rotate z="1" angle="-180.00000500895632"/>
+			<translate value="9.906845 0.369854 16.113548"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1129,10 +1127,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-110.24240192121317"/>
-			<rotate y="1" angle="-27.777257495870682"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="5.137344 34.147118 8.683674"/>
+			<rotate x="1" angle="173.97419355711764"/>
+			<rotate y="1" angle="29.443951719400733"/>
+			<rotate z="1" angle="179.999991348578"/>
+			<translate value="-9.477116 3.900476 16.820509"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>
@@ -1145,554 +1143,10 @@
 		<float name="near_clip" value="0.100000"/>
 		<float name="far_clip" value="1000.000000"/>
 		<transform name="to_world">
-			<rotate x="1" angle="-110.24240192121317"/>
-			<rotate y="1" angle="-27.777257495870682"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="5.137344 34.147118 8.683674"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__67" name="elm__67">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="144.95136739627782"/>
-			<rotate y="1" angle="64.92615266511875"/>
+			<rotate x="1" angle="173.97419355711764"/>
+			<rotate y="1" angle="29.443951719400733"/>
 			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-21.945475 -11.228146 9.908163"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__68" name="elm__68">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="144.95136739627782"/>
-			<rotate y="1" angle="64.92615266511875"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-21.945475 -11.228146 9.908163"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__69" name="elm__69">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="175.63525458212973"/>
-			<rotate y="1" angle="-67.11498923748688"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="27.858456 3.716838 11.132653"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__70" name="elm__70">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="175.63525458212973"/>
-			<rotate y="1" angle="-67.11498923748688"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="27.858456 3.716838 11.132653"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__71" name="elm__71">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-138.45305711803599"/>
-			<rotate y="1" angle="55.06543929622261"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-18.106607 25.897003 12.357142"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__72" name="elm__72">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-138.45305711803599"/>
-			<rotate y="1" angle="55.06543929622261"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-18.106607 25.897003 12.357142"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__73" name="elm__73">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="117.99584825190406"/>
-			<rotate y="1" angle="-0.5257752090637406"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="0.429224 -20.489449 13.581633"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__74" name="elm__74">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="117.99584825190406"/>
-			<rotate y="1" angle="-0.5257752090637406"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="0.429224 -20.489449 13.581633"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__75" name="elm__75">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-140.4312984677251"/>
-			<rotate y="1" angle="-48.55792533807418"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="17.635712 25.110094 14.806123"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__76" name="elm__76">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-140.4312984677251"/>
-			<rotate y="1" angle="-48.55792533807418"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="17.635712 25.110094 14.806123"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__77" name="elm__77">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="175.58324952178924"/>
-			<rotate y="1" angle="56.450191848550986"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-24.627922 3.689686 16.030613"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__78" name="elm__78">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="175.58324952178924"/>
-			<rotate y="1" angle="56.450191848550986"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-24.627922 3.689686 16.030613"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__79" name="elm__79">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="150.836026158729"/>
-			<rotate y="1" angle="-47.3314043631529"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="19.562189 -8.619315 17.255102"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__80" name="elm__80">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="150.836026158729"/>
-			<rotate y="1" angle="-47.3314043631529"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="19.562189 -8.619315 17.255102"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__81" name="elm__81">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-130.36537548031052"/>
-			<rotate y="1" angle="12.35796371814162"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-3.858336 28.857895 18.479591"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__82" name="elm__82">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-130.36537548031052"/>
-			<rotate y="1" angle="12.35796371814162"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-3.858336 28.857895 18.479591"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__83" name="elm__83">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="141.27046916953122"/>
-			<rotate y="1" angle="30.31055246091361"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="-11.511303 -12.769342 19.704082"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__84" name="elm__84">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="141.27046916953122"/>
-			<rotate y="1" angle="30.31055246091361"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="-11.511303 -12.769342 19.704082"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__85" name="elm__85">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-169.34003314866905"/>
-			<rotate y="1" angle="-43.3787773055611"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="20.548962 11.549401 20.928572"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__86" name="elm__86">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-169.34003314866905"/>
-			<rotate y="1" angle="-43.3787773055611"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="20.548962 11.549401 20.928572"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__87" name="elm__87">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-162.5825035310469"/>
-			<rotate y="1" angle="37.68459885868321"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-17.198545 14.979964 22.153061"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__88" name="elm__88">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-162.5825035310469"/>
-			<rotate y="1" angle="37.68459885868321"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="-17.198545 14.979964 22.153061"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__89" name="elm__89">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="145.4135389766559"/>
-			<rotate y="1" angle="-14.810623177390669"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="6.613458 -11.029469 23.377550"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__90" name="elm__90">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="145.4135389766559"/>
-			<rotate y="1" angle="-14.810623177390669"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="6.613458 -11.029469 23.377550"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__91" name="elm__91">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-149.52299059268574"/>
-			<rotate y="1" angle="-13.861331896917386"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="6.494153 21.215782 24.602041"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__92" name="elm__92">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-149.52299059268574"/>
-			<rotate y="1" angle="-13.861331896917386"/>
-			<rotate z="1" angle="-179.999991348578"/>
-			<translate value="6.494153 21.215782 24.602041"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__93" name="elm__93">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="168.15039178017125"/>
-			<rotate y="1" angle="26.277716784351064"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-12.698636 -0.160296 25.826530"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__94" name="elm__94">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="168.15039178017125"/>
-			<rotate y="1" angle="26.277716784351064"/>
-			<rotate z="1" angle="179.999991348578"/>
-			<translate value="-12.698636 -0.160296 25.826530"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__95" name="elm__95">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="173.3045344901329"/>
-			<rotate y="1" angle="-22.38079333453531"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="11.644910 2.502243 27.051020"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__96" name="elm__96">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="173.3045344901329"/>
-			<rotate y="1" angle="-22.38079333453531"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="11.644910 2.502243 27.051020"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__97" name="elm__97">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-165.87884844714344"/>
-			<rotate y="1" angle="8.478434198820949"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="-3.989455 13.319193 28.275511"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__98" name="elm__98">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="-165.87884844714344"/>
-			<rotate y="1" angle="8.478434198820949"/>
-			<rotate z="1" angle="-180.00000500895632"/>
-			<translate value="-3.989455 13.319193 28.275511"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__99" name="elm__99">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="179.999991348578"/>
-			<rotate y="1" angle="5.008956130975331e-06"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="0.300000 6.000000 29.500000"/>
-		</transform>
-        <ref id="sampler"/>
-        <ref id="film"/>
-	</sensor>
-	<sensor type="perspective" id="elm__100" name="elm__100">
-		<string name="fov_axis" value="x"/>
-		<float name="fov" value="39.597755"/>
-		<float name="principal_point_offset_x" value="0.000000"/>
-		<float name="principal_point_offset_y" value="-0.000000"/>
-		<float name="near_clip" value="0.100000"/>
-		<float name="far_clip" value="1000.000000"/>
-		<transform name="to_world">
-			<rotate x="1" angle="179.999991348578"/>
-			<rotate y="1" angle="5.008956130975331e-06"/>
-			<rotate z="1" angle="180.00000500895632"/>
-			<translate value="0.300000 6.000000 29.500000"/>
+			<translate value="-9.477116 3.900476 16.820509"/>
 		</transform>
         <ref id="sampler"/>
         <ref id="film"/>

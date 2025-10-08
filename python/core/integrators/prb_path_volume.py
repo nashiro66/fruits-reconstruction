@@ -297,21 +297,28 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
       # ---- Update loop variables based on current interaction -----
 
       L = (L + Le + Lr_dir) if primal else (L - Le - Lr_dir)
-      # L0 = mi.Color3f(0.0, 0.0, 0.0)
-      # L1 = mi.Color3f(1.0, 0.0, 0.0)
-      # L2 = mi.Color3f(0.0, 1.0, 0.0)
-      # Lelse = mi.Color3f(0.0, 0.0, 1.0)
+      # n = mi.Float(sss_bounces)
+      # is_first_ray = (depth == mi.UInt32(1))
+      # Lcolor = dr.select(n > 0.0, dr.power(sigma_s, n), mi.Color3f(0,0,0)) * dr.exp(-sigma_t)
+      # L = L + dr.select(is_first_ray, Lcolor, mi.Color3f(0,0,0))
 
-      # mask_d1 = (depth == 1)
-      # mask0 = mask_d1 & (sss_bounces == mi.UInt32(0))
-      # mask1 = mask_d1 & (sss_bounces < mi.UInt32(2))
-      # mask2 = mask_d1 & (sss_bounces < mi.UInt32(5))
-      # maskE = mask_d1 & (sss_bounces >= mi.UInt32(10))
+      # t_cm = dr.clamp(mi.Float(sss_bounces) / 4.0, 0.0, 1.0)  # 4.0 は Float、sss_bounces も Float化
 
-      # L = dr.select(mask0, L0, 
-      #     dr.select(mask1, L1, 
-      #     dr.select(mask2, L2, 
-      #     dr.select(maskE, Lelse, L))))
+      # # ---- 青→シアン→緑→黄→赤 の分割補間 ----
+      # Lcolor = dr.select(t_cm < 0.25,
+      #     mi.Color3f(0.0, 4.0 * t_cm, 1.0),
+      #     dr.select(t_cm < 0.5,
+      #         mi.Color3f(0.0, 1.0, 1.0 - 4.0 * (t_cm - 0.25)),
+      #         dr.select(t_cm < 0.75,
+      #             mi.Color3f(4.0 * (t_cm - 0.5), 1.0, 0.0),
+      #             mi.Color3f(1.0, 1.0 - 4.0 * (t_cm - 0.75), 0.0)
+      #         )
+      #     )
+      # )
+
+      # Lcolor = dr.select(sss_bounces == mi.UInt32(0), mi.Color3f(0.0), Lcolor)
+      # is_first_ray = (depth == mi.UInt32(1))
+      # L = L + dr.select(is_first_ray, Lcolor, mi.Color3f(0.0))
 
       # Update throughput matrix
       update_weight_matrix(

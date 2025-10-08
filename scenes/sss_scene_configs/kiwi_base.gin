@@ -17,10 +17,10 @@ SceneConfig:
     sss_optimization = True
     sss_diffuse_switch = %DiffuseSwitch.FORCED_EXIT
     sss_volume_albedo_remapping = True
-    sss_extinction_resolution = 1
-    sss_hg_resolution = 512
+    sss_extinction_resolution = 512
+    sss_hg_resolution = 256
     sss_uniform_extinction = False
-    sss_uniform_hg = True
+    sss_uniform_hg = False
 
     optimized_sensors_indices = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65]
 
@@ -28,14 +28,14 @@ SceneConfig:
     base_learning_rate = 0.0005
     loss = @losses.l1_norm
 
-    n_iter = 4096
+    n_iter = 1024
     mip_bias = -1.0
 
     reference_scaling = 1.0
     reference_spp = 1024 
     rerender_spp = 8192
 
-    optimized_path_depth = 100
+    optimized_path_depth = 3
     samples_per_pixel_primal = 512
     samples_per_pixel_gradient = 512
     
@@ -67,7 +67,7 @@ SceneConfig:
             'base_color' : [0.5,0.5,0.5],
             'single_scattering_albedo' : [0.5,0.5,0.5],
             'extinction_coefficient' : [0.01,0.01,0.01],
-            'hg_coefficient' : [0.1,0.1,0.1]
+            'hg_coefficient' : [0.9,0.9,0.9]
         }
     }
     

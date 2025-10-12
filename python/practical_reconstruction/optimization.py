@@ -883,7 +883,7 @@ def optimize_deng_comparison(
                   scene,
                   integrator=integrator,
                   sensor=sensor,
-                  spp=32,
+                  spp=scene_config.samples_per_pixel_primal,
                   params=params,
                   seed=seed,
               )

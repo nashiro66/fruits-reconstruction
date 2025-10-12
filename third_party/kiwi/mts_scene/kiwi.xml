@@ -6,6 +6,14 @@
 		</transform>
 		<emitter type="area" name="emitter">
 			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
+			<!-- <texture type="bitmap" name="radiance">
+				<string name="filename" value="textures/gogh.jpg"/>
+				<boolean name="raw" value="true"/>
+				<string name="filter_type" value="bilinear"/>
+				<transform name="to_uv">
+					<scale x="1" y="1"/>
+				</transform>
+			</texture> -->
 		</emitter>
 	</shape>
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
@@ -13,7 +21,7 @@
         <bsdf type="sss_bsdf" name="bsdf">
 			<bsdf type="principled" name="nested_bsdf">
                 <float name="specular" value="0.5" />
-                <rgb name="base_color" value="0.5,0.5,0.5" />
+                <rgb name="base_color" value="1.0,1.0,1.0" />
                 <rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
                 <float name="spec_trans" value="1.000000" />
                 <float name="metallic" value="0.000000" />
@@ -39,10 +47,17 @@
             <texture type="mipmap_flat" name="single_scattering_albedo">
                 <texture type="bitmap" name="nested_bitmap">
                     <string name="format" value="variant" />
-                    <string name="filename" value="textures/albedo.exr" />
+                    <string name="filename" value="textures/albedo_modified.png" />
                 </texture>
             </texture>
-
+			<!-- <spectrum type="srgb" name="extinction_coefficient">
+				<rgb name="color" value="2.0,2.0,2.0" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum> -->
+			<!-- <spectrum type="srgb" name="hg_coefficient">
+				<rgb name="color" value="0.9,0.9,0.9" />	
+				<boolean name="unbounded" value="true" />
+			</spectrum> -->
         </bsdf>
         <texture type="mipmap_flat" name="normalmap">
 			<texture type="bitmap" name="nested_bitmap">

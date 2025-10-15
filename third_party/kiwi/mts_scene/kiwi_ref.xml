@@ -5,7 +5,7 @@
 			<matrix value="-6.500000 0.000000 0.000000 0.300000 0.000001 9.396926 0.171010 -0.840401 -0.000001 3.420202 -0.469846 18.293852 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 		<emitter type="area" name="emitter">
-			<rgb value="1.000000 1.000000 1.000000" name="radiance"/>
+			<rgb value="10.000000 10.000000 10.000000" name="radiance"/>
 			<texture type="bitmap" name="radiance">
 				<string name="filename" value="textures/gogh.jpg"/>
 				<boolean name="raw" value="true"/>
@@ -22,6 +22,7 @@
 			<matrix value="-0.980000 0.000000 -0.198998 -0.694987 -0.000000 -1.000000 -0.000000 6.000000 -0.198998 -0.000000 0.980000 4.400000 0.000000 0.000000 0.000000 1.000000"/>
 		</transform>
 	</emitter>
+
     <bsdf type="normalmap_flip" id="mat-kiwi" name="mat-kiwi">
         <boolean name="shadow_terminator" value="False"/>
 		<bsdf type="diffuse_switch" name="sss_bsdf">
@@ -31,28 +32,13 @@
 					<float name="specular" value="0.5" />
 					<rgb name="base_color" value="1.0,1.0,1.0" />
 					<rgb value="0.000000 0.000000 0.000000" name="spec_tint" />
-					<float name="spec_trans" value="1.000000" />
+					<float name="spec_trans" value="1.0" />
 					<float name="metallic" value="0.000000" />
 					<float name="anisotropic" value="0.000000" />
-					<texture type="mipmap_flat" name="roughness">
-						<texture type="bitmap" name="nested_bitmap">
-							<string name="format" value="variant" />
-							<string name="filename" value="textures/roughness.exr" />
-							<boolean name="raw" value="true" />
-						</texture>
-						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
-					</texture>
+					<float name="roughness" value="0.0000" />
 					<float name="sheen" value="0.000000" />
-					<rgb value="1.000000 1.000000 1.000000" name="sheen_tint" />
-					<float name="clearcoat" value="0.5" />
-					<texture type="mipmap_flat" name="clearcoat_gloss">
-						<texture type="bitmap" name="nested_bitmap">
-							<string name="format" value="variant" />
-							<string name="filename" value="textures/clearcoat.exr" />
-							<boolean name="raw" value="true" />
-						</texture>
-						<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
-					</texture>
+					<rgb value="0.0,0.0,0.0" name="sheen_tint" />
+					<float name="clearcoat" value="0.0" />
 				</bsdf>
 				<texture type="mipmap_flat" name="single_scattering_albedo">
 					<texture type="bitmap" name="nested_bitmap">
@@ -63,7 +49,7 @@
 					<float name="mip_bias" value="-1.0" /><integer name="min_resolution" value="16" />
 				</texture>
 				<spectrum type="srgb" name="extinction_coefficient">
-					<rgb name="color" value="0.5,0.5,0.5" />	
+					<rgb name="color" value="2.0,2.0,2.0" />
 					<boolean name="unbounded" value="true" />
 				</spectrum>
 

@@ -154,7 +154,7 @@ class SSSMedium:
       sample: mi.Float,
       channel: mi.UInt32,
       active: mi.Bool,
-      medium: mi.Spectrum,
+      mei: mi.Spectrum,
       dwivedi_stretching: mi.Float = 1.0,
   ):
     """Samples a SSS interaction along the ray."""
@@ -166,7 +166,6 @@ class SSSMedium:
     # Dwivedi guiding implies a simple stretching of the sampled sigma_t
     # Careful to make a copy to get the channel value only!
     
-    mei = medium.sample_interaction(ray, sample, channel, active)
     sampled_sigma_t = index_spectrum(
         mi.Spectrum(mei.sigma_t * dwivedi_stretching), channel
     )
@@ -177,10 +176,8 @@ class SSSMedium:
     sss_its.p = ray(sampled_t)
     sss_its.sigma_t = mei.sigma_t
     sss_its.sigma_s = mei.sigma_s
-    phase = mei.medium.phase_function()
-    
-    sss_its.g = mei.g
-
+    self.phase = mei.medium.phase_function()
+    self.mei = mei
     return sss_its
 
   def transmittance_eval_pdf(
@@ -479,12 +476,14 @@ def sample_spectral_sss_scattering(
         sss_medium.diffusion_length,
     )
 
+    sample = sampler.next_1d(active_medium)
+    mei = medium.sample_interaction(ray, sample, channel, active_medium)
     sss_its = sss_medium.sample_interaction(
         ray,
-        sampler.next_1d(active_medium),
+        sample,
         channel,
         active_medium,
-        medium,
+        mei,
         dr.select(dwivedi_guided, dwivedi_stretching, 1.0),
     )
 
@@ -534,58 +533,65 @@ def sample_spectral_sss_scattering(
     )
 
     # Sample phase function
-    phase_wo, phase_weight, phase_pdf = sample_spectral_hg(
-        sss_its.g, ray, sampler.next_2d(active_medium), channel
-    )
-    phase_eval = phase_weight * phase_pdf
+    with dr.suspend_grad():
+        phase_wo, phase_weight, phase_pdf = phase.sample(phase_ctx, mei,
+                                                    sampler.next_1d(active_medium),
+                                                    sampler.next_2d(active_medium),
+                                                    active_medium)
+    phase_eval, _ = phase.eval_pdf(phase_ctx, mei, phase_wo, active_medium)
+
+    # phase_wo, phase_weight, phase_pdf = sample_spectral_hg(
+    #     sss_its.g, ray, sampler.next_2d(active_medium), channel
+    # )
+    #phase_eval = phase_weight * phase_pdf
 
     # Probability of the dwivedi given the sampled phase function direction
-    phase_dwivedi_pdf = dr.inv_two_pi * dwivedi_utils.pdf_dwivedi_directional(
-        dr.dot(phase_wo, sss_medium.n), sss_medium.diffusion_length
-    )
+    # phase_dwivedi_pdf = dr.inv_two_pi * dwivedi_utils.pdf_dwivedi_directional(
+    #     dr.dot(phase_wo, sss_medium.n), sss_medium.diffusion_length
+    # )
 
     # Sample dwivedi phase function cos_theta
-    dwivedi_cos_theta = dwivedi_utils.sample_dwivedi_directional(
-        sss_medium.diffusion_length, sampler.next_1d(dwivedi_guided)
-    )
-    dwivedi_wo = direction_from_cosine(
-        sss_medium.n, dwivedi_cos_theta, sampler.next_1d(dwivedi_guided)
-    )
-    phase_wo[dwivedi_guided] = dwivedi_wo
+    # dwivedi_cos_theta = dwivedi_utils.sample_dwivedi_directional(
+    #     sss_medium.diffusion_length, sampler.next_1d(dwivedi_guided)
+    # )
+    # dwivedi_wo = direction_from_cosine(
+    #     sss_medium.n, dwivedi_cos_theta, sampler.next_1d(dwivedi_guided)
+    # )
+    # phase_wo[dwivedi_guided] = dwivedi_wo
 
     # phase_pdf contains the probability of the sampled technique,
     # either phase function or dwivedi
-    phase_pdf[dwivedi_guided] = (
-        dr.inv_two_pi
-        * dwivedi_utils.pdf_dwivedi_directional(
-            dwivedi_cos_theta, sss_medium.diffusion_length
-        )
-    )
+    # phase_pdf[dwivedi_guided] = (
+    #     dr.inv_two_pi
+    #     * dwivedi_utils.pdf_dwivedi_directional(
+    #         dwivedi_cos_theta, sss_medium.diffusion_length
+    #     )
+    # )
     # Probability of the phase function for the sampled dwivedi direction
-    dwivedi_phase_pdf = eval_spectral_hg(sss_its.g, dwivedi_wo, ray)
-    phase_eval[dwivedi_guided] = eval_spectral_hg(sss_its.g, dwivedi_wo, ray)
+    #dwivedi_phase_pdf = eval_spectral_hg(sss_its.g, dwivedi_wo, ray)
+    #phase_eval[dwivedi_guided] = eval_spectral_hg(sss_its.g, dwivedi_wo, ray)
 
     # Scale the phase function pdfs to account for the guiding fraction
-    phase_pdf *= dr.select(
-        dwivedi_guided, guiding_fraction, (1.0 - guiding_fraction)
-    )
-    dwivedi_phase_pdf *= 1.0 - guiding_fraction
-    phase_dwivedi_pdf *= guiding_fraction
+    # phase_pdf *= dr.select(
+    #     dwivedi_guided, guiding_fraction, (1.0 - guiding_fraction)
+    # )
+    # dwivedi_phase_pdf *= 1.0 - guiding_fraction
+    # phase_dwivedi_pdf *= guiding_fraction
 
     # Compute the associated mis weight
-    mis_weight = balance_mis_weight(
-        phase_pdf,
-        phase_dwivedi_pdf,
-    )
-    mis_weight[dwivedi_guided] = balance_mis_weight(
-        phase_pdf,
-        dwivedi_phase_pdf,
-    )
-
+    # mis_weight = balance_mis_weight(
+    #     phase_pdf,
+    #     phase_dwivedi_pdf,
+    # )
+    # mis_weight[dwivedi_guided] = balance_mis_weight(
+    #     phase_pdf,
+    #     dwivedi_phase_pdf,
+    # )
+    # p_over_f = 1/phase_weight
     update_weight_matrix(
         p_over_f,
         phase_pdf,
-        mis_weight * phase_eval,
+        phase_eval,
         active_medium,
     )
 

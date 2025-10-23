@@ -85,8 +85,7 @@
             <transform name="to_world">
                 <!-- <scale x="2.4" y="2.24" z="2.8"/>
                 <translate x="-1.23" y="-1.12" z="-1.52" /> -->
-                <scale x="5.0" y="5.0" z="5.0"/>
-                <rotate y="1" angle="45" />
+                <scale x="2.0" y="2.0" z="2.0"/>
                 <translate y="6.0" x="0.3" z="-0.5" />
             </transform>
             <boolean name="accel" value="false"/>
@@ -97,8 +96,7 @@
             <transform name="to_world">
 			    <!-- <scale x="2.24" y="2.24" z="4.8"/>
                 <translate y="-1.27" x="-1.275" z="-2.555" /> -->
-                <scale x="5.0" y="5.0" z="5.0"/>
-                <rotate y="1" angle="45" />
+                <scale x="2.0" y="2.0" z="2.0"/>
                 <translate y="6.0" x="0.3" z="-0.5" />
             </transform>
             <boolean name="accel" value="false"/>

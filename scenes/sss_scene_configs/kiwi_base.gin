@@ -47,14 +47,14 @@ SceneConfig:
         'mat-kiwi': {
             'base_color': 0.0,
             'metallic': 0.0,
-            'roughness': 0.0,
+            'roughness': 1.0,
             'specular': 0.0,
             'clearcoat': 0.0,
-            'clearcoat_gloss': 0.0,
-            'normalmap': 0.0,
+            'clearcoat_gloss': 0.1,
+            'normalmap': 0.01,
             'single_scattering_albedo': 10.0,
             'extinction_coefficient': 100.0,
-            'hg_coefficient': 0.0,
+            'hg_coefficient': 1.0,
         }
     }
     
@@ -65,7 +65,11 @@ SceneConfig:
     per_material_initial_values = {
         'mat-kiwi': {
             'single_scattering_albedo' : [0.5,0.5,0.5],
-            'extinction_coefficient' : [0.5,0.5,0.5]
+            'extinction_coefficient' : [0.5,0.5,0.5],
+            'roughness' : 0.5,
+            'clearcoat': 0.5,
+            'clearcoat_gloss': 0.5,
+            'hg_coefficient': 0.1
         }
     }
     

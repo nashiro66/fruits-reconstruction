@@ -27,7 +27,6 @@ if not mi.variant():
   mi.set_variant("cuda_ad_rgb")
 
 SSSMedium = volume_utils.SSSMedium
-SSSInteraction = volume_utils.SSSInteraction
 mis_weight_from_matrix = volume_utils.mis_weight_from_matrix
 update_weight_matrix = volume_utils.update_weight_matrix
 
@@ -130,7 +129,7 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
       (
           sss_bounces,
           sss_distance,
-          δg,
+          δg
       ) = volume_utils.sample_spectral_sss_scattering(
           mode=mode,
           scene=scene,

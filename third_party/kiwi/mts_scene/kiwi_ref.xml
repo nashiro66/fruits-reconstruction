@@ -78,9 +78,6 @@
 	
     <medium id="medium1" type="heterogeneous">
         <float name="scale" value="1"/>
-		<phase type="hg">
-			<float name="g" value="0.0"/>
-		</phase>
         <volume name="sigma_t" type="gridvolume">
             <transform name="to_world">
                 <!-- <scale x="2.4" y="2.24" z="2.8"/>

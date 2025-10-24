@@ -27,7 +27,6 @@ if not mi.variant():
   mi.set_variant("llvm_ad_rgb")
 
 SSSMedium = volume_utils.SSSMedium
-SSSInteraction = volume_utils.SSSInteraction
 mis_weight_from_matrix = volume_utils.mis_weight_from_matrix
 update_weight_matrix = volume_utils.update_weight_matrix
 

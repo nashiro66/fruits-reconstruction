@@ -43,45 +43,19 @@ def eval_spectral_hg(g, phase_wo, ray):
   return eval_hg(g, dr.dot(phase_wo, -ray.d))
 
 
-class SSSInteraction:
-  """SSS volume interaction."""
-
-  DRJIT_STRUCT = {
-      "t": mi.Float,
-      "p": mi.Point3f,
-      "wi": mi.Vector3f,
-      "time": mi.Float,
-      "wavelengths": mi.Color0f,
-      "sigma_t": mi.Spectrum,
-      "sigma_s": mi.Spectrum,
-      "g": mi.Spectrum,
-  }
-
-  def __init__(self):
-    self.t = dr.inf
-    self.sigma_s = mi.Spectrum(0.0)
-
-  def is_valid(self):
-    return self.t != dr.inf
-
-
 class SSSMedium:
   """Context for SSS volume events."""
 
   DRJIT_STRUCT = {
-      "albedo": mi.Spectrum,
-      "sigma_t": mi.Spectrum,
       "g": mi.Spectrum,
       "n": mi.Normal3f,
-      "diffusion_length": mi.Float,
       "bsdf_has_sss": mi.Bool,
   }
 
   def __init__(self):
     self.bsdf_has_sss = mi.Bool(False)
-    self.albedo = mi.Spectrum(0.0)
     self.n = mi.Normal3f(0.0)
-    self.diffusion_length = mi.Float(0.0)
+    self.g = mi.Spectrum(0.0)
 
   def populate(self, bsdf, si: mi.SurfaceInteraction3f, active: mi.Bool):
     """Populates the SSSMedium from the BSDF and surface interaction."""
@@ -93,10 +67,8 @@ class SSSMedium:
     )
 
     self.bsdf_has_sss[active] = bsdf_has_sss
-    self.diffusion_length[active] = dwivedi_utils.diffusion_length(
-        dr.max(self.albedo)
-    )
     self.n[active] = si.n
+    self.g[active] = bsdf.eval_attribute("hg_coefficient", si, bsdf_has_sss)
 
   # Both considers entries but also "re-entries" where a scattered ray stays
   # inside the volume. Then new parameters are set
@@ -168,6 +140,7 @@ def direction_from_cosine(
 def balance_mis_weight(pdf_a, pdf_b, weight_a = 1.0, weight_b = 1.0):
   w = weight_a * pdf_a / (weight_a * pdf_a + weight_b * pdf_b)
   return dr.detach(dr.select(dr.isfinite(w), w, 0))
+
 
 def sample_spectral_hg(
     g: mi.Spectrum, ray: mi.Ray3f, sample2: mi.Vector2f, channel: mi.UInt32
@@ -332,10 +305,12 @@ def sample_spectral_sss_scattering(
     sss_distance[active_boundary_hit] += si.t
 
     # Sample phase function
+    # Since Mitsuba only supports a float value for g, I will use the g defined inside the BSDF
     phase_wo, phase_weight, phase_pdf = sample_spectral_hg(
-          0.6, ray, sampler.next_2d(active_medium), channel
+          g, ray, sampler.next_2d(active_medium), channel
     )
     phase_eval = phase_weight * phase_pdf
+
     update_weight_matrix(
         p_over_f,
         phase_pdf,

@@ -98,6 +98,7 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
 
     depth = mi.UInt32(0)
     sss_medium = dr.zeros(SSSMedium)
+    medium = dr.zeros(mi.MediumPtr)
 
     active_medium = mi.Bool(False)
     active_surface = mi.Bool(active)
@@ -146,6 +147,7 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
           channel=channel,
           medium_shape_bsdf=prev_bsdf,
           medium_shape_si=prev_si,
+          medium=medium,
           dwivedi_guiding=self.dwivedi_guiding,
       )
 
@@ -296,29 +298,29 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
 
       # ---- Update loop variables based on current interaction -----
 
-      L = (L + Le + Lr_dir) if primal else (L - Le - Lr_dir)
+      #L = (L + Le + Lr_dir) if primal else (L - Le - Lr_dir)
       # n = mi.Float(sss_bounces)
       # is_first_ray = (depth == mi.UInt32(1))
       # Lcolor = dr.select(n > 0.0, dr.power(sigma_s, n), mi.Color3f(0,0,0)) * dr.exp(-sigma_t)
       # L = L + dr.select(is_first_ray, Lcolor, mi.Color3f(0,0,0))
 
-      # t_cm = dr.clamp(mi.Float(sss_bounces) / 8.0, 0.0, 1.0)  # 4.0 は Float、sss_bounces も Float化
+      t_cm = dr.clamp(mi.Float(sss_bounces) / 8.0, 0.0, 1.0)  # 4.0 は Float、sss_bounces も Float化
 
-      # # ---- 青→シアン→緑→黄→赤 の分割補間 ----
-      # Lcolor = dr.select(t_cm < 0.25,
-      #     mi.Color3f(0.0, 4.0 * t_cm, 1.0),
-      #     dr.select(t_cm < 0.5,
-      #         mi.Color3f(0.0, 1.0, 1.0 - 4.0 * (t_cm - 0.25)),
-      #         dr.select(t_cm < 0.75,
-      #             mi.Color3f(4.0 * (t_cm - 0.5), 1.0, 0.0),
-      #             mi.Color3f(1.0, 1.0 - 4.0 * (t_cm - 0.75), 0.0)
-      #         )
-      #     )
-      # )
+      # ---- 青→シアン→緑→黄→赤 の分割補間 ----
+      Lcolor = dr.select(t_cm < 0.25,
+          mi.Color3f(0.0, 4.0 * t_cm, 1.0),
+          dr.select(t_cm < 0.5,
+              mi.Color3f(0.0, 1.0, 1.0 - 4.0 * (t_cm - 0.25)),
+              dr.select(t_cm < 0.75,
+                  mi.Color3f(4.0 * (t_cm - 0.5), 1.0, 0.0),
+                  mi.Color3f(1.0, 1.0 - 4.0 * (t_cm - 0.75), 0.0)
+              )
+          )
+      )
 
-      # Lcolor = dr.select(sss_bounces == mi.UInt32(0), mi.Color3f(0.0), Lcolor)
-      # is_first_ray = (depth == mi.UInt32(1))
-      # L = L + dr.select(is_first_ray, Lcolor, mi.Color3f(0.0))
+      Lcolor = dr.select(sss_bounces == mi.UInt32(0), mi.Color3f(0.0), Lcolor)
+      is_first_ray = (depth == mi.UInt32(1))
+      L = L + dr.select(is_first_ray, Lcolor, mi.Color3f(0.0))
 
       # Update throughput matrix
       update_weight_matrix(
@@ -393,6 +395,8 @@ class PrbPathVolumeIntegrator(mi.ad.integrators.common.RBIntegrator):
       # Fill in SSS medium for next interaction
       sss_medium.populate(bsdf, si, active_surface)
       sss_entry = sss_medium.is_sss_entry(ray, si)
+      has_medium_trans = active_surface & si.is_medium_transition()
+      medium[active_surface & has_medium_trans] = si.target_medium(ray.d)
       active_medium = active_surface & sss_entry
       active_surface &= ~active_medium
       # Don't trace another bounce in the medium if we won't hit a light in the

@@ -103,44 +103,20 @@ class SSSMedium:
   def is_sss_entry(self, ray, si):
     return self.bsdf_has_sss & (dr.dot(ray.d, si.n) < 0)
 
-  def sample_interaction(
-      self,
-      ray: mi.Ray3f,
-      sample: mi.Float,
-      channel: mi.UInt32,
-      active: mi.Bool,
-      mei: mi.Spectrum,
-  ):
-    """Samples a SSS interaction along the ray."""
-    sss_its = dr.zeros(SSSInteraction)
-    sss_its.wi = -ray.d
-    sss_its.time = ray.time
-    sss_its.wavelengths = ray.wavelengths
-
-    # Dwivedi guiding implies a simple stretching of the sampled sigma_t
-    # Careful to make a copy to get the channel value only!
-    
-    sss_its.t = mei.t
-    sss_its.p = ray(mei.t)
-    sss_its.sigma_t = mei.sigma_t
-    sss_its.sigma_s = mei.sigma_s
-    self.phase = mei.medium.phase_function()
-    return sss_its
-
   def transmittance_eval_pdf(
       self,
-      sss_its: SSSInteraction,
+      mei: mi.MediumInteraction3f,
       si: mi.SurfaceInteraction3f,
       active_medium: mi.Bool,
       active_boundary_hit: mi.Bool,
   ):
     """Evaluates the transmittance and free-flight PDF.
 
-    Requires a sampled SSS interaction and the next surface interaction with
+    Requires a sampled media interaction and the next surface interaction with
     their respective active masks.
 
     Args:
-      sss_its: The SSS interaction.
+      mei: The media interaction.
       si: The surface interaction.
       active_medium: Whether we are still in the medium.
       active_boundary_hit: Whether the ray hits the volume boundary.
@@ -148,44 +124,13 @@ class SSSMedium:
     Returns:
       The ratio of transmittance and free-flight PDF.
     """
-    t = dr.minimum(sss_its.t, si.t)
+    t = dr.minimum(mei.t, si.t)
     # Transmittance is unchanged but pdf needs to account for Dwivedi stretching
-    tr = dr.exp(-t * sss_its.sigma_t)
+    tr = dr.exp(-t * mei.sigma_t)
     pdf = mi.Spectrum(0.0)
-    pdf[active_medium] = tr * sss_its.sigma_t
+    pdf[active_medium] = tr * mei.sigma_t
     pdf[active_boundary_hit] = tr
     return tr, pdf
-
-
-  def transmittance_pdf(
-      self,
-      sss_its: SSSInteraction,
-      si: mi.SurfaceInteraction3f,
-      active_medium: mi.Bool,
-      active_boundary_hit: mi.Bool,
-      dwivedi_stretching: mi.Float = 1.0,
-  ):
-    """Evaluates the transmittance and free-flight PDF.
-
-    Requires a sampled SSS interaction and the next surface interaction with
-    their respective active masks.
-
-    Args:
-      sss_its: The SSS interaction.
-      si: The surface interaction.
-      active_medium: Whether we are still in the medium.
-      active_boundary_hit: Whether the ray hits the volume boundary.
-
-    Returns:
-      The free-flight PDF.
-    """
-    t = dr.minimum(sss_its.t, si.t)
-    pdf = mi.Spectrum(0.0)
-    sigma_t_dwivedi = sss_its.sigma_t * dwivedi_stretching
-    tr_dwivedi = dr.exp(-t * sigma_t_dwivedi)
-    pdf[active_medium] = tr_dwivedi * sigma_t_dwivedi
-    pdf[active_boundary_hit] = tr_dwivedi
-    return pdf
 
 
 def update_weight_matrix(p_over_f, p, f, active):
@@ -319,7 +264,6 @@ def sample_spectral_sss_scattering(
   # classic for the first distance sampling
   # TODO(pweier): Additionaly check for backward or forward guiding (for now, only forward)
   
-  
   phase_ctx = mi.PhaseFunctionContext(sampler)
   phase = dr.zeros(mi.PhaseFunctionPtr)
   
@@ -346,38 +290,31 @@ def sample_spectral_sss_scattering(
     # })
 
     sss_medium.populate(medium_shape_bsdf, medium_shape_si, active_medium)
-    sss_its = sss_medium.sample_interaction(
-        ray,
-        u,
-        channel,
-        active_medium,
-        mei,
-    )
 
-    ray.maxt[active_medium & sss_its.is_valid()] = sss_its.t
+    ray.maxt[active_medium & mei.is_valid()] = mei.t
     # Compute a surface interaction that tracks derivatives arising
     # from differentiable shape parameters (position, normals, etc.)
     # In primal mode, this is just an ordinary ray tracing operation.
     with dr.resume_grad(when=not primal):
       si[active_medium] = scene.ray_intersect(ray, active_medium)
-    sss_its.t[active_medium & (si.t < sss_its.t)] = dr.inf
+    mei.t[active_medium & (si.t < mei.t)] = dr.inf
 
     # Either a volume interaction was found or the next interaction is a
     # surface
-    active_boundary_hit = active_medium & ~sss_its.is_valid()
-    active_medium &= sss_its.is_valid()
+    active_boundary_hit = active_medium & ~mei.is_valid()
+    active_medium &= mei.is_valid()
     # Reset maxt for the boundary hit for the true next surface interaction
     ray.maxt[active_boundary_hit] = dr.inf
 
     # Evaluate ratio of transmittance and free-flight PDF
     tr, free_flight_pdf = sss_medium.transmittance_eval_pdf(
-        sss_its,
+        mei,
         si,
         active_medium,
         active_boundary_hit,
     )
     f = mi.Spectrum(1.0)
-    f[active_medium] *= sss_its.sigma_s
+    f[active_medium] *= mei.sigma_s
     f[active_medium | active_boundary_hit] *= tr
     update_weight_matrix(
         p_over_f,
@@ -389,7 +326,7 @@ def sample_spectral_sss_scattering(
     # active_medium &= (medium != None) 
     
     sss_bounces[active_medium] += 1
-    sss_distance[active_medium] += sss_its.t
+    sss_distance[active_medium] += mei.t
     # Add final distance to boundary hit without adding an extra bounce
     # to not double count the extra sigma_t during the differentiable phase
     sss_distance[active_boundary_hit] += si.t
@@ -427,7 +364,7 @@ def sample_spectral_sss_scattering(
           dr.clear_grad(g_local)
 
     # Construct next ray
-    ray[active_medium] = mi.Ray3f(sss_its.p, phase_wo)
+    ray[active_medium] = mi.Ray3f(mei.p, phase_wo)
     sss_depth[active_medium] += 1
 
     # -------------------- Stopping criterion ---------------------
